@@ -5,6 +5,7 @@
 
     import Modelos.ModeloConductores;
     import javax.swing.*;
+    import java.util.ArrayList;
 
 //---------------------------------------------------Principal----------------------------------------------------------
 
@@ -29,6 +30,35 @@
             ListaDobleInicio = listaDobleInicio;
         }
 
+        //Tamaño Lista Circular
+
+        private int SizeListaDobleCircularC()
+        {
+            //Declaraciones
+
+            //Variable Tipo Lista Doble Circular
+
+            ListaDobleCircularConductoresNodo Auxiliar = getListaDobleInicio();
+
+            //Variables Tipo Int
+
+            int Size = 0;
+
+            if(Auxiliar != null)
+            {
+                do
+                {
+                    Size++;
+                    Auxiliar = Auxiliar.getSgte();
+                }
+                while(Auxiliar != getListaDobleInicio());
+            }
+
+            return Size;
+        }
+
+        //Inserción
+
         //Insertar Nuevo Conductor
 
         public void InsertarConductorFinalListaDobleCircularC(ModeloConductores NuevoConductor)
@@ -37,8 +67,13 @@
          
             //Variable Tipo Boolean
 
-            boolean ExisteConductor = VerificarConductorListaDobleCircularC(NuevoConductor.getDPIConductor());
-            
+            boolean ExisteConductor = false;
+
+            if(getListaDobleInicio() != null)
+            {
+                ExisteConductor = VerificarConductorListaDobleCircularC(NuevoConductor.getDPIConductor());
+            }
+
             if(ExisteConductor)
             {
                 JOptionPane.showMessageDialog(null, "El Conductor Indicado Ya Existe En El Sistema", "Error!", JOptionPane.ERROR_MESSAGE);
@@ -54,32 +89,130 @@
                 {
                     //Agrego Al Inicio
 
+                    NuevoNodoConductor.setSgte(NuevoNodoConductor);
+                    NuevoNodoConductor.setAnte(NuevoNodoConductor);
                     setListaDobleInicio(NuevoNodoConductor);
                 }
                 else
                 {
                     //Agrego Al Final
 
-                    ListaDobleCircularConductoresNodo AuxiliarAnterior = getListaDobleInicio().getAnte();
+                    ListaDobleCircularConductoresNodo Auxiliar = getListaDobleInicio();
 
+                    while(Auxiliar.getSgte() != getListaDobleInicio())
+                    {
+                        Auxiliar = Auxiliar.getSgte();
+                    }
+
+                    Auxiliar.setSgte(NuevoNodoConductor);
+                    NuevoNodoConductor.setAnte(Auxiliar);
                     NuevoNodoConductor.setSgte(getListaDobleInicio());
-                    NuevoNodoConductor.setAnte(AuxiliarAnterior);
-
-                    getListaDobleInicio().setAnte(AuxiliarAnterior);
-                    AuxiliarAnterior.setSgte(AuxiliarAnterior);
+                    getListaDobleInicio().setAnte(NuevoNodoConductor);
 
                     //Ordenar Lista
 
                     OrdenamientoBurbujaListaDobleCircularC();
                 }
+
+                JOptionPane.showMessageDialog(null, "Conductor Agregado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
             }             
+        }
+
+        //Eliminación
+
+        //Encontrar Posicion Conductor
+
+        private int EncontrarPosicionConductorListaDobleCircularC(String DPI)
+        {
+            //Declaraciones
+
+            //Variable Tipo Lista Doble Circular
+
+            ListaDobleCircularConductoresNodo Auxiliar = getListaDobleInicio();
+
+            //Variables Tipo Int
+
+            int Posicion = 0;
+
+            if(Auxiliar != null)
+            {
+                do
+                {
+                    if(Auxiliar.getNuevoConductor().getDPIConductor().equals(DPI))
+                    {
+                        return Posicion;
+                    }
+                    Posicion++;
+                    Auxiliar = Auxiliar.getSgte();
+                }
+                while(Auxiliar != getListaDobleInicio());
+            }
+
+            return 0;
+        }
+
+        //Eliminar Conductor
+
+        public void EliminarConductorListaDobleCircularC(String DPI)
+        {
+            //Declaraciones
+
+            //Variables Tipo Int
+
+            int PosicionConductor = 0;
+
+            if(SizeListaDobleCircularC() != 0)
+            {
+                PosicionConductor = EncontrarPosicionConductorListaDobleCircularC(DPI);
+
+                if(PosicionConductor <= SizeListaDobleCircularC())
+                {
+                    if(PosicionConductor == 1)
+                    {
+                        if(SizeListaDobleCircularC() == 1)
+                        {
+                            setListaDobleInicio(null);
+                        }
+                        else
+                        {
+                            ListaDobleCircularConductoresNodo Ultimo = getListaDobleInicio().getAnte();
+
+                            setListaDobleInicio(getListaDobleInicio().getSgte());
+                            Ultimo.setSgte(getListaDobleInicio());
+                            getListaDobleInicio().setAnte(Ultimo);
+                        }
+                    }
+                    else
+                    {
+                        ListaDobleCircularConductoresNodo Auxiliar = getListaDobleInicio();
+
+                        for(int i = 1; i <= PosicionConductor - 1; i++)
+                        {
+                            Auxiliar = Auxiliar.getSgte();
+                        }
+
+                        ListaDobleCircularConductoresNodo Anterior = Auxiliar.getAnte();
+                        Auxiliar = Auxiliar.getSgte();
+                        Anterior.setSgte(Auxiliar);
+                        Auxiliar.setAnte(Anterior);
+                    }
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "El Usuario Indicado No Existe En El Sistema", "Error!", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Aún No Existen Usuarios En El Sistema", "Error!", JOptionPane.ERROR_MESSAGE);
+            }
         }
 
         //Ordenamientos
 
         //Ordenamiento Burbuja Lista Doble
 
-        void OrdenamientoBurbujaListaDobleCircularC()
+        private void OrdenamientoBurbujaListaDobleCircularC()
         {
             //Declaraciones
 
@@ -125,7 +258,7 @@
 
         //Buscar Conductor
 
-        boolean VerificarConductorListaDobleCircularC(String DPIUsuario)
+        public boolean VerificarConductorListaDobleCircularC(String DPIUsuario)
         {
             ListaDobleCircularConductoresNodo Auxiliar = getListaDobleInicio();
 
@@ -139,5 +272,33 @@
             while(Auxiliar != getListaDobleInicio());
             
             return false;
+        }
+
+        //Recorridos
+
+        //Obtener Todos Los Conductores
+
+        public ArrayList<ModeloConductores> ObtenerTodosLosConductoresListaDobleCircularC()
+        {
+            //Declaraciones
+
+            //Auxilair Lista Doble
+
+            ListaDobleCircularConductoresNodo Auxiliar = getListaDobleInicio();
+
+            //Array Tipo Modelo Conductor
+
+            ArrayList<ModeloConductores> ArrayConductores = new ArrayList<ModeloConductores>();
+
+            if(getListaDobleInicio() != null)
+            {
+                while(Auxiliar != getListaDobleInicio())
+                {
+                    ArrayConductores.add(Auxiliar.getNuevoConductor());
+                    Auxiliar = Auxiliar.getSgte();
+                }
+            }
+
+            return ArrayConductores;
         }
     }

@@ -39,7 +39,14 @@
         {
             if(RBT_Agregar.isSelected())
             {
-                JOptionPane.showMessageDialog(null, "Seleccione Agregar", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+                java.awt.EventQueue.invokeLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        new AgregarConductor().setVisible(true);
+                    }
+                });
             }
             else if(RBT_Modificar.isSelected())
             {
@@ -47,7 +54,14 @@
             }
             else if(RBT_Eliminar.isSelected())
             {
-
+                java.awt.EventQueue.invokeLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        new EliminarConductor().setVisible(true);
+                    }
+                });
             }
             else if(RBT_Buscar.isSelected())
             {
@@ -137,11 +151,11 @@
 
             //---- BT_Seleccionar ----
             BT_Seleccionar.setText("Seleccionar");
-            BT_Seleccionar.setFont(new Font("Arial", Font.BOLD, 16));
+            BT_Seleccionar.setFont(new Font("Arial", Font.BOLD, 18));
             BT_Seleccionar.setForeground(new Color(51, 51, 255));
             BT_Seleccionar.addActionListener(e -> BT_SeleccionarActionPerformed(e));
             contentPane.add(BT_Seleccionar);
-            BT_Seleccionar.setBounds(new Rectangle(new Point(305, 360), BT_Seleccionar.getPreferredSize()));
+            BT_Seleccionar.setBounds(new Rectangle(new Point(300, 360), BT_Seleccionar.getPreferredSize()));
             contentPane.add(label3);
             label3.setBounds(680, 435, 35, 30);
 
