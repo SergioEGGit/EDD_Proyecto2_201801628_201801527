@@ -36,7 +36,8 @@
             //Declaraciones
          
             //Variable Tipo Boolean
-            boolean ExisteConductor = VerificarConductorListaDobleCircularC(NuevoConductor.getDPI());
+
+            boolean ExisteConductor = VerificarConductorListaDobleCircularC(NuevoConductor.getDPIConductor());
             
             if(ExisteConductor)
             {
@@ -47,12 +48,18 @@
                 //Nuevo Nodo Lista Simple
                 ListaDobleCircularConductoresNodo NuevoNodoConductor = new ListaDobleCircularConductoresNodo(NuevoConductor);
 
+                //Verificar Si La Lista Esta Vacia
+
                 if(getListaDobleInicio() == null)
                 {
+                    //Agrego Al Inicio
+
                     setListaDobleInicio(NuevoNodoConductor);
                 }
                 else
                 {
+                    //Agrego Al Final
+
                     ListaDobleCircularConductoresNodo AuxiliarAnterior = getListaDobleInicio().getAnte();
 
                     NuevoNodoConductor.setSgte(getListaDobleInicio());
@@ -60,8 +67,58 @@
 
                     getListaDobleInicio().setAnte(AuxiliarAnterior);
                     AuxiliarAnterior.setSgte(AuxiliarAnterior);
+
+                    //Ordenar Lista
+
+                    OrdenamientoBurbujaListaDobleCircularC();
                 }
             }             
+        }
+
+        //Ordenamientos
+
+        //Ordenamiento Burbuja Lista Doble
+
+        void OrdenamientoBurbujaListaDobleCircularC()
+        {
+            //Declaraciones
+
+            //Auxiliares Lista Doble Circular
+            
+            ListaDobleCircularConductoresNodo Primero;
+            ListaDobleCircularConductoresNodo Segundo;
+
+            //Variables Tipo String
+            
+            String CodigoAuxiliar;
+
+            //Asignacion Variables
+
+            Primero = getListaDobleInicio();
+
+            if(getListaDobleInicio() != null)
+            {
+                while(Primero.getSgte() != getListaDobleInicio())
+                {
+                    //Asignacion Segundo
+
+                    Segundo = Primero.getSgte();
+
+                    //Comienzo Valor A Comparar
+
+                    while(Segundo != getListaDobleInicio())
+                    {
+                        if(Primero.getNuevoConductor().getDPIConductor().compareTo(Segundo.getNuevoConductor().getDPIConductor()) > 0)
+                        {
+                            CodigoAuxiliar = Segundo.getNuevoConductor().getDPIConductor();
+                            Segundo.getNuevoConductor().setDPIConductor(Primero.getNuevoConductor().getDPIConductor());
+                            Primero.getNuevoConductor().setDPIConductor(CodigoAuxiliar); 
+                        }
+                        Segundo = Segundo.getSgte();
+                    }
+                    Primero = Primero.getSgte();
+                }    
+            }           
         }
 
         //Búsqueda
@@ -74,7 +131,7 @@
 
             do
             {
-                if(DPIUsuario.compareTo(getListaDobleInicio().getNuevoConductor().getDPI()) == 0)
+                if(DPIUsuario.compareTo(getListaDobleInicio().getNuevoConductor().getDPIConductor()) == 0)
                 {
                     return true;
                 }                

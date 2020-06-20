@@ -9,15 +9,15 @@
     {
         //Atributos
 
-        private String DPI;
-        private String Nombres;
-        private String Apellidos;
-        private String TipoLicencia;
-        private String Genero;
-        private int Telefono;
-        private String Direccion;
+        private String DPIConductor;
+        private String NombresConductor;
+        private String ApellidosConductor;
+        private String TipoLicenciaConductor;
+        private String GeneroConductor;
+        private int TelefonoConductor;
+        private String DireccionConductor;
 
-     //--------------------------------------------------Constructores--------------------------------------------------
+        //--------------------------------------------Constructores-----------------------------------------------------
 
         //Constructor Vacio
 
@@ -28,101 +28,114 @@
 
         //Constructor Nuevo Conductor
 
-        public ModeloConductores(String DPI, String nombres, String apellidos, String tipoLicencia, String genero, int telefono, String direccion)
+        public ModeloConductores(String DPIConductor, String nombresConductor, String apellidosConductor, String tipoLicenciaConductor, String generoConductor, int telefonoConductor, String direccionConductor)
         {
-            this.DPI = DPI;
-            Nombres = nombres;
-            Apellidos = apellidos;
-            TipoLicencia = tipoLicencia;
-            Genero = genero;
-            Telefono = telefono;
-            Direccion = direccion;
+            this.DPIConductor = DPIConductor;
+            NombresConductor = nombresConductor;
+            ApellidosConductor = apellidosConductor;
+            TipoLicenciaConductor = tipoLicenciaConductor;
+            GeneroConductor = generoConductor;
+            TelefonoConductor = telefonoConductor;
+            DireccionConductor = direccionConductor;
         }
 
         //Métodos
-        //Gets y Sets
-        public String getDPI()
+
+        //Get DPI Conductor
+
+        public String getDPIConductor()
         {
-            return DPI;
+            return DPIConductor;
         }
 
-        public void setDPI(String DPI)
+        //Set DPI Conductor
+
+        public void setDPIConductor(String DPIConductor)
         {
-            this.DPI = DPI;
+            this.DPIConductor = DPIConductor;
         }
 
-        public String getNombres()
+        //Get Nombres Conductor
+
+        public String getNombresConductor()
         {
-            return Nombres;
+            return NombresConductor;
         }
 
-        public void setNombres(String nombres)
+        //Set Nombres Conductor
+
+        public void setNombresConductor(String nombresConductor)
         {
-            Nombres = nombres;
+            NombresConductor = nombresConductor;
         }
 
-        public String getApellidos()
+        //Get Apellidos Conductor
+
+        public String getApellidosConductor()
         {
-            return Apellidos;
+            return ApellidosConductor;
         }
 
-        public void setApellidos(String apellidos)
+        //Set Apellidos Conductor
+
+        public void setApellidosConductor(String apellidosConductor)
         {
-            Apellidos = apellidos;
+            ApellidosConductor = apellidosConductor;
         }
 
-        public String getTipoLicencia()
+        //Get Tipo Licencia Conductor
+
+        public String getTipoLicenciaConductor()
         {
-            return TipoLicencia;
+            return TipoLicenciaConductor;
         }
 
-        public void setTipoLicencia(String tipoLicencia)
+        //Set Tipo Licencia Conductor
+
+        public void setTipoLicenciaConductor(String tipoLicenciaConductor)
         {
-            TipoLicencia = tipoLicencia;
+            TipoLicenciaConductor = tipoLicenciaConductor;
+        }
+        
+        //Get Genero Conductor
+
+        public String getGeneroConductor() 
+        {
+            return GeneroConductor;
+        }
+        
+        //Set Genero Conductor
+
+        public void setGeneroConductor(String generoConductor) 
+        {
+            GeneroConductor = generoConductor;
+        }
+        
+        //Get Telefono Conductor
+        
+        public int getTelefonoConductor() 
+        {
+            return TelefonoConductor;
         }
 
-        public String getGenero()
+        //Set Telefono Conductor
+        
+        public void setTelefonoConductor(int telefonoConductor) 
         {
-            return Genero;
+            TelefonoConductor = telefonoConductor;
         }
+        
+        //Get Direccion Conductor
 
-        public void setGenero(String genero)
+        public String getDireccionConductor() 
         {
-            Genero = genero;
+            return DireccionConductor;
         }
+        
+        //Set Direccion Conductor
 
-        public int getTelefono()
+        public void setDireccionConductor(String direccionConductor) 
         {
-            return Telefono;
-        }
-
-        public void setTelefono(int telefono)
-        {
-            Telefono = telefono;
-        }
-
-        public String getDireccion()
-        {
-            return Direccion;
-        }
-
-        public void setDireccion(String direccion)
-        {
-            Direccion = direccion;
-        }
-
-        //To String
-        @Override
-        public String toString()
-        {
-            return "ModeloConductores{" +
-                    "DPI='" + DPI + '\'' +
-                    ", Nombres='" + Nombres + '\'' +
-                    ", Apellidos='" + Apellidos + '\'' +
-                    ", TipoLicencia='" + TipoLicencia + '\'' +
-                    ", Genero='" + Genero + '\'' +
-                    ", Telefono=" + Telefono +
-                    ", Direccion='" + Direccion + '\'' +
-                    '}';
+            DireccionConductor = direccionConductor;
         }
     }
