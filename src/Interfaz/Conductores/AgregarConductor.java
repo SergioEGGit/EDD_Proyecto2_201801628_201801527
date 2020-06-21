@@ -143,7 +143,7 @@
         private void initComponents()
         {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-            // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
+            // Generated using JFormDesigner Evaluation license - unknown
             label1 = new JLabel();
             label2 = new JLabel();
             label3 = new JLabel();
@@ -334,7 +334,7 @@
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-        // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
+        // Generated using JFormDesigner Evaluation license - unknown
         private JLabel label1;
         private JLabel label2;
         private JLabel label3;
