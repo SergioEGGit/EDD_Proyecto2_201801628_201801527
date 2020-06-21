@@ -6,6 +6,8 @@
     import java.awt.*;
     import java.awt.event.*;
     import javax.swing.*;
+    import Metodos.*;
+    import Variables.VariablesGlobales;
 
 //-----------------------------------------------------Author-----------------------------------------------------------
 
@@ -80,10 +82,27 @@
             ValidarRadioButton();
         }
 
+        private void CargaMasiva(ActionEvent e) {
+            CargaMasiva CM=new CargaMasiva();
+            CM.CargaMasiva(';',',',"usr","USUARIOS",4);
+            System.err.println("INICIO DE IMPRESION CARGA MASIVA DESDE LA MATRIZ");
+            if(VariablesGlobales.ItemsArchivo!=null){//Verifica que la matriz exista
+                int contador=0;
+                for (String[] DATOS: VariablesGlobales.ItemsArchivo){
+                    for (String SubDatos:DATOS){
+                        System.out.print(contador+" VAL: "+SubDatos+" ");
+                    }
+                    System.out.println();contador++;
+                }
+                //luego de agregar los valores a la lista es mejor convertir la matriz nula
+                VariablesGlobales.ItemsArchivo=null;
+            }
+        }
+
         private void initComponents()
         {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-            // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
+            // Generated using JFormDesigner Evaluation license - unknown
             label1 = new JLabel();
             label2 = new JLabel();
             RBT_Agregar = new JRadioButton();
@@ -93,6 +112,7 @@
             RBT_Mostrar = new JRadioButton();
             BT_Seleccionar = new JButton();
             label3 = new JLabel();
+            button1 = new JButton();
 
             //======== this ========
             setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -159,6 +179,12 @@
             contentPane.add(label3);
             label3.setBounds(680, 435, 35, 30);
 
+            //---- button1 ----
+            button1.setText("Carga Masiva");
+            button1.addActionListener(e -> CargaMasiva(e));
+            contentPane.add(button1);
+            button1.setBounds(new Rectangle(new Point(310, 405), button1.getPreferredSize()));
+
             {
                 // compute preferred size
                 Dimension preferredSize = new Dimension();
@@ -179,7 +205,7 @@
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-        // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
+        // Generated using JFormDesigner Evaluation license - unknown
         private JLabel label1;
         private JLabel label2;
         private JRadioButton RBT_Agregar;
@@ -189,5 +215,6 @@
         private JRadioButton RBT_Mostrar;
         private JButton BT_Seleccionar;
         private JLabel label3;
+        private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     }
