@@ -6,6 +6,8 @@
     import java.awt.*;
     import java.awt.event.*;
     import javax.swing.*;
+
+    import Interfaz.Reportes;
     import Metodos.*;
     import Variables.VariablesGlobales;
 
@@ -52,7 +54,14 @@
             }
             else if(RBT_Modificar.isSelected())
             {
-
+                java.awt.EventQueue.invokeLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        new ModificarConductor().setVisible(true);
+                    }
+                });
             }
             else if(RBT_Eliminar.isSelected())
             {
@@ -67,17 +76,62 @@
             }
             else if(RBT_Buscar.isSelected())
             {
-
+                java.awt.EventQueue.invokeLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        new BuscarConductor().setVisible(true);
+                    }
+                });
             }
             else if(RBT_Mostrar.isSelected())
             {
+                VariablesGlobales.NombreReporte = "ReporteConductoresListaDobleCircular.png";
+                VariablesGlobales.ListaDobleCircularConductores.GenerarReporteListaDobleCircularC();
 
+                if(VariablesGlobales.GenereReporte)
+                {
+                    JOptionPane.showMessageDialog(null, "Reporte Generado Con Exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+                        @Override
+                        public void run()
+                        {
+                            new Reportes().setVisible(true);
+                        }
+                    });
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "El Reporte No Se Pudo Generar Con Exito \nVerifique Que Graphviz Se Encuentre Configurado De Manera Correcta", "Error!", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
 
-        //-----------------------------------------------Button Event---------------------------------------------------
+        //-------------------------------------------------Events-------------------------------------------------------
 
-        private void BT_SeleccionarActionPerformed(ActionEvent e)
+        private void RBT_AgregarActionPerformed(ActionEvent e)
+        {
+            ValidarRadioButton();
+        }
+
+        private void RBT_ModificarActionPerformed(ActionEvent e)
+        {
+            ValidarRadioButton();
+        }
+
+        private void RBT_EliminarActionPerformed(ActionEvent e)
+        {
+            ValidarRadioButton();
+        }
+
+        private void RBT_BuscarActionPerformed(ActionEvent e)
+        {
+            ValidarRadioButton();
+        }
+
+        private void RBT_MostrarActionPerformed(ActionEvent e)
         {
             ValidarRadioButton();
         }
@@ -102,7 +156,7 @@
         private void initComponents()
         {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-            // Generated using JFormDesigner Evaluation license - unknown
+            // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
             label1 = new JLabel();
             label2 = new JLabel();
             RBT_Agregar = new JRadioButton();
@@ -110,7 +164,6 @@
             RBT_Eliminar = new JRadioButton();
             RBT_Buscar = new JRadioButton();
             RBT_Mostrar = new JRadioButton();
-            BT_Seleccionar = new JButton();
             label3 = new JLabel();
             button1 = new JButton();
 
@@ -138,6 +191,7 @@
             RBT_Agregar.setText("Agregar Conductor");
             RBT_Agregar.setForeground(new Color(102, 102, 255));
             RBT_Agregar.setFont(new Font("Arial", Font.BOLD, 16));
+            RBT_Agregar.addActionListener(e -> RBT_AgregarActionPerformed(e));
             contentPane.add(RBT_Agregar);
             RBT_Agregar.setBounds(new Rectangle(new Point(280, 140), RBT_Agregar.getPreferredSize()));
 
@@ -145,6 +199,7 @@
             RBT_Modificar.setText("Modificar Conductor");
             RBT_Modificar.setFont(new Font("Arial", Font.BOLD, 16));
             RBT_Modificar.setForeground(new Color(102, 102, 255));
+            RBT_Modificar.addActionListener(e -> RBT_ModificarActionPerformed(e));
             contentPane.add(RBT_Modificar);
             RBT_Modificar.setBounds(new Rectangle(new Point(280, 185), RBT_Modificar.getPreferredSize()));
 
@@ -152,6 +207,7 @@
             RBT_Eliminar.setText("Eliminar Conductor");
             RBT_Eliminar.setFont(new Font("Arial", Font.BOLD, 16));
             RBT_Eliminar.setForeground(new Color(102, 102, 255));
+            RBT_Eliminar.addActionListener(e -> RBT_EliminarActionPerformed(e));
             contentPane.add(RBT_Eliminar);
             RBT_Eliminar.setBounds(new Rectangle(new Point(280, 225), RBT_Eliminar.getPreferredSize()));
 
@@ -159,6 +215,7 @@
             RBT_Buscar.setText("Buscar Conductor");
             RBT_Buscar.setForeground(new Color(102, 102, 255));
             RBT_Buscar.setFont(new Font("Arial", Font.BOLD, 16));
+            RBT_Buscar.addActionListener(e -> RBT_BuscarActionPerformed(e));
             contentPane.add(RBT_Buscar);
             RBT_Buscar.setBounds(new Rectangle(new Point(280, 265), RBT_Buscar.getPreferredSize()));
 
@@ -166,16 +223,9 @@
             RBT_Mostrar.setText("Mostrar Estructura");
             RBT_Mostrar.setForeground(new Color(102, 102, 255));
             RBT_Mostrar.setFont(new Font("Arial", Font.BOLD, 16));
+            RBT_Mostrar.addActionListener(e -> RBT_MostrarActionPerformed(e));
             contentPane.add(RBT_Mostrar);
             RBT_Mostrar.setBounds(new Rectangle(new Point(280, 305), RBT_Mostrar.getPreferredSize()));
-
-            //---- BT_Seleccionar ----
-            BT_Seleccionar.setText("Seleccionar");
-            BT_Seleccionar.setFont(new Font("Arial", Font.BOLD, 18));
-            BT_Seleccionar.setForeground(new Color(51, 51, 255));
-            BT_Seleccionar.addActionListener(e -> BT_SeleccionarActionPerformed(e));
-            contentPane.add(BT_Seleccionar);
-            BT_Seleccionar.setBounds(new Rectangle(new Point(300, 360), BT_Seleccionar.getPreferredSize()));
             contentPane.add(label3);
             label3.setBounds(680, 435, 35, 30);
 
@@ -205,7 +255,7 @@
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
         private JLabel label1;
         private JLabel label2;
         private JRadioButton RBT_Agregar;
@@ -213,7 +263,6 @@
         private JRadioButton RBT_Eliminar;
         private JRadioButton RBT_Buscar;
         private JRadioButton RBT_Mostrar;
-        private JButton BT_Seleccionar;
         private JLabel label3;
         private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables

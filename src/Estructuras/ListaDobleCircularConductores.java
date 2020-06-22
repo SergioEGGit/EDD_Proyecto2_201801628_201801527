@@ -3,6 +3,7 @@
 
     package Estructuras;
 
+    import Metodos.GenerarReportes;
     import Modelos.ModeloConductores;
     import javax.swing.*;
     import java.util.ArrayList;
@@ -118,38 +119,42 @@
             }             
         }
 
-        //Eliminación
+        //Actualización
 
-        //Encontrar Posicion Conductor
+        //Modificar Usuario
 
-        private int EncontrarPosicionConductorListaDobleCircularC(String DPI)
+        public void ModificarConductorListaDobleCircularC(ModeloConductores ConductorModificar)
         {
             //Declaraciones
 
-            //Variable Tipo Lista Doble Circular
+            //Auxiliar Lista Doble
 
             ListaDobleCircularConductoresNodo Auxiliar = getListaDobleInicio();
 
-            //Variables Tipo Int
-
-            int Posicion = 0;
-
-            if(Auxiliar != null)
+            if(getListaDobleInicio() != null)
             {
                 do
                 {
-                    if(Auxiliar.getNuevoConductor().getDPIConductor().equals(DPI))
+                    if(ConductorModificar.getDPIConductor().equals(Auxiliar.getNuevoConductor().getDPIConductor()))
                     {
-                        return Posicion;
+                        Auxiliar.getNuevoConductor().setNombresConductor(ConductorModificar.getNombresConductor());
+                        Auxiliar.getNuevoConductor().setApellidosConductor(ConductorModificar.getApellidosConductor());
+                        Auxiliar.getNuevoConductor().setFechaNacimientoConductor(ConductorModificar.getFechaNacimientoConductor());
+                        Auxiliar.getNuevoConductor().setTipoLicenciaConductor(ConductorModificar.getTipoLicenciaConductor());
+                        Auxiliar.getNuevoConductor().setGeneroConductor(ConductorModificar.getGeneroConductor());
+                        Auxiliar.getNuevoConductor().setTelefonoConductor(ConductorModificar.getTelefonoConductor());
+                        Auxiliar.getNuevoConductor().setDireccionConductor(ConductorModificar.getDireccionConductor());
+
+                        JOptionPane.showMessageDialog(null, "Usuario Modificado Con Exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
                     }
-                    Posicion++;
+
                     Auxiliar = Auxiliar.getSgte();
                 }
                 while(Auxiliar != getListaDobleInicio());
             }
-
-            return 0;
         }
+
+        //Eliminación
 
         //Eliminar Conductor
 
@@ -172,6 +177,8 @@
                         if(SizeListaDobleCircularC() == 1)
                         {
                             setListaDobleInicio(null);
+
+                            JOptionPane.showMessageDialog(null, "Conductor Eliminado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
                         }
                         else
                         {
@@ -180,6 +187,8 @@
                             setListaDobleInicio(getListaDobleInicio().getSgte());
                             Ultimo.setSgte(getListaDobleInicio());
                             getListaDobleInicio().setAnte(Ultimo);
+
+                            JOptionPane.showMessageDialog(null, "Conductor Eliminado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
                         }
                     }
                     else
@@ -195,6 +204,8 @@
                         Auxiliar = Auxiliar.getSgte();
                         Anterior.setSgte(Auxiliar);
                         Auxiliar.setAnte(Anterior);
+
+                        JOptionPane.showMessageDialog(null, "Conductor Eliminado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
                 else
@@ -214,16 +225,26 @@
 
         private void OrdenamientoBurbujaListaDobleCircularC()
         {
-            //Declaraciones
+             //Declaraciones
 
-            //Auxiliares Lista Doble Circular
+             //Auxiliares Lista Doble Circular
             
-            ListaDobleCircularConductoresNodo Primero;
-            ListaDobleCircularConductoresNodo Segundo;
+             ListaDobleCircularConductoresNodo Primero;
+             ListaDobleCircularConductoresNodo Segundo;
 
-            //Variables Tipo String
+             //Variables Tipo String
             
             String CodigoAuxiliar;
+            String Nombres;
+            String Apellidos;
+            String FechaNacimiento;
+            String TipoLicencia;
+            String Genero;
+            String Direccion;
+
+            //Variables Tipo Int
+
+            int Telefono;
 
             //Asignacion Variables
 
@@ -244,8 +265,33 @@
                         if(Primero.getNuevoConductor().getDPIConductor().compareTo(Segundo.getNuevoConductor().getDPIConductor()) > 0)
                         {
                             CodigoAuxiliar = Segundo.getNuevoConductor().getDPIConductor();
+                            Nombres = Segundo.getNuevoConductor().getNombresConductor();
+                            Apellidos = Segundo.getNuevoConductor().getApellidosConductor();
+                            FechaNacimiento = Segundo.getNuevoConductor().getFechaNacimientoConductor();
+                            TipoLicencia = Segundo.getNuevoConductor().getTipoLicenciaConductor();
+                            Genero = Segundo.getNuevoConductor().getGeneroConductor();
+                            Telefono = Segundo.getNuevoConductor().getTelefonoConductor();
+                            Direccion = Segundo.getNuevoConductor().getDireccionConductor();
+
+                            //Segundos
                             Segundo.getNuevoConductor().setDPIConductor(Primero.getNuevoConductor().getDPIConductor());
-                            Primero.getNuevoConductor().setDPIConductor(CodigoAuxiliar); 
+                            Segundo.getNuevoConductor().setNombresConductor(Primero.getNuevoConductor().getNombresConductor());
+                            Segundo.getNuevoConductor().setApellidosConductor(Primero.getNuevoConductor().getApellidosConductor());
+                            Segundo.getNuevoConductor().setFechaNacimientoConductor(Primero.getNuevoConductor().getFechaNacimientoConductor());
+                            Segundo.getNuevoConductor().setTipoLicenciaConductor(Primero.getNuevoConductor().getTipoLicenciaConductor());
+                            Segundo.getNuevoConductor().setGeneroConductor(Primero.getNuevoConductor().getGeneroConductor());
+                            Segundo.getNuevoConductor().setTelefonoConductor(Primero.getNuevoConductor().getTelefonoConductor());
+                            Segundo.getNuevoConductor().setDireccionConductor(Primero.getNuevoConductor().getDireccionConductor());
+
+                            //Primeros
+                            Primero.getNuevoConductor().setDPIConductor(CodigoAuxiliar);
+                            Primero.getNuevoConductor().setNombresConductor(Nombres);
+                            Primero.getNuevoConductor().setApellidosConductor(Apellidos);
+                            Primero.getNuevoConductor().setFechaNacimientoConductor(FechaNacimiento);
+                            Primero.getNuevoConductor().setTipoLicenciaConductor(TipoLicencia);
+                            Primero.getNuevoConductor().setGeneroConductor(Genero);
+                            Primero.getNuevoConductor().setTelefonoConductor(Telefono);
+                            Primero.getNuevoConductor().setDireccionConductor(Direccion);
                         }
                         Segundo = Segundo.getSgte();
                     }
@@ -256,7 +302,7 @@
 
         //Búsqueda
 
-        //Buscar Conductor
+        //Verificar Conductor
 
         public boolean VerificarConductorListaDobleCircularC(String DPIUsuario)
         {
@@ -264,14 +310,75 @@
 
             do
             {
-                if(DPIUsuario.compareTo(getListaDobleInicio().getNuevoConductor().getDPIConductor()) == 0)
+                if(DPIUsuario.equals(Auxiliar.getNuevoConductor().getDPIConductor()))
                 {
                     return true;
-                }                
+                }
+                Auxiliar = Auxiliar.getSgte();
             }
             while(Auxiliar != getListaDobleInicio());
             
             return false;
+        }
+
+        //Buscar Conductor
+
+        public ModeloConductores BuscarUsuarioListaDobleCircularC(String DPIUsuario)
+        {
+            //Declaraciones
+
+            //Auxiliar Lista Doble
+
+            ListaDobleCircularConductoresNodo Auxiliar = getListaDobleInicio();
+
+            //Variables Tipo Modelo Conductores
+
+            ModeloConductores ConductorEncontrado = new ModeloConductores();
+
+            do
+            {
+                if(DPIUsuario.equals(Auxiliar.getNuevoConductor().getDPIConductor()))
+                {
+                    ConductorEncontrado = Auxiliar.getNuevoConductor();
+                    return ConductorEncontrado;
+                }
+                Auxiliar = Auxiliar.getSgte();
+            }
+            while(Auxiliar != getListaDobleInicio());
+
+            return null;
+        }
+
+        //Encontrar Posicion Conductor
+
+        private int EncontrarPosicionConductorListaDobleCircularC(String DPI)
+        {
+            //Declaraciones
+
+            //Variable Tipo Lista Doble Circular
+
+            ListaDobleCircularConductoresNodo Auxiliar = getListaDobleInicio();
+
+            //Variables Tipo Int
+
+            int Posicion = 0;
+
+            if(Auxiliar != null)
+            {
+                do
+                {
+                    Posicion++;
+
+                    if(Auxiliar.getNuevoConductor().getDPIConductor().equals(DPI))
+                    {
+                        return Posicion;
+                    }
+                    Auxiliar = Auxiliar.getSgte();
+                }
+                while(Auxiliar != getListaDobleInicio());
+            }
+
+            return 0;
         }
 
         //Recorridos
@@ -292,13 +399,96 @@
 
             if(getListaDobleInicio() != null)
             {
-                while(Auxiliar != getListaDobleInicio())
+                do
                 {
                     ArrayConductores.add(Auxiliar.getNuevoConductor());
                     Auxiliar = Auxiliar.getSgte();
                 }
+                while(Auxiliar != getListaDobleInicio());
             }
 
             return ArrayConductores;
+        }
+
+        //Reportes
+
+        //Generar Reporte Conductores
+
+        public void GenerarReporteListaDobleCircularC()
+        {
+            //Declaraciones
+
+            //Variables Tipo Int
+
+            int ContadorAuxiliar = 0;
+
+            //Variables Tipo String
+
+            String Cadena = "";
+            String Asc = "";
+            String Desc = "";
+            String Same = "";
+
+            //Array String
+
+            String[] Temporal = null;
+
+            //Auxiliar Tipo Lista Doble
+
+            ListaDobleCircularConductoresNodo Auxiliar = getListaDobleInicio();
+
+            Cadena += "digraph ListaDobleCircular";
+            Cadena += "{";
+            Cadena += "graph [charset=latin1]";
+            Cadena += "node [shape = box, style = rounded, color = brown1, fontcolor = darkslategray];";
+
+            if(getListaDobleInicio() != null)
+            {
+                do
+                {
+                    Cadena += "A" + ContadorAuxiliar + " [label = \"DPI: " + Auxiliar.getNuevoConductor().getDPIConductor();
+                    Cadena += "\\lNombres: " + Auxiliar.getNuevoConductor().getNombresConductor();
+                    Cadena += "\\lApellidos: " + Auxiliar.getNuevoConductor().getApellidosConductor();
+                    Cadena += "\\lFecha Nacimiento" + Auxiliar.getNuevoConductor().getFechaNacimientoConductor();
+                    Cadena += "\\lTipo De Licencia: " + Auxiliar.getNuevoConductor().getTipoLicenciaConductor();
+                    Cadena += "\\lGénero: " + Auxiliar.getNuevoConductor().getGeneroConductor();
+                    Cadena += "\\lTeléfono: " + Auxiliar.getNuevoConductor().getTelefonoConductor();
+                    Cadena += "\\lDirección: " + Auxiliar.getNuevoConductor().getDireccionConductor();
+                    Cadena += "\\l";
+
+                    Temporal[ContadorAuxiliar] = "A" + ContadorAuxiliar;
+                    ContadorAuxiliar++;
+                    Auxiliar = Auxiliar.getSgte();
+                }
+                while(Auxiliar != getListaDobleInicio());
+
+                for(int i = 0; i < ContadorAuxiliar; i++)
+                {
+                    Same = Same + Temporal[i] + " ";
+
+                    if(i < ContadorAuxiliar - 1)
+                    {
+                        Asc = Asc + Temporal[i] + "->";
+                        Desc = Desc + Temporal[ContadorAuxiliar - i - 1] + "->";
+                    }
+                    else
+                    {
+                        Asc = Asc + Temporal[i];
+                        Desc = Desc + Temporal[ContadorAuxiliar - i - 1];
+                    }
+                }
+                Asc = Asc + "->" + "A0" + "->" + "A" + (ContadorAuxiliar - 1);
+
+                Cadena += "{ rank = same " + Same + "}";
+                Cadena += Asc;
+                Cadena += " ";
+                Cadena += "}";
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "La Lista Se Encuentra Vacia", "Error!", JOptionPane.ERROR_MESSAGE);
+            }
+
+            GenerarReportes TablaHashUsuarios = new GenerarReportes("ReporteConductoresListaDobleCircular", Cadena);
         }
     }

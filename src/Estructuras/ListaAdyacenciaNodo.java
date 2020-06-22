@@ -1,6 +1,7 @@
 package Estructuras;
 
-public class ListaAdyacenciaNodo {
+public class ListaAdyacenciaNodo
+{
 
     private String Origen;
     private String Destino;
@@ -9,7 +10,8 @@ public class ListaAdyacenciaNodo {
     private ListaAdyacenciaNodo Derecha;
 
     //Constructor que genera el nodo a enlazar
-    public ListaAdyacenciaNodo(String Origen, String Destino, double TiempoRuta) {
+    public ListaAdyacenciaNodo(String Origen, String Destino, double TiempoRuta)
+    {
         this.Origen = Origen;
         this.Destino = Destino;
         this.TiempoRuta = TiempoRuta;
@@ -18,7 +20,8 @@ public class ListaAdyacenciaNodo {
     }
 
     //Constructor que crea el origen
-    public ListaAdyacenciaNodo(String origen) {
+    public ListaAdyacenciaNodo(String origen)
+    {
         Origen = origen;
         this.Destino = "";
         this.TiempoRuta = 0.0;
@@ -28,7 +31,8 @@ public class ListaAdyacenciaNodo {
 
     //Constructor Vacio
 
-    public ListaAdyacenciaNodo() {
+    public ListaAdyacenciaNodo()
+    {
     }
 
 

@@ -22,7 +22,8 @@ public class Principal extends JFrame {
         initComponents();
     }
 
-    private void CargaMasivaRutas(ActionEvent e) {
+    private void CargaMasivaRutas(ActionEvent e)
+    {
         CargaMasiva CMR=new CargaMasiva();
         CMR.CargaMasiva('%','/',"txt","RUTAS",3);
         int contador=0;
@@ -115,7 +116,7 @@ public class Principal extends JFrame {
             @Override
             public void run()
             {
-                new Principal().setVisible(true);
+                new ConductoresInterfaz().setVisible(true);
             }
         });
     }

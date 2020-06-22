@@ -12,6 +12,7 @@
         private String DPIConductor;
         private String NombresConductor;
         private String ApellidosConductor;
+        private String FechaNacimientoConductor;
         private String TipoLicenciaConductor;
         private String GeneroConductor;
         private int TelefonoConductor;
@@ -28,11 +29,12 @@
 
         //Constructor Nuevo Conductor
 
-        public ModeloConductores(String DPIConductor, String nombresConductor, String apellidosConductor, String tipoLicenciaConductor, String generoConductor, int telefonoConductor, String direccionConductor)
+        public ModeloConductores(String DPIConductor, String nombresConductor, String apellidosConductor, String fechaNacimientoConductor, String tipoLicenciaConductor, String generoConductor, int telefonoConductor, String direccionConductor)
         {
             this.DPIConductor = DPIConductor;
             NombresConductor = nombresConductor;
             ApellidosConductor = apellidosConductor;
+            FechaNacimientoConductor = fechaNacimientoConductor;
             TipoLicenciaConductor = tipoLicenciaConductor;
             GeneroConductor = generoConductor;
             TelefonoConductor = telefonoConductor;
@@ -81,6 +83,20 @@
         public void setApellidosConductor(String apellidosConductor)
         {
             ApellidosConductor = apellidosConductor;
+        }
+
+        //Get Fecha Nacimiento Conductor
+
+        public String getFechaNacimientoConductor()
+        {
+            return FechaNacimientoConductor;
+        }
+
+        //Set Fecha Nacimiento Conductor
+
+        public void setFechaNacimientoConductor(String fechaNacimientoConductor)
+        {
+            FechaNacimientoConductor = fechaNacimientoConductor;
         }
 
         //Get Tipo Licencia Conductor
