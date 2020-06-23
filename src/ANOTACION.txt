@@ -1,0 +1,3 @@
+Encriptar cualquier texto con este comando recibe un Texto y Retorna un Texto
+no hay que importar ninguna libreria
+DigestUtils.md5Hex("HOLA");

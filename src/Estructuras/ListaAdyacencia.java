@@ -1,9 +1,10 @@
 package Estructuras;
 
 import Variables.VariablesGlobales;
+import org.apache.commons.codec.digest.DigestUtils;
+
 
 import java.io.*;
-import java.util.List;
 import java.util.Stack;
 
 public class ListaAdyacencia
@@ -20,6 +21,7 @@ public class ListaAdyacencia
 
     //constructor Vacio
     public ListaAdyacencia() {
+        System.out.println("ENCRIPTADO: "+DigestUtils.md5Hex("HOLA"));
     }
 
     //Verifica si esta vacia la lista
@@ -27,13 +29,9 @@ public class ListaAdyacencia
     {
         return getInicioListaAdyacencia()==null;
     }
-<<<<<<< HEAD
 
-    public ListaAdyacenciaNodo ExisteOrigen(String Origen){
-=======
     public ListaAdyacenciaNodo ExisteOrigen(String Origen)
     {
->>>>>>> fe8aa30a816fdfc0ded4c8f98e8ee1043e91c984
         ListaAdyacenciaNodo Auxiliar=getInicioListaAdyacencia();//Inicio de la lista
         while(Auxiliar!=null){//recorre la lista inicial con los origenes
             if(Auxiliar.getOrigen().equals(Origen)){//si el origen existe retorna el nodo de origen
