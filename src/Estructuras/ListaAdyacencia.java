@@ -6,7 +6,8 @@ import java.io.*;
 import java.util.List;
 import java.util.Stack;
 
-public class ListaAdyacencia {
+public class ListaAdyacencia
+{
 
     //inicio de la lista de adyacencia
     private ListaAdyacenciaNodo InicioListaAdyacencia;
@@ -22,11 +23,17 @@ public class ListaAdyacencia {
     }
 
     //Verifica si esta vacia la lista
-    public boolean IsEmpty(){
+    public boolean IsEmpty()
+    {
         return getInicioListaAdyacencia()==null;
     }
+<<<<<<< HEAD
 
     public ListaAdyacenciaNodo ExisteOrigen(String Origen){
+=======
+    public ListaAdyacenciaNodo ExisteOrigen(String Origen)
+    {
+>>>>>>> fe8aa30a816fdfc0ded4c8f98e8ee1043e91c984
         ListaAdyacenciaNodo Auxiliar=getInicioListaAdyacencia();//Inicio de la lista
         while(Auxiliar!=null){//recorre la lista inicial con los origenes
             if(Auxiliar.getOrigen().equals(Origen)){//si el origen existe retorna el nodo de origen
@@ -37,7 +44,8 @@ public class ListaAdyacencia {
         return null;//si el origen existe retorna null
     }
 
-    public boolean InsertarNodo(String Origen, String Destino, double TimepoRuta){
+    public boolean InsertarNodo(String Origen, String Destino, double TimepoRuta)
+    {
         if(IsEmpty()==true){
             ListaAdyacenciaNodo OrigenEnLista=new ListaAdyacenciaNodo(Origen);
             ListaAdyacenciaNodo Nuevo=new ListaAdyacenciaNodo(Origen,Destino,TimepoRuta);

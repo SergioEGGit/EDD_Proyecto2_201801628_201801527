@@ -8,7 +8,8 @@ import java.io.BufferedReader;
 import java.io.FilenameFilter;
 import Variables.VariablesGlobales;
 
-public class CargaMasiva {
+public class CargaMasiva
+{
 
     void GuardarDatos(char SplitDato,char SplitSubDato,String Datos,int CantidadSubDatos){//Guarda los datos en una matriz
         String Informacion[]=Datos.split(Character.toString(SplitDato));
