@@ -5,6 +5,8 @@ public class ListaAdyacenciaNodo {
     private String Origen;
     private String Destino;
     private double TiempoRuta;
+    private String ViendeDeNodo;
+    private double TiempoAcumulado;
     private ListaAdyacenciaNodo Abajo;
     private ListaAdyacenciaNodo Derecha;
 
@@ -13,6 +15,8 @@ public class ListaAdyacenciaNodo {
         this.Origen = Origen;
         this.Destino = Destino;
         this.TiempoRuta = TiempoRuta;
+        this.ViendeDeNodo=null;
+        this.TiempoAcumulado=0.0;
         this.Abajo=null;
         this.Derecha=null;
     }
@@ -22,6 +26,8 @@ public class ListaAdyacenciaNodo {
         Origen = origen;
         this.Destino = "";
         this.TiempoRuta = 0.0;
+        this.ViendeDeNodo=null;
+        this.TiempoAcumulado=0.0;
         this.Abajo=null;
         this.Derecha=null;
     }
@@ -53,4 +59,23 @@ public class ListaAdyacenciaNodo {
     public ListaAdyacenciaNodo getDerecha() { return Derecha; }
 
     public void setDerecha(ListaAdyacenciaNodo derecha) { Derecha = derecha; }
+
+    public String getViendeDeNodo() { return ViendeDeNodo; }
+
+    public void setViendeDeNodo(String viendeDeNodo) { ViendeDeNodo = viendeDeNodo; }
+
+    public double getTiempoAcumulado() { return TiempoAcumulado; }
+
+    public void setTiempoAcumulado(double tiempoAcumulado) { TiempoAcumulado = tiempoAcumulado; }
+
+    @Override
+    public String toString() {
+        return "ListaAdyacenciaNodo{" +
+                "Origen='" + Origen + '\'' +
+                ", Destino='" + Destino + '\'' +
+                ", TiempoRuta=" + TiempoRuta +
+                ", ViendeDeNodo='" + ViendeDeNodo + '\'' +
+                ", TiempoAcumulado=" + TiempoAcumulado +
+                '}';
+    }
 }

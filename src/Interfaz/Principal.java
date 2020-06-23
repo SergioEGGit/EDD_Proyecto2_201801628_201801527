@@ -28,7 +28,7 @@ public class Principal extends JFrame {
         int contador=0;
         for (String[] Ruta: VariablesGlobales.ItemsArchivo){
             try{
-                boolean Existe =VariablesGlobales.ListaAdyacenciaRutas.InsertarNodo(Ruta[0].trim(),Ruta[1].trim(),Double.parseDouble(Ruta[2].trim()));
+                boolean Existe =VariablesGlobales.ListaAdyacenciaRutas.InsertarNodo(Ruta[0].trim().toUpperCase(),Ruta[1].trim().toUpperCase(),Double.parseDouble(Ruta[2].trim()));
                 if(Existe==false){
                     JOptionPane.showMessageDialog(null,
                             "Texto: "+Ruta[0]+"\n"+
@@ -49,6 +49,7 @@ public class Principal extends JFrame {
         }
         JOptionPane.showMessageDialog(null,"SE AGREGARON "+contador+" CON EXITO","AGREGADOS",JOptionPane.INFORMATION_MESSAGE);
         VariablesGlobales.ListaAdyacenciaRutas.ImprimirLista();
+        VariablesGlobales.ListaAdyacenciaRutas.AlgoritmoDijkstra();
     }
 
     private void GrafoRuta(ActionEvent e) {
