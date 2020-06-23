@@ -92,7 +92,7 @@
 
               try
               {
-                  Imagen = ImageIO.read(new FileInputStream(VariablesGlobales.NombreReporte));
+                  Imagen = ImageIO.read(new FileInputStream("C:\\GraficasE\\" + VariablesGlobales.NombreReporte));
               }
               catch (MalformedURLException M)
               {
@@ -101,7 +101,7 @@
               }
               catch (IOException Ex)
               {
-                  System.out.println("Error En Lectura: " + Ex.getMessage());
+                  System.out.println("Error En Lectura: " + Ex.getMessage() + VariablesGlobales.NombreReporte);
                   VariablesGlobales.GenereReporte = false;
               }
            }

@@ -3,8 +3,11 @@
 
     package Estructuras;
 
+    import Metodos.CargaMasiva;
     import Metodos.GenerarReportes;
     import Modelos.ModeloConductores;
+    import Variables.VariablesGlobales;
+
     import javax.swing.*;
     import java.util.ArrayList;
 
@@ -431,16 +434,16 @@
 
             //Array String
 
-            String[] Temporal = null;
+            String[] Temporal = new String[100];
 
             //Auxiliar Tipo Lista Doble
 
             ListaDobleCircularConductoresNodo Auxiliar = getListaDobleInicio();
 
-            Cadena += "digraph ListaDobleCircular";
-            Cadena += "{";
-            Cadena += "graph [charset=latin1]";
-            Cadena += "node [shape = box, style = rounded, color = brown1, fontcolor = darkslategray];";
+            Cadena += "digraph ListaDobleCircular" + "\n";
+            Cadena += "{" + "\n";
+            Cadena += "graph [charset=latin1]" + "\n";
+            Cadena += "node [shape = box, style = rounded, color = brown1, fontcolor = darkslategray];" + "\n";
 
             if(getListaDobleInicio() != null)
             {
@@ -451,10 +454,10 @@
                     Cadena += "\\lApellidos: " + Auxiliar.getNuevoConductor().getApellidosConductor();
                     Cadena += "\\lFecha Nacimiento" + Auxiliar.getNuevoConductor().getFechaNacimientoConductor();
                     Cadena += "\\lTipo De Licencia: " + Auxiliar.getNuevoConductor().getTipoLicenciaConductor();
-                    Cadena += "\\lGénero: " + Auxiliar.getNuevoConductor().getGeneroConductor();
-                    Cadena += "\\lTeléfono: " + Auxiliar.getNuevoConductor().getTelefonoConductor();
-                    Cadena += "\\lDirección: " + Auxiliar.getNuevoConductor().getDireccionConductor();
-                    Cadena += "\\l";
+                    Cadena += "\\lGenero: " + Auxiliar.getNuevoConductor().getGeneroConductor();
+                    Cadena += "\\lTelefono: " + Auxiliar.getNuevoConductor().getTelefonoConductor();
+                    Cadena += "\\lDireccion: " + Auxiliar.getNuevoConductor().getDireccionConductor();
+                    Cadena += "\\l\"]" + "\n";
 
                     Temporal[ContadorAuxiliar] = "A" + ContadorAuxiliar;
                     ContadorAuxiliar++;
@@ -477,18 +480,62 @@
                         Desc = Desc + Temporal[ContadorAuxiliar - i - 1];
                     }
                 }
-                Asc = Asc + "->" + "A0" + "->" + "A" + (ContadorAuxiliar - 1);
 
-                Cadena += "{ rank = same " + Same + "}";
-                Cadena += Asc;
-                Cadena += " ";
-                Cadena += "}";
+                if(ContadorAuxiliar > 1)
+                {
+                    Asc = Asc + "->" + "A0" + "->" + "A" + (ContadorAuxiliar - 1) + "\n";
+                }
+
+                Cadena += "{ rank = same " + Same + "}" + "\n";
+                Cadena += Asc + "\n";
+                Cadena += " " + "\n";
+                Cadena += "}" + "\n";
+
+                GenerarReportes Reporte = new GenerarReportes("ReporteConductoresListaDobleCircular", Cadena);
             }
             else
             {
                 JOptionPane.showMessageDialog(null, "La Lista Se Encuentra Vacia", "Error!", JOptionPane.ERROR_MESSAGE);
             }
 
-            GenerarReportes TablaHashUsuarios = new GenerarReportes("ReporteConductoresListaDobleCircular", Cadena);
+
+        }
+
+        //Carga Masiva
+
+        //Cargar Conductores
+
+        public void CargaMasivaListaDobleCircularC()
+        {
+            //Declaraciones
+
+            //Variables Modelo Condcutores
+
+            ModeloConductores NuevoConductor = new ModeloConductores();
+
+            //Variable Tipo Carga Masiva
+
+            CargaMasiva CM = new CargaMasiva();
+
+            CM.CargaMasiva(';','%',"txt","Conductores",8);
+
+            if(VariablesGlobales.ItemsArchivo != null)
+            {
+                for(String[] Datos: VariablesGlobales.ItemsArchivo)
+                {
+                    NuevoConductor = new ModeloConductores();
+                    NuevoConductor.setDPIConductor(Datos[0].trim());
+                    NuevoConductor.setNombresConductor(Datos[1]);
+                    NuevoConductor.setApellidosConductor(Datos[2]);
+                    NuevoConductor.setFechaNacimientoConductor(Datos[3].trim());
+                    NuevoConductor.setTipoLicenciaConductor(Datos[4].trim());
+                    NuevoConductor.setGeneroConductor(Datos[5].trim());
+                    NuevoConductor.setTelefonoConductor(Integer.parseInt(Datos[6].trim()));
+                    NuevoConductor.setDireccionConductor(Datos[7].trim());
+
+                    InsertarConductorFinalListaDobleCircularC(NuevoConductor);
+                }
+                VariablesGlobales.ItemsArchivo=null;
+            }
         }
     }

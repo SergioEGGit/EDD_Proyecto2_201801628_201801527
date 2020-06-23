@@ -124,7 +124,8 @@ public class ListaAdyacencia
         }
     }
 
-    public void GenerarGrafoRutas(){
+    public void GenerarGrafoRutas()
+    {
         FileWriter fichero = null;
         PrintWriter pw = null;
         try

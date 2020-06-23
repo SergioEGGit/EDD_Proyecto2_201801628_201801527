@@ -52,11 +52,24 @@
 
         private void TextField_DPIKeyTyped(KeyEvent e)
         {
-            char Caracter = e.getKeyChar();
+            //Declaraciones
 
-            if((Caracter < '0' || Caracter > '9'))
+            //Variable Tipo String
+
+            String DPI = TextField_DPI.getText();
+
+            if (DPI.length() > 12)
             {
                 e.consume();
+            }
+            else
+            {
+                char Caracter = e.getKeyChar();
+
+                if ((Caracter < '0' || Caracter > '9'))
+                {
+                    e.consume();
+                }
             }
         }
 

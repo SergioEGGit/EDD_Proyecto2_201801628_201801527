@@ -1,6 +1,7 @@
 package Metodos;
 
-public class MetodoGlobales {
+public class MetodoGlobales
+{
 
     public String QuitarEspacios(String Texto)
     {

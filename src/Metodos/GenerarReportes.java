@@ -3,6 +3,8 @@
 
     package Metodos;
 
+    import Variables.VariablesGlobales;
+
     import javax.swing.*;
     import java.io.*;
     import java.nio.charset.StandardCharsets;
@@ -49,6 +51,8 @@
                 Builder.redirectErrorStream(true);
                 Builder.start();
 
+                VariablesGlobales.GenereReporte = true;
+
                 try
                 {
                     Thread.sleep(10000);
@@ -60,30 +64,31 @@
             }
             catch (IOException e)
             {
+                String Type = "png";
+                String RepresentationType = "dot";
+                String FileOutput = "";
+                String FileInput = "";
+
+                FileOutput = "C:\\GraficasE\\" + TipoReporte;
+                FileInput = "C:\\GraficasE\\" + TipoReporte + ".txt";
+
+                GraphViz GenerarGrafica = new GraphViz();
+                GenerarGrafica.addln(Cadena);
+                GenerarGrafica.increaseDpi();
+
+                File Output = new File(FileOutput + "." + Type);
+                GenerarGrafica.writeGraphToFile(GenerarGrafica.getGraph(GenerarGrafica.getDotSource(), Type, RepresentationType), Output);
+
                 try
                 {
-                    ProcessBuilder Builder;
-                    String Dot = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
-                    String FileInput = "C:\\GraficasE\\" + TipoReporte + ".txt";
-                    String FileOutput = "C:\\GraficasE\\" + TipoReporte + ".png";
-
-                    Builder = new ProcessBuilder(Dot, "-Tpng", "-o", FileOutput, FileInput);
-                    Builder.redirectErrorStream(true);
-                    Builder.start();
-
-                    try
-                    {
-                        Thread.sleep(10000);
-                    }
-                    catch (Exception ex)
-                    {
-                        ex.printStackTrace();
-                    }
+                    Thread.sleep(10000);
                 }
-                catch (IOException ioException)
+                catch (Exception ex)
                 {
-                    JOptionPane.showMessageDialog(null, "No Se Puede Generar El Reporte", "Error!", JOptionPane.ERROR_MESSAGE);
+                    ex.printStackTrace();
                 }
+
+                VariablesGlobales.NombreReporte = FileOutput + "." + Type;
             }
         }
     }

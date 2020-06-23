@@ -136,21 +136,9 @@
             ValidarRadioButton();
         }
 
-        private void CargaMasiva(ActionEvent e) {
-            CargaMasiva CM=new CargaMasiva();
-            CM.CargaMasiva(';',',',"usr","USUARIOS",4);
-            System.err.println("INICIO DE IMPRESION CARGA MASIVA DESDE LA MATRIZ");
-            if(VariablesGlobales.ItemsArchivo!=null){//Verifica que la matriz exista
-                int contador=0;
-                for (String[] DATOS: VariablesGlobales.ItemsArchivo){
-                    for (String SubDatos:DATOS){
-                        System.out.print(contador+" VAL: "+SubDatos+" ");
-                    }
-                    System.out.println();contador++;
-                }
-                //luego de agregar los valores a la lista es mejor convertir la matriz nula
-                VariablesGlobales.ItemsArchivo=null;
-            }
+        private void CargaMasiva(ActionEvent e)
+        {
+            VariablesGlobales.ListaDobleCircularConductores.CargaMasivaListaDobleCircularC();
         }
 
         private void initComponents()
