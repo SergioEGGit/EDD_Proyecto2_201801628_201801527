@@ -5,31 +5,162 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button1"
-				"text": "GRAFO RUTAS"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "GrafoRuta", true ) )
+			"title": "Proyecto 2"
+			"defaultCloseOperation": 3
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Seleccione Una Opción:"
+				"foreground": new java.awt.Color( 0, 102, 255, 255 )
+				"font": new java.awt.Font( "Arial", 1, 20 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 75
-				"y": 65
-				"width": 325
-				"height": 140
+				"width": 226
+				"height": 24
+				"x": 260
+				"y": 105
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Proyecto 2: Llega Rapidito"
+				"font": new java.awt.Font( "Arial", 1, 22 )
+				"foreground": new java.awt.Color( 153, 153, 255, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 275
+				"height": 26
+				"x": 235
+				"y": 60
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "RBT_Vehiculos"
+				"text": "Vehiculos"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 102, 102, 255, 255 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_VehiculosActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 135
+				"height": 28
+				"x": 310
+				"y": 200
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "RBT_Conductores"
+				"text": "Conductores"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 102, 102, 255, 255 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_ConductoresActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 135
+				"height": 28
+				"x": 310
+				"y": 240
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "RBT_Clientes"
+				"text": "Clientes"
+				"foreground": new java.awt.Color( 102, 102, 255, 255 )
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_ClientesActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 135
+				"height": 28
+				"x": 310
+				"y": 155
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "RBT_Rutas"
+				"text": "Rutas"
+				"foreground": new java.awt.Color( 102, 102, 255, 255 )
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_RutasActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 135
+				"height": 28
+				"x": 310
+				"y": 280
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "RBT_Viajes"
+				"text": "Viajes"
+				"foreground": new java.awt.Color( 102, 102, 255, 255 )
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_ViajesActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 135
+				"height": 28
+				"x": 310
+				"y": 320
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 670
+				"y": 370
+				"width": 45
+				"height": 40
 			} )
 			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
 				name: "menuBar1"
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
-					name: "menu1"
-					"text": "CARGA MASIVA"
+					name: "menu2"
+					"text": "Archivo"
+					"font": new java.awt.Font( "Arial", 1, 14 )
+					"foreground": new java.awt.Color( 51, 51, 255, 255 )
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/Assets/Archivo.png" )
+					add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+						name: "menu3"
+						"text": "Carga Masiva"
+						"font": new java.awt.Font( "Arial", 1, 12 )
+						"foreground": new java.awt.Color( 153, 51, 255, 255 )
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/Assets/CargaMasiva.png" )
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "menuItem3"
+							"text": "Clientes"
+							"font": new java.awt.Font( "Arial", 1, 12 )
+							"foreground": new java.awt.Color( 255, 51, 51, 255 )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/Assets/Clientes.jpg" )
+						} )
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "menuItem4"
+							"text": "Vehiculos"
+							"font": new java.awt.Font( "Arial", 1, 12 )
+							"foreground": new java.awt.Color( 255, 51, 51, 255 )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/Assets/Vehiculos.png" )
+						} )
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "BT_CargaMConductores"
+							"text": "Conductores"
+							"font": new java.awt.Font( "Arial", 1, 12 )
+							"foreground": new java.awt.Color( 255, 51, 51, 255 )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/Assets/Conductores.png" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BT_CargaMConductoresActionPerformed", true ) )
+						} )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "menu4"
+					"text": "Herramientas"
+					"font": new java.awt.Font( "Arial", 1, 14 )
+					"foreground": new java.awt.Color( 51, 51, 255, 255 )
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/Assets/Herramientas.jpg" )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "menu5"
+					"text": "Ayuda"
+					"font": new java.awt.Font( "Arial", 1, 14 )
+					"foreground": new java.awt.Color( 51, 51, 255, 255 )
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/Assets/Ayuda.png" )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
-						name: "menuItem1"
-						"text": "RUTAS"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "CargaMasivaRutas", true ) )
+						name: "BT_AcercaDE"
+						"text": "Acerca De..."
+						"foreground": new java.awt.Color( 153, 51, 255, 255 )
+						"font": new java.awt.Font( "Arial", 1, 12 )
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/Assets/AcercaDe.png" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BT_AcercaDEActionPerformed", true ) )
 					} )
 				} )
 			}
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 560, 370 )
+			"location": new java.awt.Point( 0, 5 )
+			"size": new java.awt.Dimension( 740, 525 )
 		} )
 	}
 }

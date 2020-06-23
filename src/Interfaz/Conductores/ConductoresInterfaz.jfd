@@ -83,14 +83,6 @@ new FormModel {
 				"width": 35
 				"height": 30
 			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button1"
-				"text": "Carga Masiva"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "CargaMasiva", true ) )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 310
-				"y": 405
-			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
 			"size": new java.awt.Dimension( 750, 515 )

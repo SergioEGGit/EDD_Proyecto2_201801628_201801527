@@ -136,11 +136,6 @@
             ValidarRadioButton();
         }
 
-        private void CargaMasiva(ActionEvent e)
-        {
-            VariablesGlobales.ListaDobleCircularConductores.CargaMasivaListaDobleCircularC();
-        }
-
         private void initComponents()
         {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -153,7 +148,6 @@
             RBT_Buscar = new JRadioButton();
             RBT_Mostrar = new JRadioButton();
             label3 = new JLabel();
-            button1 = new JButton();
 
             //======== this ========
             setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -217,12 +211,6 @@
             contentPane.add(label3);
             label3.setBounds(680, 435, 35, 30);
 
-            //---- button1 ----
-            button1.setText("Carga Masiva");
-            button1.addActionListener(e -> CargaMasiva(e));
-            contentPane.add(button1);
-            button1.setBounds(new Rectangle(new Point(310, 405), button1.getPreferredSize()));
-
             {
                 // compute preferred size
                 Dimension preferredSize = new Dimension();
@@ -252,6 +240,5 @@
         private JRadioButton RBT_Buscar;
         private JRadioButton RBT_Mostrar;
         private JLabel label3;
-        private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     }
