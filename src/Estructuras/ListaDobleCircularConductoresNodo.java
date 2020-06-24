@@ -17,7 +17,7 @@
         private ListaDobleCircularConductoresNodo Sgte;
         private ListaDobleCircularConductoresNodo Ante;
 
-        //Constructores
+        //----------------------------------------------Constructores---------------------------------------------------
 
         //Constructor Vacio
 

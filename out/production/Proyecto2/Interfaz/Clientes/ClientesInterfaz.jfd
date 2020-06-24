@@ -1,0 +1,104 @@
+JFDML JFormDesigner: "7.0.2.4.305" Java: "11.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "this"
+			"title": "Clientes"
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "RBT_Mostrar"
+				"text": "Mostrar Cliente"
+				"foreground": new java.awt.Color( 102, 102, 255, 255 )
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_MostrarActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 174
+				"height": 28
+				"x": 255
+				"y": 335
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Menú Clientes"
+				"font": new java.awt.Font( "Arial", 1, 22 )
+				"foreground": new java.awt.Color( 153, 153, 255, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 150
+				"height": 26
+				"x": 265
+				"y": 60
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Seleccione Una Opción:"
+				"foreground": new java.awt.Color( 0, 102, 255, 255 )
+				"font": new java.awt.Font( "Arial", 1, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 226
+				"height": 24
+				"x": 235
+				"y": 115
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "RBT_Agregar"
+				"text": "Agregar Cliente"
+				"foreground": new java.awt.Color( 102, 102, 255, 255 )
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_AgregarActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 179
+				"height": 28
+				"x": 255
+				"y": 165
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "RBT_Modificar"
+				"text": "Modificar Cliente"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 102, 102, 255, 255 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_ModificarActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 188
+				"height": 28
+				"x": 255
+				"y": 210
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "RBT_Eliminar"
+				"text": "Eliminar Cilente"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 102, 102, 255, 255 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_EliminarActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 180
+				"height": 28
+				"x": 255
+				"y": 250
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "RBT_Buscar"
+				"text": "Buscar Cliente"
+				"foreground": new java.awt.Color( 102, 102, 255, 255 )
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_BuscarActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 173
+				"height": 28
+				"x": 255
+				"y": 290
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 35
+				"height": 30
+				"x": 615
+				"y": 420
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 690, 515 )
+		} )
+	}
+}

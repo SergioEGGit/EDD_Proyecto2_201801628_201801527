@@ -11,17 +11,6 @@ new FormModel {
 			"title": "Rutas"
 			"resizable": false
 			"$locationPolicy": 1
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
-				"text": "Rutas de Llega Rapidito"
-				"font": new java.awt.Font( "Arial", 1, 20 )
-				"foreground": new java.awt.Color( 153, 153, 255, 255 )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 75
-				"y": 35
-				"width": 240
-				"height": 20
-			} )
 			add( new FormComponent( "javax.swing.JRadioButton" ) {
 				name: "RBT_CargaMasiva"
 				"text": "Cargar Rutas"
@@ -29,8 +18,8 @@ new FormModel {
 				"foreground": new java.awt.Color( 102, 102, 255, 255 )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_CargaMasivaActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 120
-				"y": 90
+				"x": 235
+				"y": 150
 			} )
 			add( new FormComponent( "javax.swing.JRadioButton" ) {
 				name: "RBT_Grafo"
@@ -39,12 +28,42 @@ new FormModel {
 				"foreground": new java.awt.Color( 102, 102, 255, 255 )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_GrafoActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 120
-				"y": 130
+				"x": 235
+				"y": 190
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Seleccione Una Opción:"
+				"foreground": new java.awt.Color( 0, 102, 255, 255 )
+				"font": new java.awt.Font( "Arial", 1, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 226
+				"height": 24
+				"x": 195
+				"y": 90
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Menú Rutas"
+				"font": new java.awt.Font( "Arial", 1, 22 )
+				"foreground": new java.awt.Color( 153, 153, 255, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 125
+				"height": 26
+				"x": 250
+				"y": 45
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 530
+				"y": 320
+				"width": 25
+				"height": 30
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 15 )
-			"size": new java.awt.Dimension( 375, 250 )
+			"size": new java.awt.Dimension( 580, 395 )
 		} )
 	}
 }

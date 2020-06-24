@@ -7,14 +7,10 @@
     import java.awt.*;
     import javax.swing.*;
 
+    import Interfaz.Clientes.ClientesInterfaz;
     import Interfaz.Conductores.*;
     import Interfaz.Rutas.Rutas;
-    import Metodos.CargaMasiva;
     import Variables.VariablesGlobales;
-<<<<<<< HEAD
-
-=======
->>>>>>> 368f3e7f7667966eafd243d83f7ee3117b25190e
 
 //-----------------------------------------------------Author-----------------------------------------------------------
 
@@ -48,7 +44,14 @@
         {
             if(RBT_Clientes.isSelected())
             {
-
+                java.awt.EventQueue.invokeLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        new ClientesInterfaz().setVisible(true);
+                    }
+                });
             }
             else if(RBT_Vehiculos.isSelected())
             {
@@ -75,7 +78,6 @@
             }
         }
 
-
         //-----------------------------------------------Events---------------------------------------------------------
 
         private void BT_AcercaDEActionPerformed(ActionEvent e)
@@ -86,9 +88,9 @@
 
             String Cadena = "";
 
-            Cadena += "                    Proyecto 2 \n";
-            Cadena += "             Laboratorio De Estructuras \n";
-            Cadena += "                   Llega Rapidito \n";
+            Cadena += "                           Proyecto 2 \n";
+            Cadena += "                    Laboratorio De Estructuras \n";
+            Cadena += "                         Llega Rapidito \n";
             Cadena += "      Integrantes: \n";
             Cadena += "      1.Sergio Alexander Echigoyen Gomez 201801628 \n";
             Cadena += "      2.Randy Alexander Can Ajuchan 201801527 \n";
@@ -98,7 +100,13 @@
 
         private void BT_CargaMConductoresActionPerformed(ActionEvent e)
         {
+            VariablesGlobales.EstoyEnCargaMasiva = true;
+            VariablesGlobales.ContadorCargaMasiva = 0;
             VariablesGlobales.ListaDobleCircularConductores.CargaMasivaListaDobleCircularC();
+
+            JOptionPane.showMessageDialog(null, "Se Agregaron " + VariablesGlobales.ContadorCargaMasiva + " Conductores Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+
+            VariablesGlobales.EstoyEnCargaMasiva = false;
         }
 
         private void RBT_ClientesActionPerformed(ActionEvent e)

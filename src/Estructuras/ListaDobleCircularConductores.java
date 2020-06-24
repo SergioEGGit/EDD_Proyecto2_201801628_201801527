@@ -7,7 +7,6 @@
     import Metodos.GenerarReportes;
     import Modelos.ModeloConductores;
     import Variables.VariablesGlobales;
-
     import javax.swing.*;
     import java.util.ArrayList;
 
@@ -118,7 +117,14 @@
                     OrdenamientoBurbujaListaDobleCircularC();
                 }
 
-                JOptionPane.showMessageDialog(null, "Conductor Agregado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                if(VariablesGlobales.EstoyEnCargaMasiva)
+                {
+                    VariablesGlobales.ContadorCargaMasiva++;
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Conductor Agregado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                }
             }             
         }
 
