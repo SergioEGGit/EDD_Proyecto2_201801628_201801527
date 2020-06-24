@@ -8,9 +8,10 @@
     import javax.swing.*;
 
     import Interfaz.Conductores.*;
+    import Interfaz.Rutas.Rutas;
     import Metodos.CargaMasiva;
     import Variables.VariablesGlobales;
-    import com.sun.org.apache.xpath.internal.operations.Variable;
+
 
 //-----------------------------------------------------Author-----------------------------------------------------------
 
@@ -63,7 +64,7 @@
             }
             else if(RBT_Rutas.isSelected())
             {
-
+                new Rutas().setVisible(true);
             }
             else if(RBT_Viajes.isSelected())
             {
@@ -71,45 +72,6 @@
             }
         }
 
-   
-   //Esto Metelo En Otra Interfaz yo la iba a hacer pero ya que estas jaja
-   //como la que hice para conductores solo ponele un radio que se llama ingresar ahi es donde vas a hacer la carga masiva
-   //y otro que diga mostar grafo yo pienso que asi esta mejor pero no se que decis vos ?
-
-    private void CargaMasivaRutas(ActionEvent e)
-    {
-        CargaMasiva CMR=new CargaMasiva();
-        CMR.CargaMasiva('%','/',"txt","RUTAS",3);
-        int contador=0;
-        for (String[] Ruta: VariablesGlobales.ItemsArchivo){
-            try{
-                boolean Existe =VariablesGlobales.ListaAdyacenciaRutas.InsertarNodo(Ruta[0].trim().toUpperCase(),Ruta[1].trim().toUpperCase(),Double.parseDouble(Ruta[2].trim()));
-                if(Existe==false){
-                    JOptionPane.showMessageDialog(null,
-                            "Texto: "+Ruta[0]+"\n"+
-                                    "Texto: "+Ruta[1]+"\n"+
-                                    "Tiempo: "+Ruta[2],
-                            "LA RUTA YA EXISTE",
-                            JOptionPane.ERROR_MESSAGE);
-                }else{contador++;}
-            }
-            catch(Exception E){
-                JOptionPane.showMessageDialog(null,
-                        "Texto: "+Ruta[0]+"\n"+
-                                "Texto: "+Ruta[1]+"\n"+
-                                "Tiempo: "+Ruta[2],
-                        "ERROR AL INSERTAR",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        }
-        JOptionPane.showMessageDialog(null,"SE AGREGARON "+contador+" CON EXITO","AGREGADOS",JOptionPane.INFORMATION_MESSAGE);
-        VariablesGlobales.ListaAdyacenciaRutas.ImprimirLista();
-        VariablesGlobales.ListaAdyacenciaRutas.AlgoritmoDijkstra();
-    }
-
-    private void GrafoRuta(ActionEvent e) {
-        VariablesGlobales.ListaAdyacenciaRutas.GenerarGrafoRutas();
-    }
 
         //-----------------------------------------------Events---------------------------------------------------------
 
@@ -178,7 +140,7 @@
         private void initComponents()
         {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-            // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
+            // Generated using JFormDesigner Evaluation license - unknown
             menuBar1 = new JMenuBar();
             menu2 = new JMenu();
             menu3 = new JMenu();
@@ -350,7 +312,7 @@
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-        // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
+        // Generated using JFormDesigner Evaluation license - unknown
         private JMenuBar menuBar1;
         private JMenu menu2;
         private JMenu menu3;

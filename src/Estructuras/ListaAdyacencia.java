@@ -1,10 +1,11 @@
 package Estructuras;
 
+import Metodos.GenerarReportes;
 import Variables.VariablesGlobales;
 import org.apache.commons.codec.digest.DigestUtils;
 
 
-import java.io.*;
+import javax.swing.*;
 import java.util.Stack;
 
 public class ListaAdyacencia
@@ -22,6 +23,7 @@ public class ListaAdyacencia
     //constructor Vacio
     public ListaAdyacencia() {
         System.out.println("ENCRIPTADO: "+DigestUtils.md5Hex("HOLA"));
+        System.out.println(Double.MAX_VALUE);
     }
 
     //Verifica si esta vacia la lista
@@ -42,68 +44,94 @@ public class ListaAdyacencia
         return null;//si el origen existe retorna null
     }
 
-    public boolean InsertarNodo(String Origen, String Destino, double TimepoRuta)
-    {
-        if(IsEmpty()==true){
-            ListaAdyacenciaNodo OrigenEnLista=new ListaAdyacenciaNodo(Origen);
-            ListaAdyacenciaNodo Nuevo=new ListaAdyacenciaNodo(Origen,Destino,TimepoRuta);
-            OrigenEnLista.setDerecha(Nuevo);
-            setInicioListaAdyacencia(OrigenEnLista);
-            return true;
-        }else{
-            ListaAdyacenciaNodo Auxiliar=ExisteOrigen(Origen);
-            if(Auxiliar!=null){
-                while(Auxiliar!=null){
-                    if(Auxiliar.getDestino().equals(Destino)){
-                        return false;
-                    }else if(Auxiliar.getDerecha()==null){
-                        ListaAdyacenciaNodo Nuevo=new ListaAdyacenciaNodo(Origen,Destino,TimepoRuta);
-                        Auxiliar.setDerecha(Nuevo);
+    boolean BuscarRutaAlterna(String Origen, String Destino){
+        ListaAdyacenciaNodo Aux=getInicioListaAdyacencia();
+        ListaAdyacenciaNodo Orig=null;
+        while (Aux!=null){
+            Orig=Aux;
+            if(Destino.equals(Aux.getOrigen())){
+                Aux=Aux.getDerecha();
+                while (Aux!=null){
+                    if(Aux.getDestino().equals(Origen)){
                         return true;
                     }
-                    Auxiliar=Auxiliar.getDerecha();
+                    Aux=Aux.getDerecha();
                 }
+                return false;
+            }
+            Aux=Orig.getAbajo();
+        }
+        return false;
+    }
+
+    public boolean InsertarNodo(String Origen, String Destino, double TimepoRuta)
+    {
+        boolean RutaAlterna=BuscarRutaAlterna(Origen,Destino);
+        if(RutaAlterna==true || Origen.equals(Destino)){
+            JOptionPane.showMessageDialog(null,"Existe una ruta alterna identica","Ruta Alterna",JOptionPane.ERROR_MESSAGE);
+            return false;
+        }else{
+            if(IsEmpty()==true){
+                ListaAdyacenciaNodo OrigenEnLista=new ListaAdyacenciaNodo(Origen);
+                ListaAdyacenciaNodo Nuevo=new ListaAdyacenciaNodo(Origen,Destino,TimepoRuta);
+                OrigenEnLista.setDerecha(Nuevo);
+                setInicioListaAdyacencia(OrigenEnLista);
+                return true;
             }else{
-                Auxiliar=getInicioListaAdyacencia();
-                String OrigAux="",OrigAuxSig="";
-                while (Auxiliar!=null){
-                    OrigAux=Auxiliar.getOrigen();
-                    if(Origen.compareTo(OrigAux)>0){
-                        if(Auxiliar.getAbajo()!=null){
-                            OrigAuxSig=Auxiliar.getAbajo().getOrigen();
-                            if (Origen.compareTo(OrigAuxSig)<0){
-                                ListaAdyacenciaNodo Sig=Auxiliar.getAbajo();
+                ListaAdyacenciaNodo Auxiliar=ExisteOrigen(Origen);
+                if(Auxiliar!=null){
+                    while(Auxiliar!=null){
+                        if(Auxiliar.getDestino().equals(Destino)){
+                            return false;
+                        }else if(Auxiliar.getDerecha()==null){
+                            ListaAdyacenciaNodo Nuevo=new ListaAdyacenciaNodo(Origen,Destino,TimepoRuta);
+                            Auxiliar.setDerecha(Nuevo);
+                            return true;
+                        }
+                        Auxiliar=Auxiliar.getDerecha();
+                    }
+                }else{
+                    Auxiliar=getInicioListaAdyacencia();
+                    String OrigAux="",OrigAuxSig="";
+                    while (Auxiliar!=null){
+                        OrigAux=Auxiliar.getOrigen();
+                        if(Origen.compareTo(OrigAux)>0){
+                            if(Auxiliar.getAbajo()!=null){
+                                OrigAuxSig=Auxiliar.getAbajo().getOrigen();
+                                if (Origen.compareTo(OrigAuxSig)<0){
+                                    ListaAdyacenciaNodo Sig=Auxiliar.getAbajo();
+                                    ListaAdyacenciaNodo OrigenEnLista=new ListaAdyacenciaNodo(Origen);
+                                    ListaAdyacenciaNodo Nuevo=new ListaAdyacenciaNodo(Origen,Destino,TimepoRuta);
+                                    OrigenEnLista.setDerecha(Nuevo);
+                                    Auxiliar.setAbajo(OrigenEnLista);
+                                    OrigenEnLista.setAbajo(Sig);
+                                    return true;
+                                }
+                            }else{
                                 ListaAdyacenciaNodo OrigenEnLista=new ListaAdyacenciaNodo(Origen);
                                 ListaAdyacenciaNodo Nuevo=new ListaAdyacenciaNodo(Origen,Destino,TimepoRuta);
                                 OrigenEnLista.setDerecha(Nuevo);
                                 Auxiliar.setAbajo(OrigenEnLista);
-                                OrigenEnLista.setAbajo(Sig);
                                 return true;
                             }
-                        }else{
+                        }else if(Origen.compareTo(OrigAux)<0){
+                            ListaAdyacenciaNodo Sig=Auxiliar.getAbajo();
+                            ListaAdyacenciaNodo DerechaAux=Auxiliar.getDerecha();
                             ListaAdyacenciaNodo OrigenEnLista=new ListaAdyacenciaNodo(Origen);
                             ListaAdyacenciaNodo Nuevo=new ListaAdyacenciaNodo(Origen,Destino,TimepoRuta);
-                            OrigenEnLista.setDerecha(Nuevo);
+                            OrigenEnLista.setOrigen(Auxiliar.getOrigen());
+                            OrigenEnLista.setDerecha(DerechaAux);
+                            Auxiliar.setOrigen(Origen);
+                            Auxiliar.setDerecha(Nuevo);
                             Auxiliar.setAbajo(OrigenEnLista);
+                            OrigenEnLista.setAbajo(Sig);
                             return true;
                         }
-                    }else if(Origen.compareTo(OrigAux)<0){
-                        ListaAdyacenciaNodo Sig=Auxiliar.getAbajo();
-                        ListaAdyacenciaNodo DerechaAux=Auxiliar.getDerecha();
-                        ListaAdyacenciaNodo OrigenEnLista=new ListaAdyacenciaNodo(Origen);
-                        ListaAdyacenciaNodo Nuevo=new ListaAdyacenciaNodo(Origen,Destino,TimepoRuta);
-                        OrigenEnLista.setOrigen(Auxiliar.getOrigen());
-                        OrigenEnLista.setDerecha(DerechaAux);
-                        Auxiliar.setOrigen(Origen);
-                        Auxiliar.setDerecha(Nuevo);
-                        Auxiliar.setAbajo(OrigenEnLista);
-                        OrigenEnLista.setAbajo(Sig);
-                        return true;
+                        Auxiliar=Auxiliar.getAbajo();
                     }
-                    Auxiliar=Auxiliar.getAbajo();
                 }
+                return false;
             }
-            return false;
         }
     }
 
@@ -126,37 +154,23 @@ public class ListaAdyacencia
 
     public void GenerarGrafoRutas()
     {
-        FileWriter fichero = null;
-        PrintWriter pw = null;
-        try
-        {
-            fichero = new FileWriter("C:\\GraficasE\\GrafoRutas.dot");
-            pw = new PrintWriter(fichero);
-
-            pw.println("digraph G {");
-            pw.println("node [margin=0 shape=circle style = filled fillcolor=\"#967373\"];");
-            //pw.println("edge [arrowhead=none,arrowtail=none];");
-            ListaAdyacenciaNodo Auxiliar=getInicioListaAdyacencia();
+        String Cadena="";
+        Cadena+="digraph G {\n";
+        Cadena+="node [margin=0 shape=circle style = filled fillcolor=\"#967373\"];\n";
+        //Cadena+="edge [arrowhead=none,arrowtail=none];\n";
+        ListaAdyacenciaNodo Auxiliar=getInicioListaAdyacencia();
+        while (Auxiliar!=null){
+            ListaAdyacenciaNodo Origen=Auxiliar;
+            Cadena+="N"+ VariablesGlobales.MetodoGlobales.QuitarEspacios(Auxiliar.getOrigen())+" [label=\""+Auxiliar.getOrigen()+"\", xlabel=\"["+Auxiliar.getViendeDeNodo()+","+Auxiliar.getTiempoAcumulado()+"]\"];\n";
+            Auxiliar=Auxiliar.getDerecha();
             while (Auxiliar!=null){
-                ListaAdyacenciaNodo Origen=Auxiliar;
-                pw.println("N"+ VariablesGlobales.MetodoGlobales.QuitarEspacios(Auxiliar.getOrigen())+" [label=\""+Auxiliar.getOrigen()+"\", xlabel=\"["+Auxiliar.getViendeDeNodo()+","+Auxiliar.getTiempoAcumulado()+"]\"];");
+                Cadena+="N"+ VariablesGlobales.MetodoGlobales.QuitarEspacios(Auxiliar.getOrigen()) + " -> " + "N" + VariablesGlobales.MetodoGlobales.QuitarEspacios(Auxiliar.getDestino()) + " [label=\""+Auxiliar.getTiempoRuta()+"\"];\n";
                 Auxiliar=Auxiliar.getDerecha();
-                while (Auxiliar!=null){
-                    pw.println("N"+ VariablesGlobales.MetodoGlobales.QuitarEspacios(Auxiliar.getOrigen()) + " -> " + "N" + VariablesGlobales.MetodoGlobales.QuitarEspacios(Auxiliar.getDestino()) + " [label=\""+Auxiliar.getTiempoRuta()+"\"];");
-                    Auxiliar=Auxiliar.getDerecha();
-                }
-                Auxiliar=Origen.getAbajo();
             }
-
-            pw.println("}");
-            fichero.close();
-            ProcessBuilder Builder;
-            Builder = new ProcessBuilder("dot", "-Tpng", "-o", "C:\\GraficasE\\GrafoRutas.png","C:\\GraficasE\\GrafoRutas.dot");
-            Builder.redirectErrorStream(true);
-            Builder.start();
-        } catch (Exception e) {
-
+            Auxiliar=Origen.getAbajo();
         }
+        Cadena+="}\n";
+        GenerarReportes Reporte = new GenerarReportes("ReporteGrafoRutas", Cadena);
     }
 
 
@@ -239,70 +253,60 @@ public class ListaAdyacencia
     }
 
 
-    void BuscarOrigenCambiarTiempos(ListaAdyacenciaNodo Nodo,double TiempoAcumuladoPrevio,String NombreOrigen){
-        ListaAdyacenciaNodo Aux=getInicioListaAdyacencia();
-        while (Aux!=null){
-            if(Aux.getOrigen().equals(Nodo.getDestino())){
-                double TNuevo=TiempoAcumuladoPrevio+Nodo.getTiempoRuta();
-                if(TNuevo>Aux.getTiempoAcumulado()){
-                    Aux.setTiempoAcumulado(TNuevo);
-                    Aux.setViendeDeNodo(NombreOrigen);
-                    if(Aux.getDerecha()!=null){
-                        CalcularTiempoAcumulado(Aux);
-                    }
-                }
+
+    void BuscarOrigen(String Origen,boolean MAX_MIN){
+        ListaAdyacenciaNodo Auxiliar=getInicioListaAdyacencia();
+        while(Auxiliar!=null){
+            if(Auxiliar.getOrigen().equals(Origen)){
+                CalcularTiempoAcumuladoMinimo(Auxiliar);
             }
-            Aux=Aux.getAbajo();
+            Auxiliar=Auxiliar.getAbajo();
         }
     }
 
-    void CalcularTiempoAcumuladoMinimo(){
-        ListaAdyacenciaNodo Origenes=getInicioListaAdyacencia();
-        while (Origenes!=null){
-            ListaAdyacenciaNodo AuxOrigenes=Origenes;
-            ListaAdyacenciaNodo Destinos=Origenes.getDerecha();
-            while (Destinos!=null){
-                ListaAdyacenciaNodo OrigenSig=ExisteOrigen(Destinos.getDestino());
-                double TiempoNuevo=Origenes.getTiempoAcumulado()+Destinos.getTiempoRuta();
-                if(OrigenSig.getTiempoAcumulado()>TiempoNuevo){
-                    OrigenSig.setViendeDeNodo(AuxOrigenes.getOrigen());
-                    OrigenSig.setTiempoAcumulado(TiempoNuevo);
-                }
-                Destinos=Destinos.getDerecha();
+    void CalcularTiempoAcumuladoMinimo(ListaAdyacenciaNodo Origen){
+        ListaAdyacenciaNodo Destinos=Origen.getDerecha();
+        while (Destinos!=null){
+            ListaAdyacenciaNodo OrigenSig=ExisteOrigen(Destinos.getDestino());
+            double TiempoNuevo=Origen.getTiempoAcumulado()+Destinos.getTiempoRuta();
+            if(OrigenSig.getTiempoAcumulado()>TiempoNuevo){
+                OrigenSig.setViendeDeNodo(Origen.getOrigen());
+                OrigenSig.setTiempoAcumulado(TiempoNuevo);
+                BuscarOrigen(OrigenSig.getOrigen(),false);
             }
-            Origenes=AuxOrigenes.getAbajo();
+            Destinos=Destinos.getDerecha();
         }
     }
-
-
-
-    void CalcularTiempoAcumulado(ListaAdyacenciaNodo Origen){//Max= true  Min=false
-        ListaAdyacenciaNodo Auxiliar=Origen.getDerecha();//Se mueve a la derecha
-        while (Auxiliar!=null){
-            BuscarOrigenCambiarTiempos(Auxiliar,Origen.getTiempoAcumulado(),Auxiliar.getOrigen());
-            Auxiliar=Auxiliar.getDerecha();
-        }
-    }
-
 
 
 
     public void AlgoritmoDijkstra(){
         CrearOrigenesSinDestinos();
-        ImprimirLista();
         Stack<String> Origenes=BuscarNodoInicial();
-        for(int i=0;i<Origenes.size();i++){
-            String Orig=Origenes.get(i);
-            ListaAdyacenciaNodo Aux=getInicioListaAdyacencia();
+        ListaAdyacenciaNodo Aux=getInicioListaAdyacencia();
+        String Orig="";
+        Origenes=BuscarNodoInicial();
+        for (int i=0;i<Origenes.size();i++){
+            Orig=Origenes.get(i);
+            Aux=getInicioListaAdyacencia();
             while (Aux!=null){
-                if(Orig.equals(Aux.getOrigen())){
-                    CalcularTiempoAcumulado(Aux);
-                    break;
+                if(Aux.getOrigen().equals(Orig)){
+                    Aux.setTiempoAcumulado(0.0);
                 }
                 Aux=Aux.getAbajo();
             }
         }
-        CalcularTiempoAcumuladoMinimo();
+        Orig="";
+        while (!Origenes.empty()){
+            Orig=Origenes.pop();
+            BuscarOrigen(Orig,false);
+        }
+        Aux=getInicioListaAdyacencia();
+        while (Aux!=null){
+            CalcularTiempoAcumuladoMinimo(Aux);
+            Aux=Aux.getAbajo();
+        }
+        CalcularRuta("COLOMBIA","ESTADOS UNIDOS");
     }
 
     Stack<String> BuscarNodoInicial(){
@@ -330,4 +334,39 @@ public class ListaAdyacencia
         System.out.println(Origenes.toString());
         return Origenes;
     }
+
+    boolean ExisteDestinoEnRuta(String[] Ruta,String Nombre){
+        for (String Lugar: Ruta) {
+            if(Lugar.equals(Nombre)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String[] CalcularRuta(String Origen,String Destino){
+        System.out.println("RUTA DE COLOMBIA A ESTADOS UNIDOS");
+        String DES=Destino,ORIG=Origen;
+        String[] Lugares=new String[100];
+        ListaAdyacenciaNodo Aux;
+        int Contador=0;
+        do {
+            Aux=ExisteOrigen(DES);
+            if(Aux!=null){
+                //if(ExisteDestinoEnRuta(Lugares,DES)==false){
+                    Lugares[Contador]=new String(DES);
+                    Contador++;
+                    DES=Aux.getViendeDeNodo();
+                //}else{
+                    //return null;
+                //}
+            }
+        }while (!DES.equals(ORIG));
+        Lugares[Contador]=new String(Origen);
+        for (String LUG:Lugares) {
+            System.out.println(LUG);
+        }
+        return  Lugares;
+    }
+
 }

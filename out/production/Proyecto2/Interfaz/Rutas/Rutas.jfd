@@ -1,0 +1,50 @@
+JFDML JFormDesigner: "7.0.2.4.305" Java: "11.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
+			"autoSize": false
+		} ) {
+			name: "this"
+			"$sizePolicy": 1
+			"title": "Rutas"
+			"resizable": false
+			"$locationPolicy": 1
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Rutas de Llega Rapidito"
+				"font": new java.awt.Font( "Arial", 1, 20 )
+				"foreground": new java.awt.Color( 153, 153, 255, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 75
+				"y": 35
+				"width": 240
+				"height": 20
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "RBT_CargaMasiva"
+				"text": "Cargar Rutas"
+				"font": &Font0 new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 102, 102, 255, 255 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_CargaMasivaActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 120
+				"y": 90
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "RBT_Grafo"
+				"text": "Grafo de Rutas"
+				"font": #Font0
+				"foreground": new java.awt.Color( 102, 102, 255, 255 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_GrafoActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 120
+				"y": 130
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 15 )
+			"size": new java.awt.Dimension( 375, 250 )
+		} )
+	}
+}

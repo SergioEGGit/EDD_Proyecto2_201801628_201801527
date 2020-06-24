@@ -30,7 +30,7 @@ public class ListaAdyacenciaNodo
         this.Destino = "";
         this.TiempoRuta = 0.0;
         this.ViendeDeNodo=null;
-        this.TiempoAcumulado=0.0;
+        this.TiempoAcumulado=Double.MAX_VALUE;
         this.Abajo=null;
         this.Derecha=null;
     }
