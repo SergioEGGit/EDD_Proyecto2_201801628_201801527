@@ -489,6 +489,7 @@
                 Cadena += "{ rank = same " + Same + "}" + "\n";
                 Cadena += Asc + "\n";
                 Cadena += " " + "\n";
+                Cadena += Desc + "\n";
                 Cadena += "}" + "\n";
 
                 GenerarReportes Reporte = new GenerarReportes("ReporteConductoresListaDobleCircular", Cadena);
@@ -527,11 +528,11 @@
                     NuevoConductor.setDPIConductor(Datos[0].trim());
                     NuevoConductor.setNombresConductor(Datos[1]);
                     NuevoConductor.setApellidosConductor(Datos[2]);
-                    NuevoConductor.setFechaNacimientoConductor(Datos[3].trim());
-                    NuevoConductor.setTipoLicenciaConductor(Datos[4].trim());
-                    NuevoConductor.setGeneroConductor(Datos[5].trim());
+                    NuevoConductor.setFechaNacimientoConductor(Datos[5].trim());
+                    NuevoConductor.setTipoLicenciaConductor(Datos[3].trim());
+                    NuevoConductor.setGeneroConductor(Datos[4].trim());
                     NuevoConductor.setTelefonoConductor(Integer.parseInt(Datos[6].trim()));
-                    NuevoConductor.setDireccionConductor(Datos[7].trim());
+                    NuevoConductor.setDireccionConductor(Datos[7]);
 
                     InsertarConductorFinalListaDobleCircularC(NuevoConductor);
                 }

@@ -143,7 +143,6 @@
             //---- TextField_Buscar ----
             TextField_Buscar.setForeground(new Color(0, 0, 204));
             TextField_Buscar.setFont(new Font("Arial", Font.BOLD, 16));
-            TextField_Buscar.setEditable(false);
             contentPane.add(TextField_Buscar);
             TextField_Buscar.setBounds(360, 75, 180, 29);
 

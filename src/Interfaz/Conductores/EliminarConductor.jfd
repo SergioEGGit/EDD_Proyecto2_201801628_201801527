@@ -31,7 +31,6 @@ new FormModel {
 				name: "TextField_Eliminar"
 				"foreground": new java.awt.Color( 0, 0, 204, 255 )
 				"font": new java.awt.Font( "Arial", 1, 16 )
-				"editable": false
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 410
 				"y": 70
