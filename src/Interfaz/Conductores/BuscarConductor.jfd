@@ -22,7 +22,6 @@ new FormModel {
 				name: "TextField_Buscar"
 				"foreground": new java.awt.Color( 0, 0, 204, 255 )
 				"font": new java.awt.Font( "Arial", 1, 16 )
-				"editable": false
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 180
 				"height": 29

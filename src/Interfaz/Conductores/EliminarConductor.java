@@ -148,7 +148,6 @@
             //---- TextField_Eliminar ----
             TextField_Eliminar.setForeground(new Color(0, 0, 204));
             TextField_Eliminar.setFont(new Font("Arial", Font.BOLD, 16));
-            TextField_Eliminar.setEditable(false);
             contentPane.add(TextField_Eliminar);
             TextField_Eliminar.setBounds(410, 70, 180, TextField_Eliminar.getPreferredSize().height);
 

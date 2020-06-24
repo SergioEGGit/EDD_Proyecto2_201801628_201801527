@@ -11,7 +11,10 @@
     import Interfaz.Rutas.Rutas;
     import Metodos.CargaMasiva;
     import Variables.VariablesGlobales;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 368f3e7f7667966eafd243d83f7ee3117b25190e
 
 //-----------------------------------------------------Author-----------------------------------------------------------
 
