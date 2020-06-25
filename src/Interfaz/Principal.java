@@ -7,9 +7,11 @@
     import java.awt.*;
     import javax.swing.*;
 
+    import Estructuras.ArbolBAutos;
     import Interfaz.Clientes.ClientesInterfaz;
     import Interfaz.Conductores.*;
     import Interfaz.Rutas.Rutas;
+    import Interfaz.Vehiculos.VehiculosInterfaz;
     import Variables.VariablesGlobales;
 
 //-----------------------------------------------------Author-----------------------------------------------------------
@@ -55,7 +57,7 @@
             }
             else if(RBT_Vehiculos.isSelected())
             {
-
+                new VehiculosInterfaz().setVisible(true);
             }
             else if(RBT_Conductores.isSelected())
             {

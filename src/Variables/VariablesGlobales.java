@@ -3,6 +3,7 @@
 
     package Variables;
 
+    import Estructuras.ArbolBAutos;
     import Estructuras.ListaDobleCircularConductores;
     import Estructuras.ListaAdyacencia;
     import Estructuras.TablaHashClientes;
@@ -20,8 +21,10 @@
         public static boolean EstoyEnCargaMasiva = false;
         public static int ContadorCargaMasiva = 0;
         public static int SizeTabla = 37;
+        public static int Orden_ArbolB=5;
         public static ListaDobleCircularConductores ListaDobleCircularConductores = new ListaDobleCircularConductores();
         public static ListaAdyacencia ListaAdyacenciaRutas = new ListaAdyacencia();
         public static TablaHashClientes TablaHashClientes = new TablaHashClientes(SizeTabla);
         public static MetodoGlobales MetodoGlobales = new MetodoGlobales();
+        public static ArbolBAutos ArbolBAutomoviles=new ArbolBAutos();
     }
