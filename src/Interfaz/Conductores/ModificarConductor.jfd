@@ -16,7 +16,7 @@ new FormModel {
 				"width": 135
 				"height": 30
 				"x": 485
-				"y": 475
+				"y": 505
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_Direccion"
@@ -26,7 +26,7 @@ new FormModel {
 				"width": 200
 				"height": 29
 				"x": 490
-				"y": 415
+				"y": 445
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label10"
@@ -37,7 +37,7 @@ new FormModel {
 				"width": 80
 				"height": 19
 				"x": 405
-				"y": 415
+				"y": 445
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_Telefono"
@@ -48,7 +48,7 @@ new FormModel {
 				"width": 200
 				"height": 29
 				"x": 490
-				"y": 375
+				"y": 405
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label9"
@@ -59,7 +59,7 @@ new FormModel {
 				"width": 75
 				"height": 19
 				"x": 405
-				"y": 375
+				"y": 405
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
 				name: "CB_Genero"
@@ -74,7 +74,7 @@ new FormModel {
 				"width": 205
 				"height": 38
 				"x": 490
-				"y": 320
+				"y": 350
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label8"
@@ -85,7 +85,7 @@ new FormModel {
 				"width": 75
 				"height": 19
 				"x": 405
-				"y": 330
+				"y": 360
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
 				name: "CB_TipoLicencia"
@@ -101,7 +101,7 @@ new FormModel {
 				"width": 150
 				"height": 38
 				"x": 545
-				"y": 270
+				"y": 300
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label7"
@@ -112,7 +112,7 @@ new FormModel {
 				"width": 135
 				"height": 19
 				"x": 405
-				"y": 275
+				"y": 305
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_Fecha"
@@ -123,7 +123,7 @@ new FormModel {
 				"width": 115
 				"height": 29
 				"x": 580
-				"y": 230
+				"y": 260
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label11"
@@ -134,7 +134,7 @@ new FormModel {
 				"width": 170
 				"height": 19
 				"x": 405
-				"y": 230
+				"y": 260
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_Apellidos"
@@ -145,7 +145,7 @@ new FormModel {
 				"width": 200
 				"height": 29
 				"x": 495
-				"y": 190
+				"y": 220
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label6"
@@ -156,7 +156,7 @@ new FormModel {
 				"width": 85
 				"height": 19
 				"x": 405
-				"y": 190
+				"y": 220
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_Nombres"
@@ -167,7 +167,7 @@ new FormModel {
 				"width": 200
 				"height": 29
 				"x": 495
-				"y": 150
+				"y": 180
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label5"
@@ -178,7 +178,7 @@ new FormModel {
 				"width": 85
 				"height": 19
 				"x": 405
-				"y": 150
+				"y": 180
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label4"
@@ -189,19 +189,18 @@ new FormModel {
 				"width": 33
 				"height": 19
 				"x": 405
-				"y": 115
+				"y": 145
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_DPI"
 				"font": new java.awt.Font( "Arial", 1, 16 )
 				"foreground": new java.awt.Color( 0, 0, 204, 255 )
-				"editable": false
 				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "TextField_DPIKeyTyped", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 200
 				"height": 29
 				"x": 495
-				"y": 115
+				"y": 145
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
@@ -209,7 +208,7 @@ new FormModel {
 				"width": 50
 				"height": 40
 				"x": 685
-				"y": 490
+				"y": 520
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
@@ -222,7 +221,7 @@ new FormModel {
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 15
-				"y": 145
+				"y": 175
 				"width": 345
 				"height": 355
 			} )
@@ -240,17 +239,49 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label3"
 				"text": "Seleccione Un Conductor:"
-				"foreground": new java.awt.Color( 0, 102, 255, 255 )
-				"font": new java.awt.Font( "Arial", 1, 18 )
+				"foreground": &Color1 new java.awt.Color( 0, 102, 255, 255 )
+				"font": &Font1 new java.awt.Font( "Arial", 1, 18 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 235
 				"height": 24
 				"x": 15
-				"y": 105
+				"y": 135
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label12"
+				"text": "Buscar Conductor:"
+				"foreground": #Color1
+				"font": #Font1
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 170
+				"height": 24
+				"x": 115
+				"y": 75
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_Buscar"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "TextField_BuscarKeyTyped", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 285
+				"y": 75
+				"width": 195
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "BT_Buscar"
+				"text": "Buscar"
+				"font": new java.awt.Font( "Arial", 1, 18 )
+				"foreground": new java.awt.Color( 51, 51, 255, 255 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BT_BuscarActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 505
+				"y": 75
+				"width": 115
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 765, 605 )
+			"size": new java.awt.Dimension( 765, 645 )
 		} )
 	}
 }

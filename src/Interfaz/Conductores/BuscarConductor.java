@@ -81,11 +81,11 @@
 
             ModeloConductores ConductorBuscado = new ModeloConductores();
 
-            if(TextField_Buscar.getText() == "")
-            {
-                JOptionPane.showMessageDialog(null, "Debe De Seleccionar Un Conductor!", "Error!", JOptionPane.ERROR_MESSAGE);
-            }
-            else
+            //Variables Tipo Boolean
+
+            boolean ExisteConductor = VariablesGlobales.ListaDobleCircularConductores.VerificarConductorListaDobleCircularC(TextField_Buscar.getText());
+
+            if(ExisteConductor)
             {
                 ConductorBuscado = VariablesGlobales.ListaDobleCircularConductores.BuscarUsuarioListaDobleCircularC(DPI);
 
@@ -101,6 +101,12 @@
 
                 JOptionPane.showMessageDialog(null, Cadena, "Encontrado!" , JOptionPane.INFORMATION_MESSAGE);
             }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "El Conductor Indicado No Existe En El Sistema!", "Error!", JOptionPane.ERROR_MESSAGE);
+            }
+
+            TextField_Buscar.setText("");
         }
 
         //Tabla Click
@@ -113,6 +119,29 @@
             String Valor = TB_Conductores.getValueAt(Fila, Columna).toString();
 
             TextField_Buscar.setText(Valor);
+        }
+
+        private void TextField_BuscarKeyTyped(KeyEvent e)
+        {
+            //Declaraciones
+
+            //Variable Tipo String
+
+            String DPI = TextField_Buscar.getText();
+
+            if (DPI.length() > 12)
+            {
+                e.consume();
+            }
+            else
+            {
+                char Caracter = e.getKeyChar();
+
+                if ((Caracter < '0' || Caracter > '9'))
+                {
+                    e.consume();
+                }
+            }
         }
 
         private void initComponents()
@@ -143,6 +172,12 @@
             //---- TextField_Buscar ----
             TextField_Buscar.setForeground(new Color(0, 0, 204));
             TextField_Buscar.setFont(new Font("Arial", Font.BOLD, 16));
+            TextField_Buscar.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyTyped(KeyEvent e) {
+                    TextField_BuscarKeyTyped(e);
+                }
+            });
             contentPane.add(TextField_Buscar);
             TextField_Buscar.setBounds(360, 75, 180, 29);
 

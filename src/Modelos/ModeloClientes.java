@@ -17,6 +17,8 @@
 
         //---------------------------------------------Constructor------------------------------------------------------
 
+        //Constructor Nuevo Cliente
+
         public ModeloClientes(String DPICliente, String nombresCliente, String apellidosCliente, String fechaNacimento, String generoCliente, int telefonoCliente, String direccionCliente)
         {
             this.DPICliente = DPICliente;
@@ -26,6 +28,13 @@
             GeneroCliente = generoCliente;
             TelefonoCliente = telefonoCliente;
             DireccionCliente = direccionCliente;
+        }
+
+        //Constructor Vacio
+
+        public ModeloClientes()
+        {
+
         }
 
         //Gets And Sets Clientes

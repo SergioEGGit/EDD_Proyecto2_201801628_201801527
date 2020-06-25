@@ -29,6 +29,13 @@
         public ClientesInterfaz()
         {
             initComponents();
+            ButtonGroup MenuConductor = new ButtonGroup();
+            MenuConductor.add(RBT_Agregar);
+            MenuConductor.add(RBT_Modificar);
+            MenuConductor.add(RBT_Eliminar);
+            MenuConductor.add(RBT_Buscar);
+            MenuConductor.add(RBT_Mostrar);
+            RBT_Agregar.setSelected(true);
         }
 
         //----------------------------------------------Métodos---------------------------------------------------------
@@ -66,7 +73,7 @@
                     @Override
                     public void run()
                     {
-                        new EliminarConductor().setVisible(true);
+                        new EliminarCliente().setVisible(true);
                     }
                 });
             }

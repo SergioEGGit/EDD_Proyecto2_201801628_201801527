@@ -6,8 +6,6 @@
     import java.awt.event.*;
     import java.awt.*;
     import javax.swing.*;
-
-    import Estructuras.ArbolBAutos;
     import Interfaz.Clientes.ClientesInterfaz;
     import Interfaz.Conductores.*;
     import Interfaz.Rutas.Rutas;
@@ -111,6 +109,17 @@
             VariablesGlobales.EstoyEnCargaMasiva = false;
         }
 
+        private void BT_CargaMClientesActionPerformed(ActionEvent e)
+        {
+            VariablesGlobales.EstoyEnCargaMasiva = true;
+            VariablesGlobales.ContadorCargaMasiva = 0;
+            VariablesGlobales.TablaHashClientes.CargaMasivaTablaHashClientes();
+
+            JOptionPane.showMessageDialog(null, "Se Agregaron " + VariablesGlobales.ContadorCargaMasiva + " Clientes Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+
+            VariablesGlobales.EstoyEnCargaMasiva = false;
+        }
+
         private void RBT_ClientesActionPerformed(ActionEvent e)
         {
             ValidarRadioButton();
@@ -153,11 +162,11 @@
         private void initComponents()
         {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-            // Generated using JFormDesigner Evaluation license - unknown
+            // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
             menuBar1 = new JMenuBar();
             menu2 = new JMenu();
             menu3 = new JMenu();
-            menuItem3 = new JMenuItem();
+            BT_CargaMClientes = new JMenuItem();
             menuItem4 = new JMenuItem();
             BT_CargaMConductores = new JMenuItem();
             menu4 = new JMenu();
@@ -195,12 +204,13 @@
                         menu3.setForeground(new Color(153, 51, 255));
                         menu3.setIcon(new ImageIcon(getClass().getResource("/Assets/CargaMasiva.png")));
 
-                        //---- menuItem3 ----
-                        menuItem3.setText("Clientes");
-                        menuItem3.setFont(new Font("Arial", Font.BOLD, 12));
-                        menuItem3.setForeground(new Color(255, 51, 51));
-                        menuItem3.setIcon(new ImageIcon(getClass().getResource("/Assets/Clientes.jpg")));
-                        menu3.add(menuItem3);
+                        //---- BT_CargaMClientes ----
+                        BT_CargaMClientes.setText("Clientes");
+                        BT_CargaMClientes.setFont(new Font("Arial", Font.BOLD, 12));
+                        BT_CargaMClientes.setForeground(new Color(255, 51, 51));
+                        BT_CargaMClientes.setIcon(new ImageIcon(getClass().getResource("/Assets/Clientes.jpg")));
+                        BT_CargaMClientes.addActionListener(e -> BT_CargaMClientesActionPerformed(e));
+                        menu3.add(BT_CargaMClientes);
 
                         //---- menuItem4 ----
                         menuItem4.setText("Vehiculos");
@@ -325,11 +335,11 @@
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
         private JMenuBar menuBar1;
         private JMenu menu2;
         private JMenu menu3;
-        private JMenuItem menuItem3;
+        private JMenuItem BT_CargaMClientes;
         private JMenuItem menuItem4;
         private JMenuItem BT_CargaMConductores;
         private JMenu menu4;

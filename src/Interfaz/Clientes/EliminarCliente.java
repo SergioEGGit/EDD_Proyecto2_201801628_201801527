@@ -1,67 +1,68 @@
 
-//----------------------------------------------Paquetes E Imports------------------------------------------------------
+//--------------------------------------------Paquetes E Imports--------------------------------------------------------
 
-    package Interfaz.Conductores;
+    package Interfaz.Clientes;
 
-    import java.awt.event.*;
-    import Modelos.ModeloConductores;
+    import Modelos.ModeloClientes;
     import Variables.VariablesGlobales;
     import java.awt.*;
+    import java.awt.event.*;
+    import java.math.BigInteger;
     import java.util.ArrayList;
     import javax.swing.*;
     import javax.swing.table.*;
 
-//----------------------------------------------------Author------------------------------------------------------------    
-    
+//---------------------------------------------------Author-------------------------------------------------------------
+
     /**
      * @author Sergio Echigoyen
      */
 
-//----------------------------------------------------Principal---------------------------------------------------------    
-    
-    public class EliminarConductor extends JFrame 
+//--------------------------------------------------Principal-----------------------------------------------------------
+
+    public class EliminarCliente extends JFrame
     {
         //---------------------------------------------Variables--------------------------------------------------------
 
         DefaultTableModel Modelo;
 
         //--------------------------------------------Constructor-------------------------------------------------------
-        
-        public EliminarConductor()
+
+        public EliminarCliente()
         {
             initComponents();
             Modelo = new DefaultTableModel();
-            ArrayList<ModeloConductores> ListaConductores = VariablesGlobales.ListaDobleCircularConductores.ObtenerTodosLosConductoresListaDobleCircularC();
-            ObtenerConductores(ListaConductores);
+            ArrayList<ModeloClientes> ListaClientes = VariablesGlobales.TablaHashClientes.ListarTodosLosClientesTablaHashClientes();
+            ObtenerClientes(ListaClientes);
         }
 
         //-----------------------------------------------Métodos--------------------------------------------------------
 
-        public void ObtenerConductores(ArrayList<ModeloConductores> ListaConductores)
+        public void ObtenerClientes(ArrayList<ModeloClientes> ListaClientes)
         {
             Modelo = new DefaultTableModel();
             Modelo.addColumn("DPI");
             Modelo.addColumn("Nombre");
             Modelo.addColumn("Apellidos");
 
-            for(ModeloConductores Conductor: ListaConductores)
+            for(ModeloClientes Clientes: ListaClientes)
             {
-                if (Conductor != null)
+                if (Clientes != null)
                 {
                     Object[] Fila = new Object[]
                             {
-                                    Conductor.getDPIConductor(),
-                                    Conductor.getNombresConductor(),
-                                    Conductor.getApellidosConductor()
+                                    Clientes.getDPICliente(),
+                                    Clientes.getNombresCliente(),
+                                    Clientes.getApellidosCliente()
                             };
                     Modelo.addRow(Fila);
                 }
             }
-            TB_Conductores.setModel(Modelo);
-            TB_Conductores.getColumnModel().getColumn(0).setPreferredWidth(400);
-            TB_Conductores.getColumnModel().getColumn(1).setPreferredWidth(400);
-            TB_Conductores.getColumnModel().getColumn(2).setPreferredWidth(400);
-            TB_Conductores.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+            TB_Clientes.setModel(Modelo);
+            TB_Clientes.getColumnModel().getColumn(0).setPreferredWidth(400);
+            TB_Clientes.getColumnModel().getColumn(1).setPreferredWidth(400);
+            TB_Clientes.getColumnModel().getColumn(2).setPreferredWidth(400);
+            TB_Clientes.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         }
 
         //------------------------------------------------Events--------------------------------------------------------
@@ -78,31 +79,29 @@
 
             //Array Tipo String
 
-            ArrayList<ModeloConductores> ArrayConductores = new ArrayList<ModeloConductores>();
+            ArrayList<ModeloClientes> ArrayClientes = new ArrayList<ModeloClientes>();
 
-            //Variables Tipo Boolean
-
-            boolean ExisteConductor = VariablesGlobales.ListaDobleCircularConductores.VerificarConductorListaDobleCircularC(DPI);
-
-            if(ExisteConductor)
+            if(TextField_Eliminar.getText().equals(""))
             {
+                JOptionPane.showMessageDialog(null, "Debe De Seleccionar Un Cliente!", "Error!", JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                //Variables Tipo Int
+
                 int Button = JOptionPane.YES_NO_OPTION;
                 int Result = JOptionPane.showConfirmDialog(this, "Seguro Que Desea Eliminar El Conductor", "Pregunta!", Button);
 
                 if(Result == 0)
                 {
-                    VariablesGlobales.ListaDobleCircularConductores.EliminarConductorListaDobleCircularC(DPI);
+                    VariablesGlobales.TablaHashClientes.EliminarClienteTablaHashClientes(DPI);
 
                     Modelo = new DefaultTableModel();
 
-                    ArrayConductores = VariablesGlobales.ListaDobleCircularConductores.ObtenerTodosLosConductoresListaDobleCircularC();
+                    ArrayClientes = VariablesGlobales.TablaHashClientes.ListarTodosLosClientesTablaHashClientes();
 
-                    ObtenerConductores(ArrayConductores);
+                    ObtenerClientes(ArrayClientes);
                 }
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null, "El Conductor Indicado No Existe En El Sistema!", "Error!", JOptionPane.ERROR_MESSAGE);
             }
 
             TextField_Eliminar.setText("");
@@ -110,12 +109,12 @@
 
         //Tabla Click
 
-        private void TB_ConductoresMouseClicked(MouseEvent e)
+        private void TB_ClientesMouseClicked(MouseEvent e)
         {
             int Columna = 0;
-            int Fila = TB_Conductores.getSelectedRow();
+            int Fila = TB_Clientes.getSelectedRow();
 
-            String Valor = TB_Conductores.getValueAt(Fila, Columna).toString();
+            String Valor = TB_Clientes.getValueAt(Fila, Columna).toString();
 
             TextField_Eliminar.setText(Valor);
         }
@@ -143,37 +142,38 @@
             }
         }
 
-        private void initComponents() 
+        private void initComponents()
         {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
             // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
-            label1 = new JLabel();
-            label3 = new JLabel();
-            TextField_Eliminar = new JTextField();
-            scrollPane1 = new JScrollPane();
-            TB_Conductores = new JTable();
             label2 = new JLabel();
             BT_Eliminar = new JButton();
+            label3 = new JLabel();
+            TextField_Eliminar = new JTextField();
+            label1 = new JLabel();
+            scrollPane1 = new JScrollPane();
+            TB_Clientes = new JTable();
 
             //======== this ========
-            setModalExclusionType(Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
-            setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             Container contentPane = getContentPane();
             contentPane.setLayout(null);
+            contentPane.add(label2);
+            label2.setBounds(620, 605, 50, 50);
 
-            //---- label1 ----
-            label1.setText("Eliminar Conductores");
-            label1.setFont(new Font("Arial", Font.BOLD, 22));
-            label1.setForeground(new Color(153, 153, 255));
-            contentPane.add(label1);
-            label1.setBounds(new Rectangle(new Point(285, 20), label1.getPreferredSize()));
+            //---- BT_Eliminar ----
+            BT_Eliminar.setText("Eliminar");
+            BT_Eliminar.setFont(new Font("Arial", Font.BOLD, 18));
+            BT_Eliminar.setForeground(new Color(51, 51, 255));
+            BT_Eliminar.addActionListener(e -> BT_EliminarActionPerformed(e));
+            contentPane.add(BT_Eliminar);
+            BT_Eliminar.setBounds(275, 135, 115, 30);
 
             //---- label3 ----
             label3.setText("Seleccione Un Conductor:");
             label3.setForeground(new Color(0, 102, 255));
             label3.setFont(new Font("Arial", Font.BOLD, 18));
             contentPane.add(label3);
-            label3.setBounds(170, 70, 235, 24);
+            label3.setBounds(105, 85, 235, 24);
 
             //---- TextField_Eliminar ----
             TextField_Eliminar.setForeground(new Color(0, 0, 204));
@@ -185,35 +185,32 @@
                 }
             });
             contentPane.add(TextField_Eliminar);
-            TextField_Eliminar.setBounds(410, 70, 180, TextField_Eliminar.getPreferredSize().height);
+            TextField_Eliminar.setBounds(345, 85, 180, 29);
+
+            //---- label1 ----
+            label1.setText("Eliminar Clientes");
+            label1.setFont(new Font("Arial", Font.BOLD, 22));
+            label1.setForeground(new Color(153, 153, 255));
+            contentPane.add(label1);
+            label1.setBounds(235, 35, 175, 26);
 
             //======== scrollPane1 ========
             {
 
-                //---- TB_Conductores ----
-                TB_Conductores.setModel(new DefaultTableModel(1, 0));
-                TB_Conductores.setFont(new Font("Arial", Font.BOLD, 14));
-                TB_Conductores.setForeground(new Color(255, 51, 102));
-                TB_Conductores.addMouseListener(new MouseAdapter() {
+                //---- TB_Clientes ----
+                TB_Clientes.setForeground(new Color(255, 51, 102));
+                TB_Clientes.setFont(new Font("Arial", Font.BOLD, 14));
+                TB_Clientes.setModel(new DefaultTableModel());
+                TB_Clientes.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        TB_ConductoresMouseClicked(e);
+                        TB_ClientesMouseClicked(e);
                     }
                 });
-                scrollPane1.setViewportView(TB_Conductores);
+                scrollPane1.setViewportView(TB_Clientes);
             }
             contentPane.add(scrollPane1);
-            scrollPane1.setBounds(new Rectangle(new Point(160, 170), scrollPane1.getPreferredSize()));
-            contentPane.add(label2);
-            label2.setBounds(680, 605, 50, 50);
-
-            //---- BT_Eliminar ----
-            BT_Eliminar.setText("Eliminar");
-            BT_Eliminar.setFont(new Font("Arial", Font.BOLD, 18));
-            BT_Eliminar.setForeground(new Color(51, 51, 255));
-            BT_Eliminar.addActionListener(e -> BT_EliminarActionPerformed(e));
-            contentPane.add(BT_Eliminar);
-            BT_Eliminar.setBounds(new Rectangle(new Point(340, 120), BT_Eliminar.getPreferredSize()));
+            scrollPane1.setBounds(105, 200, 467, 400);
 
             {
                 // compute preferred size
@@ -236,12 +233,12 @@
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
         // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
-        private JLabel label1;
-        private JLabel label3;
-        private JTextField TextField_Eliminar;
-        private JScrollPane scrollPane1;
-        private JTable TB_Conductores;
         private JLabel label2;
         private JButton BT_Eliminar;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
+        private JLabel label3;
+        private JTextField TextField_Eliminar;
+        private JLabel label1;
+        private JScrollPane scrollPane1;
+        private JTable TB_Clientes;
+        // JFormDesigner - End of variables declaration  //GEN-END:variables
     }

@@ -5,6 +5,8 @@
 
     import Modelos.ModeloClientes;
 
+    import java.util.ArrayList;
+
 //--------------------------------------------------Principal-----------------------------------------------------------
 
      public class TablaHashClientesNodo
@@ -43,6 +45,15 @@
             getListaSimpleClientes().InsertarClienteListaSimpleC(NuevoCliente);
         }
 
+        //Eliminación
+
+        //Eliminar Cliente Lista Simple
+
+        public void EliminarClienteListaSimpleTablaHashNodo(String DPI)
+        {
+            getListaSimpleClientes().EliminarClienteListaSimpleC(DPI);
+        }
+
         //Búsqueda
 
         //Buscar Cliente Lista Simple
@@ -51,4 +62,6 @@
         {
             return getListaSimpleClientes().BuscarClienteListaSimpleC(DPI);
         }
+
+
     }

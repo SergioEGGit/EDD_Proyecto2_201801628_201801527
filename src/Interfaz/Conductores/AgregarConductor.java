@@ -142,6 +142,8 @@
                 TextField_DPI.setText("");
                 TextField_Nombres.setText("");
                 TextField_Apellidos.setText("");
+                CB_TipoLicencia.setSelectedIndex(0);
+                CB_Genero.setSelectedIndex(0);
                 TextField_Fecha.setText("");
                 TextField_Telefono.setText("");
                 TextField_Direccion.setText("");

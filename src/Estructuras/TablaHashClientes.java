@@ -3,7 +3,9 @@
 
     package Estructuras;
 
+    import Metodos.CargaMasiva;
     import Modelos.ModeloClientes;
+    import Modelos.ModeloConductores;
     import Variables.VariablesGlobales;
 
     import javax.swing.*;
@@ -29,7 +31,7 @@
         //Constructor Nueva Tabla Hash
 
         public TablaHashClientes(int size)
-        {
+       {
             Size = size;
             Clientes = new TablaHashClientesNodo[Size];
         }
@@ -94,6 +96,31 @@
                 }
             }
         }
+        
+        //Eliminación
+        
+        //Eliminar Cliente
+        
+        public void EliminarClienteTablaHashClientes(String DPI)
+        {
+            //Declaraciones
+
+            BigInteger PosicionHash = FuncionCalcularHash(DPI);
+            int PosicionHashInt = PosicionHash.intValue();
+            boolean Bandera = VerificarClienteTablaHashClientes(DPI);
+
+            if(Bandera)
+            {
+                if(Clientes[PosicionHashInt] != null)
+                {
+                    Clientes[PosicionHashInt].EliminarClienteListaSimpleTablaHashNodo(DPI);
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "El Cliente Indicado No Existe En El Sistema!", "Exito!", JOptionPane.ERROR_MESSAGE);
+            }
+        }
 
         //Busqueda
 
@@ -135,8 +162,7 @@
             //Array Modelo Clientes
 
             ArrayList<ModeloClientes> ArrayAuxiliar = new ArrayList<ModeloClientes>();
-
-            String Cadena = "";
+            ArrayList<ModeloClientes> ArrayAuxiliarListaSimple = new ArrayList<ModeloClientes>();
 
             for(TablaHashClientesNodo Clave: Clientes)
             {
@@ -144,15 +170,49 @@
                 {
                     if(Clave.getListaSimpleClientes() != null)
                     {
-                        //Cadena += Tn.getListaUsuarios().TablaHashReporte(Contador);
+                        ArrayAuxiliarListaSimple = Clave.getListaSimpleClientes().ListarTodosLosClientesListaSimpleC();
 
-                        if(Clave.getListaSimpleClientes().getListaSimpleUsuariosInicio() != null)
-                        {
-                            System.out.println(Clave.getListaSimpleClientes().getListaSimpleUsuariosInicio().getNuevoCliente().getDPICliente());;
-                        }
+                        ArrayAuxiliar.addAll(ArrayAuxiliarListaSimple);
                     }
                 }
             }
             return ArrayAuxiliar;
+        }
+        
+        //Cargar Masiva
+
+        //Cargar Clientes
+
+        public void CargaMasivaTablaHashClientes()
+        {
+            //Declaraciones
+
+            //Variables Modelo Condcutores
+
+            ModeloClientes NuevoCliente = new ModeloClientes();
+
+            //Variable Tipo Carga Masiva
+
+            CargaMasiva CM = new CargaMasiva();
+
+            CM.CargaMasiva(';',',',"txt","Clientes",7);
+
+            if(VariablesGlobales.ItemsArchivo != null)
+            {
+                for(String[] Datos: VariablesGlobales.ItemsArchivo)
+                {
+                    NuevoCliente = new ModeloClientes();
+                    NuevoCliente.setDPICliente(Datos[0].trim());
+                    NuevoCliente.setNombresCliente(Datos[1].trim());
+                    NuevoCliente.setApellidosCliente(Datos[2].trim());
+                    NuevoCliente.setFechaNacimentoCliente(Datos[4].trim());
+                    NuevoCliente.setGeneroCliente(Datos[3].trim());
+                    NuevoCliente.setTelefonoCliente(Integer.parseInt(Datos[5].trim()));
+                    NuevoCliente.setDireccionCliente(Datos[6].trim());
+
+                    InsertarClienteTablaHashClientes(NuevoCliente);
+                }
+                VariablesGlobales.ItemsArchivo=null;
+            }
         }
     }

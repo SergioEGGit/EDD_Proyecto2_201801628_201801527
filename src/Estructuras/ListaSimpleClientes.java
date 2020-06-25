@@ -5,6 +5,7 @@
 
     import Modelos.ModeloClientes;
 
+    import javax.swing.*;
     import java.util.ArrayList;
 
 //-------------------------------------------------Principal------------------------------------------------------------
@@ -50,6 +51,61 @@
                 NuevoNodoCliente.setSgte(getListaSimpleUsuariosInicio());
                 setListaSimpleUsuariosInicio(NuevoNodoCliente);
             }
+        }
+
+        //Eliminación
+
+        //Eliminar Cliente
+
+        public void EliminarClienteListaSimpleC(String DPI)
+        {
+            ListaSimpleClientesNodo AuxiliarPrimero = getListaSimpleUsuariosInicio();
+            ListaSimpleClientesNodo AuxiliarSegundo = getListaSimpleUsuariosInicio();
+
+            while(AuxiliarPrimero != null)
+            {
+                if(DPI.equals(AuxiliarPrimero.getNuevoCliente().getDPICliente()) && AuxiliarPrimero == getListaSimpleUsuariosInicio())
+                {
+                    setListaSimpleUsuariosInicio(AuxiliarPrimero.getSgte());
+                    JOptionPane.showMessageDialog(null, "Cliente Eliminado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                }
+                else if(DPI.equals(AuxiliarPrimero.getNuevoCliente().getDPICliente()) && AuxiliarPrimero != getListaSimpleUsuariosInicio())
+                {
+                    AuxiliarSegundo.setSgte(AuxiliarPrimero.getSgte());
+                    AuxiliarPrimero = null;
+                    JOptionPane.showMessageDialog(null, "Cliente Eliminado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                }
+                AuxiliarSegundo = AuxiliarPrimero;
+                AuxiliarPrimero = AuxiliarPrimero.getSgte();
+            }
+        }
+
+        //Recorridos
+
+        //Listar Todos Los Clientes
+
+        public ArrayList<ModeloClientes> ListarTodosLosClientesListaSimpleC()
+        {
+            //Declaracioens
+
+            //Auxilair Lista Simple Clientes
+
+            ListaSimpleClientesNodo AuxiliarNodo = getListaSimpleUsuariosInicio();
+
+            //Array Auxiliar
+
+            ArrayList<ModeloClientes> ArrayAuxiliar = new ArrayList<ModeloClientes>();
+
+            while(AuxiliarNodo != null)
+            {
+                ArrayAuxiliar.add(AuxiliarNodo.getNuevoCliente());
+
+                AuxiliarNodo = AuxiliarNodo.getSgte();
+            }
+
+            return ArrayAuxiliar;
         }
 
         //Búsqueda
