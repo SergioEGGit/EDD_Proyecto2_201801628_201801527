@@ -4,6 +4,7 @@
 
 package Interfaz.Vehiculos;
 
+import Interfaz.Reportes;
 import Modelos.ModeloVehiculo;
 import Variables.VariablesGlobales;
 
@@ -34,6 +35,17 @@ public class VehiculosInterfaz extends JFrame {
         }
     }
 
+    private void MostarEstructura(ActionEvent e) {
+        VariablesGlobales.NombreReporte="ReporteArbolBVehiculos.png";
+        VariablesGlobales.ArbolBAutomoviles.GenerarReporteArbolB();
+        if(VariablesGlobales.GenereReporte){
+            JOptionPane.showMessageDialog(null, "Reporte Generado Con Exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+            new Reportes().setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "El Reporte No Se Pudo Generar Con Exito \nVerifique Que Graphviz Se Encuentre Configurado De Manera Correcta", "Error!", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
@@ -53,6 +65,7 @@ public class VehiculosInterfaz extends JFrame {
         label7 = new JLabel();
         button1 = new JButton();
         button2 = new JButton();
+        button3 = new JButton();
 
         //======== this ========
         Container contentPane = getContentPane();
@@ -119,6 +132,12 @@ public class VehiculosInterfaz extends JFrame {
         contentPane.add(button2);
         button2.setBounds(new Rectangle(new Point(145, 350), button2.getPreferredSize()));
 
+        //---- button3 ----
+        button3.setText("Estructura");
+        button3.addActionListener(e -> MostarEstructura(e));
+        contentPane.add(button3);
+        button3.setBounds(new Rectangle(new Point(150, 390), button3.getPreferredSize()));
+
         {
             // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -156,5 +175,6 @@ public class VehiculosInterfaz extends JFrame {
     private JLabel label7;
     private JButton button1;
     private JButton button2;
+    private JButton button3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

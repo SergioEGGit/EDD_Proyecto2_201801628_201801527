@@ -1,5 +1,7 @@
 package Metodos;
 
+import java.text.Normalizer;
+
 public class MetodoGlobales
 {
 
@@ -14,4 +16,10 @@ public class MetodoGlobales
         return Retorna;
     }
 
+    public String QuitarAcento(String Texto){
+        String original = Texto;
+        String cadenaNormalize = Normalizer.normalize(original, Normalizer.Form.NFD);
+        String cadenaSinAcentos = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
+        return  cadenaSinAcentos;
+    }
 }

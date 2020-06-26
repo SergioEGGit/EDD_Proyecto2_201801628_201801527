@@ -60,7 +60,7 @@
                 }
             }
             JOptionPane.showMessageDialog(null,"SE AGREGARON "+contador+" CON EXITO","AGREGADOS",JOptionPane.INFORMATION_MESSAGE);
-            VariablesGlobales.ListaAdyacenciaRutas.ImprimirLista();
+            //VariablesGlobales.ListaAdyacenciaRutas.ImprimirLista();
             VariablesGlobales.ListaAdyacenciaRutas.AlgoritmoDijkstra();
         }
 

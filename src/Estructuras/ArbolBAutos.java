@@ -1,10 +1,12 @@
 package Estructuras;
 
+import Metodos.CargaMasiva;
 import Metodos.GenerarReportes;
 import Modelos.ModeloVehiculo;
 import Variables.VariablesGlobales;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class ArbolBAutos {
@@ -283,7 +285,7 @@ public class ArbolBAutos {
     }
 
     public void ImprimirArbol(){
-        MetRecursivoImpresion(getInicioArbolBVehiculos());
+        //MetRecursivoImpresion(getInicioArbolBVehiculos());
         //GenerarReporteArbolB();
     }
 
@@ -344,5 +346,85 @@ public class ArbolBAutos {
         Cadena+="}\n";
         GenerarReportes Reporte = new GenerarReportes("ReporteArbolBVehiculos", Cadena);
     }
+
+    private ArrayList<ModeloVehiculo> Vehiculos=new ArrayList<ModeloVehiculo>();
+
+    public ArrayList<ModeloVehiculo> TodosLosVehiculos(){
+        this.Vehiculos.clear();
+        if(getInicioArbolBVehiculos()!=null){
+            RecuperarTodosVehiculosArbolB(getInicioArbolBVehiculos());
+        }
+        return this.Vehiculos;
+    }
+
+    void RecuperarTodosVehiculosArbolB(ArbolBAutosNodo Hoja){
+        int NumeroClave=0;
+        if(!Hoja.getHijos().empty()){
+            for (ArbolBAutosNodo Hijo:Hoja.getHijos()) {
+                RecuperarTodosVehiculosArbolB(Hijo);
+                try {
+                    this.Vehiculos.add(Hoja.getVehiculos().get(NumeroClave));
+                }catch (Exception E){}
+                NumeroClave++;
+            }
+        }else{
+            for (ModeloVehiculo Auto:Hoja.getVehiculos()) {
+                this.Vehiculos.add(Auto);
+            }
+        }
+    }
+
+    public void CargaMasiva(){
+        CargaMasiva CMVehiculo=new CargaMasiva();
+        CMVehiculo.CargaMasiva(';',':',"txt","VEHICULOS",7);
+        int contadorAgregados=0;
+        boolean TipoTransmision=false;
+        for (String[] Vehiculos:VariablesGlobales.ItemsArchivo) {
+            try {
+                if(VariablesGlobales.MetodoGlobales.QuitarAcento(Vehiculos[6].trim().toUpperCase()).equals("AUTOMATICO")){
+                    TipoTransmision=false;
+                }
+                else{
+                    TipoTransmision=true;
+                }
+                ModeloVehiculo NuevoVehiculo=new ModeloVehiculo(Vehiculos[0].trim().toUpperCase(),//Placa
+                        Vehiculos[1].trim().toUpperCase(),//Marca
+                        Vehiculos[2].trim().toUpperCase(),//Modelo
+                        Integer.parseInt(Vehiculos[3].trim().toUpperCase()),//Anio
+                        Vehiculos[4].trim().toUpperCase(),//Color
+                        Double.parseDouble(Vehiculos[5].trim().toUpperCase()),//Precio
+                        TipoTransmision);//Transmicion
+                boolean Agregado=AgregarVehiculo(NuevoVehiculo);
+                if(Agregado==true){contadorAgregados++;}
+                else{
+                    JOptionPane.showMessageDialog(null,
+                            "No Se agrego con exito \n"+
+                                    "Placa: "+Vehiculos[0].trim().toUpperCase()+"\n"+
+                                    "Marca: "+Vehiculos[1].trim().toUpperCase()+"\n"+
+                                    "Modelo: "+Vehiculos[2].trim().toUpperCase()+"\n"+
+                                    "Año: "+Vehiculos[3].trim().toUpperCase()+"\n"+
+                                    "Color: "+Vehiculos[4].trim().toUpperCase()+"\n"+
+                                    "Precio: "+Vehiculos[5].trim().toUpperCase()+"\n"+
+                                    "Transmision: "+Vehiculos[6].trim().toUpperCase()+"\n"+
+                                    "No se agrego con exito la placa se encuentra asignada a otro vehiculo",
+                            "Error Al Agregar",JOptionPane.ERROR_MESSAGE);
+                }
+            }catch (Exception E){
+                JOptionPane.showMessageDialog(null,
+                        "No Se agrego con exito \n"+
+                                "Placa: "+Vehiculos[0].trim().toUpperCase()+"\n"+
+                                "Marca: "+Vehiculos[1].trim().toUpperCase()+"\n"+
+                                "Modelo: "+Vehiculos[2].trim().toUpperCase()+"\n"+
+                                "Año: "+Vehiculos[3].trim().toUpperCase()+"\n"+
+                                "Color: "+Vehiculos[4].trim().toUpperCase()+"\n"+
+                                "Precio: "+Vehiculos[5].trim().toUpperCase()+"\n"+
+                                "Transmision: "+Vehiculos[6].trim().toUpperCase()+"\n"+
+                                "Verifique que todos los datos sean correcto",
+                        "Error Al Agregar",JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        JOptionPane.showMessageDialog(null,"Se agregaron "+contadorAgregados+" Vehiculos con exito","Carga Masiva Exitosa",JOptionPane.INFORMATION_MESSAGE);
+    }
+
 
 }
