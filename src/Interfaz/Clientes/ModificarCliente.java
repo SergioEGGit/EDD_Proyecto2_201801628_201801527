@@ -1,68 +1,68 @@
 
-//---------------------------------------------Paquetes E Imports-------------------------------------------------------
+//------------------------------------------Paquetes E Imports----------------------------------------------------------
 
-    package Interfaz.Conductores;
+    package Interfaz.Clientes;
 
-    import Modelos.ModeloConductores;
+    import Estructuras.ListaSimpleClientesNodo;
+    import Modelos.ModeloClientes;
     import Variables.VariablesGlobales;
-
     import java.awt.*;
     import java.awt.event.*;
     import java.util.ArrayList;
     import javax.swing.*;
     import javax.swing.table.*;
 
-//---------------------------------------------------Author-------------------------------------------------------------
+//-------------------------------------------------Author---------------------------------------------------------------
 
     /**
      * @author Sergio Echigoyen
      */
 
-//--------------------------------------------------Principal-----------------------------------------------------------
+//------------------------------------------------Principal-------------------------------------------------------------
 
-    public class ModificarConductor extends JFrame
+    public class ModificarCliente extends JFrame
     {
-        //------------------------------------------Variables-----------------------------------------------------------
+        //---------------------------------------------Variables--------------------------------------------------------
 
         DefaultTableModel Modelo;
 
-        //-----------------------------------------Constructor----------------------------------------------------------
+        //-------------------------------------------Constructor--------------------------------------------------------
 
-        public ModificarConductor()
+        public ModificarCliente()
         {
             initComponents();
             Modelo = new DefaultTableModel();
-            ArrayList<ModeloConductores> ListaConductores = VariablesGlobales.ListaDobleCircularConductores.ObtenerTodosLosConductoresListaDobleCircularC();
-            ObtenerConductores(ListaConductores);
+            ArrayList<ModeloClientes> ListaClientes = VariablesGlobales.TablaHashClientes.ListarTodosLosClientesTablaHashClientes();
+            ObtenerClientes(ListaClientes);
         }
 
-        //--------------------------------------------Métodos-----------------------------------------------------------
+        //-----------------------------------------------Métodos--------------------------------------------------------
 
-        public void ObtenerConductores(ArrayList<ModeloConductores> ListaConductores)
+        public void ObtenerClientes(ArrayList<ModeloClientes> ListaClientes)
         {
             Modelo = new DefaultTableModel();
             Modelo.addColumn("DPI");
             Modelo.addColumn("Nombre");
             Modelo.addColumn("Apellidos");
 
-            for(ModeloConductores Conductor: ListaConductores)
+            for(ModeloClientes Clientes: ListaClientes)
             {
-                if (Conductor != null)
+                if (Clientes != null)
                 {
                     Object[] Fila = new Object[]
                             {
-                                    Conductor.getDPIConductor(),
-                                    Conductor.getNombresConductor(),
-                                    Conductor.getApellidosConductor()
+                                    Clientes.getDPICliente(),
+                                    Clientes.getNombresCliente(),
+                                    Clientes.getApellidosCliente()
                             };
                     Modelo.addRow(Fila);
                 }
             }
-            TB_Conductores.setModel(Modelo);
-            TB_Conductores.getColumnModel().getColumn(0).setPreferredWidth(400);
-            TB_Conductores.getColumnModel().getColumn(1).setPreferredWidth(400);
-            TB_Conductores.getColumnModel().getColumn(2).setPreferredWidth(400);
-            TB_Conductores.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+            TB_Clientes.setModel(Modelo);
+            TB_Clientes.getColumnModel().getColumn(0).setPreferredWidth(400);
+            TB_Clientes.getColumnModel().getColumn(1).setPreferredWidth(400);
+            TB_Clientes.getColumnModel().getColumn(2).setPreferredWidth(400);
+            TB_Clientes.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         }
 
         //--------------------------------------------Events------------------------------------------------------------
@@ -147,49 +147,46 @@
             }
         }
 
-        //Boton Modificar
-
         private void BT_ModificarActionPerformed(ActionEvent e)
         {
             //Declaraciones
 
             //Array Tipo String
 
-            ArrayList<ModeloConductores> ArrayConductores = new ArrayList<ModeloConductores>();
+            ArrayList<ModeloClientes> ArrayClientes = new ArrayList<ModeloClientes>();
 
             //Variables Tipo Boolean
 
-            boolean ExisteConductor = VariablesGlobales.ListaDobleCircularConductores.VerificarConductorListaDobleCircularC(TextField_DPI.getText());
+            boolean ExisteConductor = VariablesGlobales.TablaHashClientes.VerificarClienteTablaHashClientes(TextField_DPI.getText());
 
             if(ExisteConductor)
             {
                 //Variables Tipo Int
 
                 int Button = JOptionPane.YES_NO_OPTION;
-                int Result = JOptionPane.showConfirmDialog(this, "Seguro Que Desea Modificar El Conductor", "Pregunta!", Button);
+                int Result = JOptionPane.showConfirmDialog(this, "Seguro Que Desea Modificar El Cliente", "Pregunta!", Button);
 
                 //Variables Tipo Lista Doble
 
-                ModeloConductores ConductorModificar = new ModeloConductores();
+                ModeloClientes ClienteModificar = new ModeloClientes();
 
                 if(Result == 0)
                 {
-                    ConductorModificar.setDPIConductor(TextField_DPI.getText());
-                    ConductorModificar.setNombresConductor(TextField_Nombres.getText());
-                    ConductorModificar.setApellidosConductor(TextField_Apellidos.getText());
-                    ConductorModificar.setFechaNacimientoConductor(TextField_Fecha.getText());
-                    ConductorModificar.setTipoLicenciaConductor((String) CB_TipoLicencia.getSelectedItem());
-                    ConductorModificar.setGeneroConductor((String) CB_Genero.getSelectedItem());
-                    ConductorModificar.setTelefonoConductor(Integer.parseInt(TextField_Telefono.getText()));
-                    ConductorModificar.setDireccionConductor(TextField_Direccion.getText());
+                    ClienteModificar.setDPICliente(TextField_DPI.getText());
+                    ClienteModificar.setNombresCliente(TextField_Nombres.getText());
+                    ClienteModificar.setApellidosCliente(TextField_Apellidos.getText());
+                    ClienteModificar.setFechaNacimentoCliente(TextField_Fecha.getText());
+                    ClienteModificar.setGeneroCliente((String) CB_Genero.getSelectedItem());
+                    ClienteModificar.setTelefonoCliente(Integer.parseInt(TextField_Telefono.getText()));
+                    ClienteModificar.setDireccionCliente(TextField_Direccion.getText());
 
-                    VariablesGlobales.ListaDobleCircularConductores.ModificarConductorListaDobleCircularC(ConductorModificar);
+                    VariablesGlobales.TablaHashClientes.ModificarClienteTablaHashClientes(TextField_DPI.getText(), ClienteModificar);
 
                     Modelo = new DefaultTableModel();
 
-                    ArrayConductores = VariablesGlobales.ListaDobleCircularConductores.ObtenerTodosLosConductoresListaDobleCircularC();
+                    ArrayClientes = VariablesGlobales.TablaHashClientes.ListarTodosLosClientesTablaHashClientes();
 
-                    ObtenerConductores(ArrayConductores);
+                    ObtenerClientes(ArrayClientes);
                 }
             }
             else
@@ -201,8 +198,7 @@
             TextField_Nombres.setText("");
             TextField_Apellidos.setText("");
             TextField_Fecha.setText("");
-            CB_TipoLicencia.setSelectedIndex(0);
-            CB_Genero.setSelectedIndex(1);
+            CB_Genero.setSelectedIndex(0);
             TextField_Telefono.setText("");
             TextField_Direccion.setText("");
         }
@@ -211,104 +207,90 @@
         {
             //Declaraciones
 
-            ModeloConductores ConductorModificar = new ModeloConductores();
+            ModeloClientes ClienteModificar = new ModeloClientes();
+            ListaSimpleClientesNodo ClienteModificarNodo = new ListaSimpleClientesNodo();
 
-            ConductorModificar = VariablesGlobales.ListaDobleCircularConductores.BuscarUsuarioListaDobleCircularC(TextField_Buscar.getText());
-
-            if(ConductorModificar != null)
+            if(TextField_Buscar.getText().equals(""))
             {
-                TextField_DPI.setText(ConductorModificar.getDPIConductor());
-                TextField_Nombres.setText(ConductorModificar.getNombresConductor());
-                TextField_Apellidos.setText(ConductorModificar.getApellidosConductor());
-                TextField_Fecha.setText(ConductorModificar.getFechaNacimientoConductor());
-
-                if(ConductorModificar.getTipoLicenciaConductor().equals("A"))
-                {
-                    CB_TipoLicencia.setSelectedIndex(0);
-                }
-                else if(ConductorModificar.getTipoLicenciaConductor().equals("B"))
-                {
-                    CB_TipoLicencia.setSelectedIndex(1);
-                }
-                else if(ConductorModificar.getTipoLicenciaConductor().equals("C"))
-                {
-                    CB_TipoLicencia.setSelectedIndex(2);
-                }
-
-                if(ConductorModificar.getGeneroConductor().equals("Masculino"))
-                {
-                    CB_Genero.setSelectedIndex(0);
-                }
-                else if(ConductorModificar.getGeneroConductor().equals("Femenino"))
-                {
-                    CB_Genero.setSelectedIndex(1);
-                }
-
-                TextField_Telefono.setText("" + ConductorModificar.getTelefonoConductor());
-                TextField_Direccion.setText(ConductorModificar.getDireccionConductor());
+                JOptionPane.showMessageDialog(null, "Debe De Seleccionar Un Cliente!", "Error!", JOptionPane.ERROR_MESSAGE);
             }
             else
             {
-                JOptionPane.showMessageDialog(null, "El Conductor No Existe En El Sistema", "Error!", JOptionPane.ERROR_MESSAGE);
+                ClienteModificarNodo = VariablesGlobales.TablaHashClientes.BuscarClienteTablaHashClientes(TextField_Buscar.getText());
+
+                if(ClienteModificarNodo != null)
+                {
+                    ClienteModificar = ClienteModificarNodo.getNuevoCliente();
+
+                    TextField_DPI.setText(ClienteModificar.getDPICliente());
+                    TextField_Nombres.setText(ClienteModificar.getNombresCliente());
+                    TextField_Apellidos.setText(ClienteModificar.getApellidosCliente());
+                    TextField_Fecha.setText(ClienteModificar.getFechaNacimentoCliente());
+
+                    if(ClienteModificar.getGeneroCliente().equals("Masculino"))
+                    {
+                        CB_Genero.setSelectedIndex(0);
+                    }
+                    else if(ClienteModificar.getGeneroCliente().equals("Femenino"))
+                    {
+                        CB_Genero.setSelectedIndex(1);
+                    }
+
+                    TextField_Telefono.setText("" + ClienteModificar.getTelefonoCliente());
+                    TextField_Direccion.setText(ClienteModificar.getDireccionCliente());
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "El Cliente No Existe En El Sistema", "Error!", JOptionPane.ERROR_MESSAGE);
+                }
             }
 
             TextField_Buscar.setText("");
         }
 
-        //Tabla Click
-
-        private void TB_ConductoresMouseClicked(MouseEvent e)
+        private void TB_ClientesMouseClicked(MouseEvent e)
         {
             //Declaraciones
+
+            ModeloClientes ClienteModificar = new ModeloClientes();
+            ListaSimpleClientesNodo ClienteModificarNodo = new ListaSimpleClientesNodo();
 
             //Variables Tipo Int
 
             int Columna = 0;
-            int Fila = TB_Conductores.getSelectedRow();
+            int Fila = TB_Clientes.getSelectedRow();
 
             //Variables Tipo Modelo Conductor
 
-            ModeloConductores ConductorModificar = new ModeloConductores();
+            String Valor = TB_Clientes.getValueAt(Fila, Columna).toString();
 
-            String Valor = TB_Conductores.getValueAt(Fila, Columna).toString();
+            ClienteModificarNodo = VariablesGlobales.TablaHashClientes.BuscarClienteTablaHashClientes(Valor);
 
-            ConductorModificar = VariablesGlobales.ListaDobleCircularConductores.BuscarUsuarioListaDobleCircularC(Valor);
+            ClienteModificar = ClienteModificarNodo.getNuevoCliente();
 
-            TextField_DPI.setText(ConductorModificar.getDPIConductor());
-            TextField_Nombres.setText(ConductorModificar.getNombresConductor());
-            TextField_Apellidos.setText(ConductorModificar.getApellidosConductor());
-            TextField_Fecha.setText(ConductorModificar.getFechaNacimientoConductor());
+            TextField_DPI.setText(ClienteModificar.getDPICliente());
+            TextField_Nombres.setText(ClienteModificar.getNombresCliente());
+            TextField_Apellidos.setText(ClienteModificar.getApellidosCliente());
+            TextField_Fecha.setText(ClienteModificar.getFechaNacimentoCliente());
 
-            if(ConductorModificar.getTipoLicenciaConductor().equals("A"))
-            {
-                CB_TipoLicencia.setSelectedIndex(0);
-            }
-            else if(ConductorModificar.getTipoLicenciaConductor().equals("B"))
-            {
-                CB_TipoLicencia.setSelectedIndex(1);
-            }
-            else if(ConductorModificar.getTipoLicenciaConductor().equals("C"))
-            {
-                CB_TipoLicencia.setSelectedIndex(2);
-            }
-
-            if(ConductorModificar.getGeneroConductor().equals("Masculino"))
+            if(ClienteModificar.getGeneroCliente().equals("Masculino"))
             {
                 CB_Genero.setSelectedIndex(0);
             }
-            else if(ConductorModificar.getGeneroConductor().equals("Femenino"))
+            else if(ClienteModificar.getGeneroCliente().equals("Femenino"))
             {
                 CB_Genero.setSelectedIndex(1);
             }
 
-            TextField_Telefono.setText("" + ConductorModificar.getTelefonoConductor());
-            TextField_Direccion.setText(ConductorModificar.getDireccionConductor());
+            TextField_Telefono.setText("" + ClienteModificar.getTelefonoCliente());
+            TextField_Direccion.setText(ClienteModificar.getDireccionCliente());
         }
 
         private void initComponents()
         {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
             // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
+            label1 = new JLabel();
             BT_Modificar = new JButton();
             TextField_Direccion = new JTextField();
             label10 = new JLabel();
@@ -316,29 +298,27 @@
             label9 = new JLabel();
             CB_Genero = new JComboBox<>();
             label8 = new JLabel();
-            CB_TipoLicencia = new JComboBox<>();
-            label7 = new JLabel();
             TextField_Fecha = new JTextField();
             label11 = new JLabel();
             TextField_Apellidos = new JTextField();
             label6 = new JLabel();
             TextField_Nombres = new JTextField();
             label5 = new JLabel();
-            label4 = new JLabel();
             TextField_DPI = new JTextField();
-            label1 = new JLabel();
-            scrollPane1 = new JScrollPane();
-            TB_Conductores = new JTable();
-            label2 = new JLabel();
+            label4 = new JLabel();
             label3 = new JLabel();
             label12 = new JLabel();
             TextField_Buscar = new JTextField();
             BT_Buscar = new JButton();
+            label2 = new JLabel();
+            scrollPane1 = new JScrollPane();
+            TB_Clientes = new JTable();
 
             //======== this ========
-            setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             Container contentPane = getContentPane();
             contentPane.setLayout(null);
+            contentPane.add(label1);
+            label1.setBounds(705, 565, 50, 40);
 
             //---- BT_Modificar ----
             BT_Modificar.setText("Modificar");
@@ -346,20 +326,20 @@
             BT_Modificar.setFont(new Font("Arial", Font.BOLD, 18));
             BT_Modificar.addActionListener(e -> BT_ModificarActionPerformed(e));
             contentPane.add(BT_Modificar);
-            BT_Modificar.setBounds(485, 505, 135, 30);
+            BT_Modificar.setBounds(490, 475, 135, 30);
 
             //---- TextField_Direccion ----
             TextField_Direccion.setForeground(new Color(0, 0, 204));
             TextField_Direccion.setFont(new Font("Arial", Font.BOLD, 16));
             contentPane.add(TextField_Direccion);
-            TextField_Direccion.setBounds(490, 445, 200, 29);
+            TextField_Direccion.setBounds(495, 415, 200, 29);
 
             //---- label10 ----
             label10.setText("Direcci\u00f3n:");
             label10.setFont(new Font("Arial", Font.BOLD, 16));
             label10.setForeground(new Color(102, 102, 255));
             contentPane.add(label10);
-            label10.setBounds(405, 445, 80, 19);
+            label10.setBounds(410, 415, 80, 19);
 
             //---- TextField_Telefono ----
             TextField_Telefono.setForeground(new Color(0, 0, 204));
@@ -371,14 +351,14 @@
                 }
             });
             contentPane.add(TextField_Telefono);
-            TextField_Telefono.setBounds(490, 405, 200, 29);
+            TextField_Telefono.setBounds(495, 375, 200, 29);
 
             //---- label9 ----
             label9.setText("T\u00e9lefono:");
             label9.setFont(new Font("Arial", Font.BOLD, 16));
             label9.setForeground(new Color(102, 102, 255));
             contentPane.add(label9);
-            label9.setBounds(405, 405, 75, 19);
+            label9.setBounds(410, 375, 75, 19);
 
             //---- CB_Genero ----
             CB_Genero.setModel(new DefaultComboBoxModel<>(new String[] {
@@ -388,46 +368,28 @@
             CB_Genero.setFont(new Font("Arial", Font.BOLD, 16));
             CB_Genero.setForeground(new Color(0, 0, 204));
             contentPane.add(CB_Genero);
-            CB_Genero.setBounds(490, 350, 205, 38);
+            CB_Genero.setBounds(495, 320, 205, 38);
 
             //---- label8 ----
             label8.setText("G\u00e9nero:");
             label8.setFont(new Font("Arial", Font.BOLD, 16));
             label8.setForeground(new Color(102, 102, 255));
             contentPane.add(label8);
-            label8.setBounds(405, 360, 75, 19);
-
-            //---- CB_TipoLicencia ----
-            CB_TipoLicencia.setModel(new DefaultComboBoxModel<>(new String[] {
-                "A",
-                "B",
-                "C"
-            }));
-            CB_TipoLicencia.setForeground(new Color(0, 0, 204));
-            CB_TipoLicencia.setFont(new Font("Arial", Font.BOLD, 16));
-            contentPane.add(CB_TipoLicencia);
-            CB_TipoLicencia.setBounds(545, 300, 150, 38);
-
-            //---- label7 ----
-            label7.setText("Tipo De Licencia:");
-            label7.setFont(new Font("Arial", Font.BOLD, 16));
-            label7.setForeground(new Color(102, 102, 255));
-            contentPane.add(label7);
-            label7.setBounds(405, 305, 135, 19);
+            label8.setBounds(410, 330, 75, 19);
 
             //---- TextField_Fecha ----
             TextField_Fecha.setText("DD/MM/YYYY");
             TextField_Fecha.setFont(new Font("Arial", Font.BOLD, 16));
             TextField_Fecha.setForeground(new Color(0, 0, 204));
             contentPane.add(TextField_Fecha);
-            TextField_Fecha.setBounds(580, 260, 115, 29);
+            TextField_Fecha.setBounds(585, 280, 115, 29);
 
             //---- label11 ----
             label11.setText("Fecha De Nacimiento:");
             label11.setFont(new Font("Arial", Font.BOLD, 16));
             label11.setForeground(new Color(102, 102, 255));
             contentPane.add(label11);
-            label11.setBounds(405, 260, 170, 19);
+            label11.setBounds(410, 280, 170, 19);
 
             //---- TextField_Apellidos ----
             TextField_Apellidos.setFont(new Font("Arial", Font.BOLD, 16));
@@ -439,14 +401,14 @@
                 }
             });
             contentPane.add(TextField_Apellidos);
-            TextField_Apellidos.setBounds(495, 220, 200, 29);
+            TextField_Apellidos.setBounds(500, 240, 200, 29);
 
             //---- label6 ----
             label6.setText("Apellidos:");
             label6.setFont(new Font("Arial", Font.BOLD, 16));
             label6.setForeground(new Color(102, 102, 255));
             contentPane.add(label6);
-            label6.setBounds(405, 220, 85, 19);
+            label6.setBounds(410, 240, 85, 19);
 
             //---- TextField_Nombres ----
             TextField_Nombres.setForeground(new Color(0, 0, 204));
@@ -458,21 +420,14 @@
                 }
             });
             contentPane.add(TextField_Nombres);
-            TextField_Nombres.setBounds(495, 180, 200, 29);
+            TextField_Nombres.setBounds(500, 200, 200, 29);
 
             //---- label5 ----
             label5.setText("Nombres:");
             label5.setFont(new Font("Arial", Font.BOLD, 16));
             label5.setForeground(new Color(102, 102, 255));
             contentPane.add(label5);
-            label5.setBounds(405, 180, 85, 19);
-
-            //---- label4 ----
-            label4.setText("DPI:");
-            label4.setFont(new Font("Arial", Font.BOLD, 16));
-            label4.setForeground(new Color(102, 102, 255));
-            contentPane.add(label4);
-            label4.setBounds(405, 145, 33, 19);
+            label5.setBounds(410, 200, 85, 19);
 
             //---- TextField_DPI ----
             TextField_DPI.setFont(new Font("Arial", Font.BOLD, 16));
@@ -485,48 +440,28 @@
                 }
             });
             contentPane.add(TextField_DPI);
-            TextField_DPI.setBounds(495, 145, 200, 29);
-            contentPane.add(label1);
-            label1.setBounds(685, 520, 50, 40);
+            TextField_DPI.setBounds(500, 165, 200, 29);
 
-            //======== scrollPane1 ========
-            {
-
-                //---- TB_Conductores ----
-                TB_Conductores.setModel(new DefaultTableModel());
-                TB_Conductores.setForeground(new Color(255, 51, 102));
-                TB_Conductores.setFont(new Font("Arial", Font.BOLD, 14));
-                TB_Conductores.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        TB_ConductoresMouseClicked(e);
-                    }
-                });
-                scrollPane1.setViewportView(TB_Conductores);
-            }
-            contentPane.add(scrollPane1);
-            scrollPane1.setBounds(15, 175, 345, 355);
-
-            //---- label2 ----
-            label2.setText("Modificar Conductores");
-            label2.setFont(new Font("Arial", Font.BOLD, 22));
-            label2.setForeground(new Color(153, 153, 255));
-            contentPane.add(label2);
-            label2.setBounds(275, 20, 240, 26);
+            //---- label4 ----
+            label4.setText("DPI:");
+            label4.setFont(new Font("Arial", Font.BOLD, 16));
+            label4.setForeground(new Color(102, 102, 255));
+            contentPane.add(label4);
+            label4.setBounds(410, 165, 33, 19);
 
             //---- label3 ----
-            label3.setText("Seleccione Un Conductor:");
+            label3.setText("Seleccione Un Cliente:");
             label3.setForeground(new Color(0, 102, 255));
             label3.setFont(new Font("Arial", Font.BOLD, 18));
             contentPane.add(label3);
-            label3.setBounds(15, 135, 235, 24);
+            label3.setBounds(20, 155, 235, 24);
 
             //---- label12 ----
-            label12.setText("Buscar Conductor:");
+            label12.setText("Buscar Cliente:");
             label12.setForeground(new Color(0, 102, 255));
             label12.setFont(new Font("Arial", Font.BOLD, 18));
             contentPane.add(label12);
-            label12.setBounds(115, 75, 170, 24);
+            label12.setBounds(120, 95, 170, 24);
 
             //---- TextField_Buscar ----
             TextField_Buscar.setFont(new Font("Arial", Font.BOLD, 16));
@@ -538,7 +473,7 @@
                 }
             });
             contentPane.add(TextField_Buscar);
-            TextField_Buscar.setBounds(285, 75, 195, TextField_Buscar.getPreferredSize().height);
+            TextField_Buscar.setBounds(290, 95, 195, 29);
 
             //---- BT_Buscar ----
             BT_Buscar.setText("Buscar");
@@ -546,7 +481,32 @@
             BT_Buscar.setForeground(new Color(51, 51, 255));
             BT_Buscar.addActionListener(e -> BT_BuscarActionPerformed(e));
             contentPane.add(BT_Buscar);
-            BT_Buscar.setBounds(505, 75, 115, BT_Buscar.getPreferredSize().height);
+            BT_Buscar.setBounds(510, 95, 115, 30);
+
+            //---- label2 ----
+            label2.setText("Modificar Clientes:");
+            label2.setFont(new Font("Arial", Font.BOLD, 22));
+            label2.setForeground(new Color(153, 153, 255));
+            contentPane.add(label2);
+            label2.setBounds(290, 40, 195, 26);
+
+            //======== scrollPane1 ========
+            {
+
+                //---- TB_Clientes ----
+                TB_Clientes.setModel(new DefaultTableModel());
+                TB_Clientes.setFont(new Font("Arial", Font.BOLD, 14));
+                TB_Clientes.setForeground(new Color(255, 51, 102));
+                TB_Clientes.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        TB_ClientesMouseClicked(e);
+                    }
+                });
+                scrollPane1.setViewportView(TB_Clientes);
+            }
+            contentPane.add(scrollPane1);
+            scrollPane1.setBounds(15, 195, 350, 378);
 
             {
                 // compute preferred size
@@ -564,11 +524,12 @@
             }
             pack();
             setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+            // JFormDesigner - End of component initialization  //GEN-END:initComponents
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
         // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
+        private JLabel label1;
         private JButton BT_Modificar;
         private JTextField TextField_Direccion;
         private JLabel label10;
@@ -576,23 +537,20 @@
         private JLabel label9;
         private JComboBox<String> CB_Genero;
         private JLabel label8;
-        private JComboBox<String> CB_TipoLicencia;
-        private JLabel label7;
         private JTextField TextField_Fecha;
         private JLabel label11;
         private JTextField TextField_Apellidos;
         private JLabel label6;
         private JTextField TextField_Nombres;
         private JLabel label5;
-        private JLabel label4;
         private JTextField TextField_DPI;
-        private JLabel label1;
-        private JScrollPane scrollPane1;
-        private JTable TB_Conductores;
-        private JLabel label2;
+        private JLabel label4;
         private JLabel label3;
         private JLabel label12;
         private JTextField TextField_Buscar;
         private JButton BT_Buscar;
+        private JLabel label2;
+        private JScrollPane scrollPane1;
+        private JTable TB_Clientes;
         // JFormDesigner - End of variables declaration  //GEN-END:variables
     }

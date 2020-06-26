@@ -27,7 +27,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label3"
-				"text": "Seleccione Un Conductor:"
+				"text": "Seleccione Un Cliente:"
 				"foreground": new java.awt.Color( 0, 102, 255, 255 )
 				"font": new java.awt.Font( "Arial", 1, 18 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {

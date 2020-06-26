@@ -5,7 +5,14 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
-			"defaultCloseOperation": 2
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 50
+				"height": 40
+				"x": 705
+				"y": 565
+			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "BT_Modificar"
 				"text": "Modificar"
@@ -15,8 +22,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 135
 				"height": 30
-				"x": 485
-				"y": 505
+				"x": 490
+				"y": 475
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_Direccion"
@@ -25,8 +32,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 200
 				"height": 29
-				"x": 490
-				"y": 445
+				"x": 495
+				"y": 415
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label10"
@@ -36,8 +43,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 80
 				"height": 19
-				"x": 405
-				"y": 445
+				"x": 410
+				"y": 415
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_Telefono"
@@ -47,8 +54,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 200
 				"height": 29
-				"x": 490
-				"y": 405
+				"x": 495
+				"y": 375
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label9"
@@ -58,8 +65,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 75
 				"height": 19
-				"x": 405
-				"y": 405
+				"x": 410
+				"y": 375
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
 				name: "CB_Genero"
@@ -73,8 +80,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 205
 				"height": 38
-				"x": 490
-				"y": 350
+				"x": 495
+				"y": 320
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label8"
@@ -84,35 +91,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 75
 				"height": 19
-				"x": 405
-				"y": 360
-			} )
-			add( new FormComponent( "javax.swing.JComboBox" ) {
-				name: "CB_TipoLicencia"
-				"model": new javax.swing.DefaultComboBoxModel {
-					selectedItem: "A"
-					addElement( "A" )
-					addElement( "B" )
-					addElement( "C" )
-				}
-				"foreground": new java.awt.Color( 0, 0, 204, 255 )
-				"font": new java.awt.Font( "Arial", 1, 16 )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 150
-				"height": 38
-				"x": 545
-				"y": 300
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label7"
-				"text": "Tipo De Licencia:"
-				"font": #Font0
-				"foreground": #Color0
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 135
-				"height": 19
-				"x": 405
-				"y": 305
+				"x": 410
+				"y": 330
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_Fecha"
@@ -122,8 +102,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 115
 				"height": 29
-				"x": 580
-				"y": 260
+				"x": 585
+				"y": 280
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label11"
@@ -133,8 +113,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 170
 				"height": 19
-				"x": 405
-				"y": 260
+				"x": 410
+				"y": 280
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_Apellidos"
@@ -144,8 +124,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 200
 				"height": 29
-				"x": 495
-				"y": 220
+				"x": 500
+				"y": 240
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label6"
@@ -155,8 +135,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 85
 				"height": 19
-				"x": 405
-				"y": 220
+				"x": 410
+				"y": 240
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_Nombres"
@@ -166,8 +146,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 200
 				"height": 29
-				"x": 495
-				"y": 180
+				"x": 500
+				"y": 200
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label5"
@@ -177,19 +157,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 85
 				"height": 19
-				"x": 405
-				"y": 180
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label4"
-				"text": "DPI:"
-				"font": new java.awt.Font( "Arial", 1, 16 )
-				"foreground": #Color0
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 33
-				"height": 19
-				"x": 405
-				"y": 145
+				"x": 410
+				"y": 200
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_DPI"
@@ -200,64 +169,41 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 200
 				"height": 29
-				"x": 495
-				"y": 145
+				"x": 500
+				"y": 165
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
+				name: "label4"
+				"text": "DPI:"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": #Color0
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 50
-				"height": 40
-				"x": 685
-				"y": 520
-			} )
-			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-				name: "scrollPane1"
-				add( new FormComponent( "javax.swing.JTable" ) {
-					name: "TB_Conductores"
-					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector, new java.util.Vector, new java.util.Vector, new java.util.Vector )
-					"foreground": new java.awt.Color( 255, 51, 102, 255 )
-					"font": new java.awt.Font( "Arial", 1, 14 )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "TB_ConductoresMouseClicked", true ) )
-				} )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 15
-				"y": 175
-				"width": 345
-				"height": 355
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label2"
-				"text": "Modificar Conductores"
-				"font": new java.awt.Font( "Arial", 1, 22 )
-				"foreground": new java.awt.Color( 153, 153, 255, 255 )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 240
-				"height": 26
-				"x": 275
-				"y": 20
+				"width": 33
+				"height": 19
+				"x": 410
+				"y": 165
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label3"
-				"text": "Seleccione Un Conductor:"
+				"text": "Seleccione Un Cliente:"
 				"foreground": &Color1 new java.awt.Color( 0, 102, 255, 255 )
 				"font": &Font1 new java.awt.Font( "Arial", 1, 18 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 235
 				"height": 24
-				"x": 15
-				"y": 135
+				"x": 20
+				"y": 155
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label12"
-				"text": "Buscar Conductor:"
+				"text": "Buscar Cliente:"
 				"foreground": #Color1
 				"font": #Font1
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 170
 				"height": 24
-				"x": 115
-				"y": 75
+				"x": 120
+				"y": 95
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_Buscar"
@@ -265,9 +211,10 @@ new FormModel {
 				"foreground": new java.awt.Color( 0, 0, 204, 255 )
 				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "TextField_BuscarKeyTyped", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 285
-				"y": 75
 				"width": 195
+				"height": 29
+				"x": 290
+				"y": 95
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "BT_Buscar"
@@ -276,13 +223,40 @@ new FormModel {
 				"foreground": new java.awt.Color( 51, 51, 255, 255 )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BT_BuscarActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 505
-				"y": 75
 				"width": 115
+				"height": 30
+				"x": 510
+				"y": 95
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Modificar Clientes:"
+				"font": new java.awt.Font( "Arial", 1, 22 )
+				"foreground": new java.awt.Color( 153, 153, 255, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 195
+				"height": 26
+				"x": 290
+				"y": 40
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "TB_Clientes"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector, new java.util.Vector, new java.util.Vector, new java.util.Vector )
+					"font": new java.awt.Font( "Arial", 1, 14 )
+					"foreground": new java.awt.Color( 255, 51, 102, 255 )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "TB_ClientesMouseClicked", true ) )
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 15
+				"y": 195
+				"width": 350
+				"height": 378
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 765, 645 )
+			"size": new java.awt.Dimension( 805, 645 )
 		} )
 	}
 }

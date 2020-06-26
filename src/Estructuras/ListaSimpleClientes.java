@@ -131,5 +131,32 @@
             return null;
         }
 
+        //Reportes
 
+        //Generar Reportes Lista Simple
+
+        public String GenerarReporteListaSimple(int ContadorAuxiliar)
+        {
+            String Cadena = "";
+
+            Cadena += "subgraph Usuario" + ContadorAuxiliar + "\n { \n    rankdir = \"LR\"; \n    node[shape = rect color = brown1 fontcolor = chartreuse4]; \n";
+
+            ListaSimpleClientesNodo AuxiliarNodo = getListaSimpleUsuariosInicio();
+
+            while(AuxiliarNodo != null)
+            {
+                Cadena += AuxiliarNodo.getNuevoCliente().getDPICliente() + "[label = \"DPI: " + AuxiliarNodo.getNuevoCliente().getDPICliente() + "\n Nombres: " + AuxiliarNodo.getNuevoCliente().getNombresCliente() + "\n Apellidos: " + AuxiliarNodo.getNuevoCliente().getApellidosCliente() + "\n Fecha Nacimiento: " + AuxiliarNodo.getNuevoCliente().getFechaNacimentoCliente() + "\n Genero: " + AuxiliarNodo.getNuevoCliente().getGeneroCliente() + "\n Telefono: " + AuxiliarNodo.getNuevoCliente().getTelefonoCliente() + "\n Direccion: " + AuxiliarNodo.getNuevoCliente().getDireccionCliente() + "\"];\n";
+
+                ListaSimpleClientesNodo Puntero = AuxiliarNodo.getSgte();
+
+                if(Puntero != null)
+                {
+                    Cadena += AuxiliarNodo.getNuevoCliente().getDPICliente() + " -> " + Puntero.getNuevoCliente().getDPICliente() + "; \n";
+                }
+                AuxiliarNodo = AuxiliarNodo.getSgte();
+            }
+
+            Cadena += "} \n";
+            return Cadena;
+        }
     }

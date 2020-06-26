@@ -2,11 +2,6 @@
 //---------------------------------------------Paquetes E Imports-------------------------------------------------------
 
     package Interfaz.Clientes;
-
-    import Interfaz.Conductores.AgregarConductor;
-    import Interfaz.Conductores.BuscarConductor;
-    import Interfaz.Conductores.EliminarConductor;
-    import Interfaz.Conductores.ModificarConductor;
     import Interfaz.Reportes;
     import Variables.VariablesGlobales;
 
@@ -62,7 +57,7 @@
                     @Override
                     public void run()
                     {
-                        new ModificarConductor().setVisible(true);
+                        new ModificarCliente().setVisible(true);
                     }
                 });
             }
@@ -84,14 +79,14 @@
                     @Override
                     public void run()
                     {
-                        new BuscarConductor().setVisible(true);
+                        new BuscarCliente().setVisible(true);
                     }
                 });
             }
             else if(RBT_Mostrar.isSelected())
             {
-                VariablesGlobales.NombreReporte = "ReporteConductoresListaDobleCircular.png";
-                VariablesGlobales.ListaDobleCircularConductores.GenerarReporteListaDobleCircularC();
+                VariablesGlobales.NombreReporte = "ReporteClientesTablaHash.png";
+                VariablesGlobales.TablaHashClientes.GenerarReporteTablaHashClientes();
 
                 if(VariablesGlobales.GenereReporte)
                 {
@@ -158,7 +153,7 @@
             contentPane.setLayout(null);
 
             //---- RBT_Mostrar ----
-            RBT_Mostrar.setText("Mostrar Cliente");
+            RBT_Mostrar.setText("Mostrar Estructura");
             RBT_Mostrar.setForeground(new Color(102, 102, 255));
             RBT_Mostrar.setFont(new Font("Arial", Font.BOLD, 16));
             RBT_Mostrar.addActionListener(e -> RBT_MostrarActionPerformed(e));
