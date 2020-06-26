@@ -40,3 +40,32 @@ Para generar los reportes tenes que hacer los siguietnes pasos:
      Ejemplo:
 
      GenerarReportes Reporte = new GenerarReportes("ReporteConductoresListaDobleCircular", Cadena);
+
+   -------------------------------------------***********************************-------------------------------------------
+   Metodos de busqueda en el arbol B
+
+   Metodo:
+   BuscarVehiculoNodo(String Placa)
+
+   Este metodo es el encargado de retornar el el vehiculo y retornar el modelo vehiculo
+   con este metodo se puede hacer la modificacion desde el form unicamente recuperando el valor en una variable
+
+   ModeloVehiculo Vehiculo=BuscarVehiculoNodo(String Placa);
+   luego Setearle los valores modificados de la siguiente manera
+
+   Vehiculo.setPlaca(NuevaPlaca);
+   etc...
+
+   Metodo 2
+   BuscarVehiculoBoolean(String Placa)
+
+   este retorna un true si existe y un false si no existe el vehiculo unicamente se debe ingresar la placa al metodo
+
+   ***************************************************
+   *Recomendacion En el Blockchain considero que     *
+   *es mejor guardar el modelo vehiculo y no la hoja *
+   *fin del comunicado XD                            *
+   ***************************************************
+
+
+

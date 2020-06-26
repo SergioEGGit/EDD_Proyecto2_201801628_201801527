@@ -26,6 +26,14 @@ public class VehiculosInterfaz extends JFrame {
         VariablesGlobales.ArbolBAutomoviles.ImprimirArbol();
     }
 
+    private void BuscarVehiculo(ActionEvent e) {
+        ModeloVehiculo Vehiculo= VariablesGlobales.ArbolBAutomoviles.BuscarVehiculoNodo(textField1.getText());
+        if(Vehiculo!=null){
+            JOptionPane.showMessageDialog(null,Vehiculo.toString());
+            Vehiculo.setMarca("CAMBIADO DESDE FORM");
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
@@ -44,6 +52,7 @@ public class VehiculosInterfaz extends JFrame {
         textField7 = new JTextField();
         label7 = new JLabel();
         button1 = new JButton();
+        button2 = new JButton();
 
         //======== this ========
         Container contentPane = getContentPane();
@@ -104,6 +113,12 @@ public class VehiculosInterfaz extends JFrame {
         contentPane.add(button1);
         button1.setBounds(140, 315, 175, button1.getPreferredSize().height);
 
+        //---- button2 ----
+        button2.setText("Buscar Vehiculo");
+        button2.addActionListener(e -> BuscarVehiculo(e));
+        contentPane.add(button2);
+        button2.setBounds(new Rectangle(new Point(145, 350), button2.getPreferredSize()));
+
         {
             // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -140,5 +155,6 @@ public class VehiculosInterfaz extends JFrame {
     private JTextField textField7;
     private JLabel label7;
     private JButton button1;
+    private JButton button2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
