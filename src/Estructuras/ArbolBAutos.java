@@ -1,5 +1,6 @@
 package Estructuras;
 
+import Metodos.GenerarReportes;
 import Modelos.ModeloVehiculo;
 import Variables.VariablesGlobales;
 
@@ -276,8 +277,14 @@ public class ArbolBAutos {
         }
     }
 
+    public boolean EliminarVehiculo(String PlacaE){
+        
+        return false;
+    }
+
     public void ImprimirArbol(){
         MetRecursivoImpresion(getInicioArbolBVehiculos());
+        //GenerarReporteArbolB();
     }
 
     void MetRecursivoImpresion(ArbolBAutosNodo Hoja){
@@ -285,6 +292,57 @@ public class ArbolBAutos {
        for(int i=0;i<Hoja.getHijos().size();i++){
            MetRecursivoImpresion(Hoja.getHijos().get(i));
        }
+    }
+
+    String EstructuraArbolB="";
+
+    void EstrucArbolB(ArbolBAutosNodo Hoja){
+        int Contador=0;
+        String NombrePadre="N"+Hoja.getNumeroHoja();
+        EstructuraArbolB+=NombrePadre+" [label = \"";
+        for (ModeloVehiculo Vehiculo:Hoja.getVehiculos()) {
+            EstructuraArbolB+="<f"+Contador+">";
+            EstructuraArbolB+=" |";
+            EstructuraArbolB+="Placa: "+Vehiculo.getPlaca()+" \\n ";
+            EstructuraArbolB+="Marca: "+Vehiculo.getMarca()+" \\n ";
+            EstructuraArbolB+="Modelo: "+Vehiculo.getModelo()+" \\n ";
+            EstructuraArbolB+="Año: "+Vehiculo.getAnio()+" \\n ";
+            EstructuraArbolB+="Color: "+Vehiculo.getColor()+" \\n ";
+            EstructuraArbolB+="Precio: "+Vehiculo.getPrecio()+" \\n ";
+            if(Vehiculo.isTipoTransmicion()==true){
+                EstructuraArbolB+="Trasmicion: Mecanica \\n ";
+            }else{
+                EstructuraArbolB+="Trasmicion: Automatica \\n ";
+            }
+            EstructuraArbolB+=" |";
+            Contador++;
+        }
+        if(Contador>0){
+            EstructuraArbolB+="<f"+Contador+">";
+        }
+        EstructuraArbolB+="\"]\n";
+        Contador=0;
+        String NombreHijo="";
+        for (ArbolBAutosNodo Hijos: Hoja.getHijos()) {
+            EstrucArbolB(Hijos);
+            NombreHijo="N"+Hijos.getNumeroHoja();
+            EstructuraArbolB+="\""+NombrePadre+"\": f"+Contador+" -> "+NombreHijo+";\n";
+            Contador++;
+        }
+    }
+
+    public void GenerarReporteArbolB(){
+        ArbolBAutosNodo Aux=getInicioArbolBVehiculos();
+        String Cadena="";
+        Cadena+="digraph g {\n";
+        Cadena+="node [shape = record,height=.1];\n";
+        if(Aux!=null){
+            EstructuraArbolB="";
+            EstrucArbolB(Aux);
+            Cadena+=EstructuraArbolB;
+        }
+        Cadena+="}\n";
+        GenerarReportes Reporte = new GenerarReportes("ReporteArbolBVehiculos", Cadena);
     }
 
 }

@@ -61,3 +61,11 @@ Para generar los reportes tenes que hacer los siguietnes pasos:
 
    este retorna un true si existe y un false si no existe el vehiculo unicamente se debe ingresar la placa al metodo
 
+   ***************************************************
+   *Recomendacion En el Blockchain considero que     *
+   *es mejor guardar el modelo vehiculo y no la hoja *
+   *fin del comunicado XD                            *
+   ***************************************************
+
+
+

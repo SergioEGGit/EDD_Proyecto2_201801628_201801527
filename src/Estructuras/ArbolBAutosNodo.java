@@ -10,11 +10,14 @@ public class ArbolBAutosNodo {
     private int Orden;
     private Stack<ModeloVehiculo> Vehiculos;
     private Stack<ArbolBAutosNodo> Hijos;
+    private int NumeroHoja;
 
     public ArbolBAutosNodo() {
         this.setVehiculos(new Stack<ModeloVehiculo>());
         this.setHijos(new Stack<ArbolBAutosNodo>());
         this.setOrden(VariablesGlobales.Orden_ArbolB);
+        this.NumeroHoja=VariablesGlobales.NumeroHoja;
+        VariablesGlobales.NumeroHoja++;
     }
 
     // Set's & Get's
@@ -41,5 +44,13 @@ public class ArbolBAutosNodo {
 
     public void setHijos(Stack<ArbolBAutosNodo> hijos) {
         Hijos = hijos;
+    }
+
+    public int getNumeroHoja() {
+        return NumeroHoja;
+    }
+
+    public void setNumeroHoja(int numeroHoja) {
+        NumeroHoja = numeroHoja;
     }
 }

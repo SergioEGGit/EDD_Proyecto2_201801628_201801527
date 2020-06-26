@@ -8,7 +8,7 @@ public class ModeloVehiculo {
     private int Anio;
     private String Color;
     private double Precio;
-    private boolean TipoTransmicion;
+    private boolean TipoTransmicion;//true Mecanico false Automatico
 
 
     //Constructor de Modelo Vehiculo

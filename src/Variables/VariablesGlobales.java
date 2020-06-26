@@ -22,6 +22,7 @@
         public static int ContadorCargaMasiva = 0;
         public static int SizeTabla = 37;
         public static int Orden_ArbolB=5;
+        public static int NumeroHoja=0;
         public static ListaDobleCircularConductores ListaDobleCircularConductores = new ListaDobleCircularConductores();
         public static ListaAdyacencia ListaAdyacenciaRutas = new ListaAdyacencia();
         public static TablaHashClientes TablaHashClientes = new TablaHashClientes(SizeTabla);
