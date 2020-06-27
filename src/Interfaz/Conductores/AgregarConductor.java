@@ -177,7 +177,7 @@
 
             //======== this ========
             setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            setTitle("Registro Usuario");
+            setTitle("Registro Conductor");
             Container contentPane = getContentPane();
             contentPane.setLayout(null);
             contentPane.add(label1);
@@ -188,35 +188,35 @@
             label2.setFont(new Font("Arial", Font.BOLD, 22));
             label2.setForeground(new Color(153, 153, 255));
             contentPane.add(label2);
-            label2.setBounds(new Rectangle(new Point(245, 25), label2.getPreferredSize()));
+            label2.setBounds(new Rectangle(new Point(246, 29), label2.getPreferredSize()));
 
             //---- label3 ----
             label3.setText("Ingrese Los Siguientes Datos:");
             label3.setForeground(new Color(0, 102, 255));
             label3.setFont(new Font("Arial", Font.BOLD, 18));
             contentPane.add(label3);
-            label3.setBounds(215, 65, 270, 24);
+            label3.setBounds(216, 69, 270, 24);
 
             //---- label4 ----
             label4.setText("DPI:");
             label4.setFont(new Font("Arial", Font.BOLD, 16));
             label4.setForeground(new Color(102, 102, 255));
             contentPane.add(label4);
-            label4.setBounds(new Rectangle(new Point(195, 120), label4.getPreferredSize()));
+            label4.setBounds(new Rectangle(new Point(196, 124), label4.getPreferredSize()));
 
             //---- label5 ----
             label5.setText("Nombres:");
             label5.setFont(new Font("Arial", Font.BOLD, 16));
             label5.setForeground(new Color(102, 102, 255));
             contentPane.add(label5);
-            label5.setBounds(195, 155, 85, 19);
+            label5.setBounds(196, 159, 85, 19);
 
             //---- label6 ----
             label6.setText("Apellidos:");
             label6.setFont(new Font("Arial", Font.BOLD, 16));
             label6.setForeground(new Color(102, 102, 255));
             contentPane.add(label6);
-            label6.setBounds(195, 195, 85, 19);
+            label6.setBounds(196, 199, 85, 19);
 
             //---- label7 ----
             label7.setText("Tipo De Licencia:");
@@ -313,7 +313,7 @@
             label11.setFont(new Font("Arial", Font.BOLD, 16));
             label11.setForeground(new Color(102, 102, 255));
             contentPane.add(label11);
-            label11.setBounds(195, 235, 170, 19);
+            label11.setBounds(196, 239, 170, 19);
 
             //---- TextField_Fecha ----
             TextField_Fecha.setText("DD/MM/YYYY");

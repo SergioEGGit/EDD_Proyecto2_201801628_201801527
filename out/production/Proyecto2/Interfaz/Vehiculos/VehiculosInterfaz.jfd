@@ -5,158 +5,100 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField1"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 100
-				"y": 30
-				"width": 245
-			} )
+			"title": "Vehiculos"
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
-				"text": "Placa"
+				"text": "Menú Vehiculos"
+				"font": new java.awt.Font( "Arial", 1, 22 )
+				"foreground": new java.awt.Color( 153, 153, 255, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 45
-				"y": 35
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField2"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 245
-				"height": 30
-				"x": 100
-				"y": 65
+				"width": 185
+				"height": 26
+				"x": 265
+				"y": 75
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label2"
-				"text": "Marca"
+				"text": "Seleccione Una Opción:"
+				"foreground": new java.awt.Color( 0, 102, 255, 255 )
+				"font": new java.awt.Font( "Arial", 1, 20 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 45
-				"height": 16
-				"x": 45
-				"y": 70
+				"width": 226
+				"height": 24
+				"x": 235
+				"y": 125
 			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField3"
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "RBT_Agregar"
+				"text": "Agregar Vehiculo"
+				"foreground": new java.awt.Color( 102, 102, 255, 255 )
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_AgregarActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 245
-				"height": 30
-				"x": 100
-				"y": 105
+				"width": 179
+				"height": 28
+				"x": 255
+				"y": 175
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "RBT_Modificar"
+				"text": "Modificar Vehiculo"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 102, 102, 255, 255 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_ModificarActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 188
+				"height": 28
+				"x": 255
+				"y": 220
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "RBT_Eliminar"
+				"text": "Eliminar Vehiculo"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 102, 102, 255, 255 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_EliminarActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 180
+				"height": 28
+				"x": 255
+				"y": 260
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "RBT_Buscar"
+				"text": "Buscar Vehiculo"
+				"foreground": new java.awt.Color( 102, 102, 255, 255 )
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_BuscarActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 173
+				"height": 28
+				"x": 255
+				"y": 300
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "RBT_Mostrar"
+				"text": "Mostrar Estructura"
+				"foreground": new java.awt.Color( 102, 102, 255, 255 )
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_MostrarActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 174
+				"height": 28
+				"x": 255
+				"y": 340
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label3"
-				"text": "Modelo"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 50
-				"height": 15
-				"x": 45
-				"y": 110
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField4"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 245
+				"width": 35
 				"height": 30
-				"x": 100
-				"y": 145
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label4"
-				"text": "Año"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 28
-				"height": 16
-				"x": 45
-				"y": 150
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField5"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 245
-				"height": 30
-				"x": 100
-				"y": 185
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label5"
-				"text": "Color"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 45
-				"height": 16
-				"x": 45
-				"y": 190
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField6"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 245
-				"height": 30
-				"x": 100
-				"y": 225
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label6"
-				"text": "Precio"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 50
-				"height": 16
-				"x": 45
-				"y": 230
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField7"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 245
-				"height": 30
-				"x": 100
-				"y": 260
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label7"
-				"text": "Transmicion"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 50
-				"height": 16
-				"x": 40
-				"y": 265
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button1"
-				"text": "Agregar"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "AgregarVehiculo", true ) )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 140
-				"y": 315
-				"width": 175
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button2"
-				"text": "Buscar Vehiculo"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BuscarVehiculo", true ) )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 145
-				"y": 350
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button3"
-				"text": "Estructura"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "MostarEstructura", true ) )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 150
-				"y": 390
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button4"
-				"text": "Eliminar"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Eliminar", true ) )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 150
-				"y": 425
+				"x": 655
+				"y": 470
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 415, 495 )
+			"size": new java.awt.Dimension( 730, 555 )
 		} )
 	}
 }

@@ -532,13 +532,13 @@
                 {
                     NuevoConductor = new ModeloConductores();
                     NuevoConductor.setDPIConductor(Datos[0].trim());
-                    NuevoConductor.setNombresConductor(Datos[1]);
-                    NuevoConductor.setApellidosConductor(Datos[2]);
+                    NuevoConductor.setNombresConductor(Datos[1].trim());
+                    NuevoConductor.setApellidosConductor(Datos[2].trim());
                     NuevoConductor.setFechaNacimientoConductor(Datos[5].trim());
                     NuevoConductor.setTipoLicenciaConductor(Datos[3].trim());
                     NuevoConductor.setGeneroConductor(Datos[4].trim());
                     NuevoConductor.setTelefonoConductor(Integer.parseInt(Datos[6].trim()));
-                    NuevoConductor.setDireccionConductor(Datos[7]);
+                    NuevoConductor.setDireccionConductor(Datos[7].trim());
 
                     InsertarConductorFinalListaDobleCircularC(NuevoConductor);
                 }

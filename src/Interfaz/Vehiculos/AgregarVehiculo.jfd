@@ -1,0 +1,207 @@
+JFDML JFormDesigner: "7.0.2.4.305" Java: "11.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "this"
+			"title": "Registro Vehiculo"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label9"
+				"text": "Tipo Transmisión:"
+				"font": &Font0 new java.awt.Font( "Arial", 1, 16 )
+				"foreground": &Color0 new java.awt.Color( 102, 102, 255, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 150
+				"height": 19
+				"x": 180
+				"y": 400
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label8"
+				"text": "Precio:"
+				"font": #Font0
+				"foreground": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 75
+				"height": 19
+				"x": 180
+				"y": 345
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label7"
+				"text": "Color:"
+				"font": #Font0
+				"foreground": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 80
+				"height": 19
+				"x": 180
+				"y": 300
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label11"
+				"text": "Año:"
+				"font": #Font0
+				"foreground": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 80
+				"height": 19
+				"x": 180
+				"y": 255
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "Modelo:"
+				"font": #Font0
+				"foreground": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 80
+				"height": 19
+				"x": 180
+				"y": 210
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Marca:"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 80
+				"height": 19
+				"x": 180
+				"y": 170
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "Placa:"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 80
+				"height": 19
+				"x": 180
+				"y": 130
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Ingrese Los Siguientes Datos:"
+				"foreground": new java.awt.Color( 0, 102, 255, 255 )
+				"font": new java.awt.Font( "Arial", 1, 18 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 270
+				"height": 24
+				"x": 200
+				"y": 75
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Registro Conductor"
+				"font": new java.awt.Font( "Arial", 1, 22 )
+				"foreground": new java.awt.Color( 153, 153, 255, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 200
+				"height": 26
+				"x": 230
+				"y": 35
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "BT_Registrar"
+				"text": "Registrar"
+				"foreground": new java.awt.Color( 51, 51, 255, 255 )
+				"font": new java.awt.Font( "Arial", 1, 18 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BT_RegistrarActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 145
+				"height": 30
+				"x": 260
+				"y": 450
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 50
+				"height": 40
+				"x": 565
+				"y": 465
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_Placa"
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				"font": new java.awt.Font( "Arial", 1, 16 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 266
+				"y": 130
+				"width": 184
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_Marca"
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "TextField_MarcaKeyTyped", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 266
+				"y": 170
+				"width": 184
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_Modelo"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "TextField_ModeloKeyTyped", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 266
+				"y": 210
+				"width": 184
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_Anio"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "TextField_AnioKeyTyped", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 266
+				"y": 255
+				"width": 184
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_Color"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "TextField_ColorKeyTyped", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 266
+				"y": 300
+				"width": 184
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_Precio"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "TextField_PrecioKeyTyped", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 266
+				"y": 345
+				"width": 184
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "CB_TipoTrans"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				"model": new javax.swing.DefaultComboBoxModel {
+					selectedItem: "Automática"
+					addElement( "Automática" )
+					addElement( "Mecánica" )
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 330
+				"y": 390
+				"width": 120
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 6, 0 )
+			"size": new java.awt.Dimension( 650, 570 )
+		} )
+	}
+}
+

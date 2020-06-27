@@ -273,7 +273,7 @@
             TextField_Apellidos.setText(ClienteModificar.getApellidosCliente());
             TextField_Fecha.setText(ClienteModificar.getFechaNacimentoCliente());
 
-            if(ClienteModificar.getGeneroCliente().equals("Masculino"))
+            if(ClienteModificar.getGeneroCliente().equals("Masculino") || ClienteModificar.getGeneroCliente().equals("Másculino"))
             {
                 CB_Genero.setSelectedIndex(0);
             }
@@ -315,6 +315,7 @@
             TB_Clientes = new JTable();
 
             //======== this ========
+            setTitle("Modificar Cliente");
             Container contentPane = getContentPane();
             contentPane.setLayout(null);
             contentPane.add(label1);

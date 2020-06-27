@@ -158,6 +158,7 @@
 
             //======== this ========
             setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            setTitle("Buscar Conductor");
             Container contentPane = getContentPane();
             contentPane.setLayout(null);
 

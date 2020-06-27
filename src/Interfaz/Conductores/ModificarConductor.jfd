@@ -6,6 +6,7 @@ new FormModel {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
 			"defaultCloseOperation": 2
+			"title": "Modificar Conductor"
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "BT_Modificar"
 				"text": "Modificar"

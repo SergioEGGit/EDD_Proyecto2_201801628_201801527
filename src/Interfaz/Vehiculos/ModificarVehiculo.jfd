@@ -1,0 +1,260 @@
+JFDML JFormDesigner: "7.0.2.4.305" Java: "11.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "this"
+			"title": "Modificar Vehiculo"
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "CB_TipoTrans"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				"model": new javax.swing.DefaultComboBoxModel {
+					selectedItem: "Automática"
+					addElement( "Automática" )
+					addElement( "Mecánica" )
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 120
+				"height": 38
+				"x": 595
+				"y": 395
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label9"
+				"text": "Tipo Transmisión:"
+				"font": &Font0 new java.awt.Font( "Arial", 1, 16 )
+				"foreground": &Color0 new java.awt.Color( 102, 102, 255, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 150
+				"height": 19
+				"x": 445
+				"y": 405
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_Precio"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "TextField_PrecioKeyTyped", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 184
+				"height": 29
+				"x": 530
+				"y": 350
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label8"
+				"text": "Precio:"
+				"font": #Font0
+				"foreground": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 75
+				"height": 19
+				"x": 445
+				"y": 350
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_Color"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "TextField_ColorKeyTyped", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 184
+				"height": 29
+				"x": 530
+				"y": 305
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label7"
+				"text": "Color:"
+				"font": #Font0
+				"foreground": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 80
+				"height": 19
+				"x": 445
+				"y": 305
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_Anio"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "TextField_AnioKeyTyped", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 184
+				"height": 29
+				"x": 530
+				"y": 260
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label11"
+				"text": "Año:"
+				"font": #Font0
+				"foreground": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 80
+				"height": 19
+				"x": 445
+				"y": 260
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_Modelo"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "TextField_ModeloKeyTyped", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 184
+				"height": 29
+				"x": 530
+				"y": 215
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "Modelo:"
+				"font": #Font0
+				"foreground": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 80
+				"height": 19
+				"x": 445
+				"y": 215
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_Marca"
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "TextField_MarcaKeyTyped", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 184
+				"height": 29
+				"x": 530
+				"y": 175
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Marca:"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 80
+				"height": 19
+				"x": 445
+				"y": 175
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_Placa"
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"editable": false
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 184
+				"height": 29
+				"x": 530
+				"y": 135
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "Placa:"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 80
+				"height": 19
+				"x": 445
+				"y": 135
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 50
+				"height": 50
+				"x": 720
+				"y": 545
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "BT_Buscar"
+				"text": "Buscar"
+				"font": new java.awt.Font( "Arial", 1, 18 )
+				"foreground": new java.awt.Color( 51, 51, 255, 255 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BT_BuscarActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 115
+				"height": 30
+				"x": 535
+				"y": 80
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_Buscar"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 195
+				"height": 29
+				"x": 315
+				"y": 80
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label12"
+				"text": "Buscar Vehiculo:"
+				"foreground": &Color1 new java.awt.Color( 0, 102, 255, 255 )
+				"font": &Font1 new java.awt.Font( "Arial", 1, 18 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 170
+				"height": 24
+				"x": 145
+				"y": 80
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Modificar Vehiculo"
+				"font": new java.awt.Font( "Arial", 1, 22 )
+				"foreground": new java.awt.Color( 153, 153, 255, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 240
+				"height": 26
+				"x": 285
+				"y": 25
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label10"
+				"text": "Seleccione Un Vehiculo:"
+				"foreground": #Color1
+				"font": #Font1
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 235
+				"height": 24
+				"x": 20
+				"y": 140
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "TB_Vehiculos"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector, new java.util.Vector, new java.util.Vector, new java.util.Vector )
+					"foreground": new java.awt.Color( 255, 51, 102, 255 )
+					"font": new java.awt.Font( "Arial", 1, 14 )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "TB_VehiculosMouseClicked", true ) )
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 15
+				"y": 180
+				"width": 390
+				"height": 400
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "BT_Modidficar"
+				"text": "Modificar"
+				"foreground": new java.awt.Color( 51, 51, 255, 255 )
+				"font": new java.awt.Font( "Arial", 1, 18 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BT_ModidficarActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 550
+				"y": 465
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 765, 645 )
+		} )
+	}
+}

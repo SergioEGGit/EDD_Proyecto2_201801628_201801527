@@ -169,6 +169,7 @@
             label1 = new JLabel();
 
             //======== this ========
+            setTitle("Registro Clientes");
             Container contentPane = getContentPane();
             contentPane.setLayout(null);
 

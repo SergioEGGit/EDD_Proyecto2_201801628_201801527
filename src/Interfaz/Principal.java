@@ -6,14 +6,11 @@
     import java.awt.event.*;
     import java.awt.*;
     import javax.swing.*;
-
-    import Estructuras.ArbolBAutos;
     import Interfaz.Clientes.ClientesInterfaz;
     import Interfaz.Conductores.*;
     import Interfaz.Rutas.Rutas;
     import Interfaz.Vehiculos.VehiculosInterfaz;
-    import Metodos.CargaMasiva;
-    import Modelos.ModeloVehiculo;
+    import Interfaz.Viajes.ViajesInterfaz;
     import Variables.VariablesGlobales;
 
 //-----------------------------------------------------Author-----------------------------------------------------------
@@ -74,11 +71,26 @@
             }
             else if(RBT_Rutas.isSelected())
             {
-                new Rutas().setVisible(true);
+                java.awt.EventQueue.invokeLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        new Rutas().setVisible(true);
+                    }
+                });
+
             }
             else if(RBT_Viajes.isSelected())
             {
-
+                java.awt.EventQueue.invokeLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        new ViajesInterfaz().setVisible(true);
+                    }
+                });
             }
         }
 

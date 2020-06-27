@@ -6,7 +6,7 @@ new FormModel {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
 			"defaultCloseOperation": 2
-			"title": "Registro Usuario"
+			"title": "Registro Conductor"
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -21,8 +21,8 @@ new FormModel {
 				"font": new java.awt.Font( "Arial", 1, 22 )
 				"foreground": new java.awt.Color( 153, 153, 255, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 245
-				"y": 25
+				"x": 246
+				"y": 29
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label3"
@@ -32,8 +32,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 270
 				"height": 24
-				"x": 215
-				"y": 65
+				"x": 216
+				"y": 69
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label4"
@@ -41,8 +41,8 @@ new FormModel {
 				"font": new java.awt.Font( "Arial", 1, 16 )
 				"foreground": &Color0 new java.awt.Color( 102, 102, 255, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 195
-				"y": 120
+				"x": 196
+				"y": 124
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label5"
@@ -52,8 +52,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 85
 				"height": 19
-				"x": 195
-				"y": 155
+				"x": 196
+				"y": 159
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label6"
@@ -63,8 +63,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 85
 				"height": 19
-				"x": 195
-				"y": 195
+				"x": 196
+				"y": 199
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label7"
@@ -177,8 +177,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 170
 				"height": 19
-				"x": 195
-				"y": 235
+				"x": 196
+				"y": 239
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_Fecha"

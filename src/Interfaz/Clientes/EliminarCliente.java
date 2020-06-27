@@ -155,6 +155,7 @@
             TB_Clientes = new JTable();
 
             //======== this ========
+            setTitle("Eliminar Cliente");
             Container contentPane = getContentPane();
             contentPane.setLayout(null);
             contentPane.add(label2);

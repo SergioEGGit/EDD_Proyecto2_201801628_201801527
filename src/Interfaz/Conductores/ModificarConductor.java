@@ -292,7 +292,7 @@
                 CB_TipoLicencia.setSelectedIndex(2);
             }
 
-            if(ConductorModificar.getGeneroConductor().equals("Masculino"))
+            if(ConductorModificar.getGeneroConductor().equals("Masculino") || ConductorModificar.getGeneroConductor().equals("Másculino"))
             {
                 CB_Genero.setSelectedIndex(0);
             }
@@ -337,6 +337,7 @@
 
             //======== this ========
             setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            setTitle("Modificar Conductor");
             Container contentPane = getContentPane();
             contentPane.setLayout(null);
 

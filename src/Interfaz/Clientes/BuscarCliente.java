@@ -164,6 +164,7 @@
             TB_Clientes = new JTable();
 
             //======== this ========
+            setTitle("Buscar Clientes");
             Container contentPane = getContentPane();
             contentPane.setLayout(null);
             contentPane.add(label2);

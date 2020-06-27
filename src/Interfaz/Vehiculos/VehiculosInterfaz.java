@@ -1,153 +1,213 @@
-/*
- * Created by JFormDesigner on Wed Jun 24 18:56:06 CST 2020
- */
 
-package Interfaz.Vehiculos;
+//--------------------------------------------Paquetes E Imports--------------------------------------------------------
 
-import Interfaz.Reportes;
-import Modelos.ModeloVehiculo;
-import Variables.VariablesGlobales;
+    package Interfaz.Vehiculos;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+    import Interfaz.Clientes.BuscarCliente;
+    import Interfaz.Reportes;
+    import Variables.VariablesGlobales;
+    import java.awt.*;
+    import java.awt.event.*;
+    import javax.swing.*;
 
-/**
- * @author unknown
- */
-public class VehiculosInterfaz extends JFrame {
-    public VehiculosInterfaz() {
-        initComponents();
-    }
+//---------------------------------------------------Author-------------------------------------------------------------
 
-    private void AgregarVehiculo(ActionEvent e) {
-        ModeloVehiculo Nuevo=new ModeloVehiculo(textField1.getText(),textField2.getText(),textField3.getText(),
-                Integer.parseInt(textField4.getText()),textField5.getText(),Double.parseDouble(textField6.getText()),true);
-        VariablesGlobales.ArbolBAutomoviles.AgregarVehiculo(Nuevo);
-        VariablesGlobales.ArbolBAutomoviles.ImprimirArbol();
-    }
+    /**
+     * @author Sergio Echigoyen
+     */
 
-    private void BuscarVehiculo(ActionEvent e) {
-        ModeloVehiculo Vehiculo= VariablesGlobales.ArbolBAutomoviles.BuscarVehiculoNodo(textField1.getText());
-        if(Vehiculo!=null){
-            JOptionPane.showMessageDialog(null,Vehiculo.toString());
-            Vehiculo.setMarca("CAMBIADO DESDE FORM");
+//----------------------------------------------------Principal---------------------------------------------------------
+
+    public class VehiculosInterfaz extends JFrame
+    {
+        //--------------------------------------------Constructor-------------------------------------------------------
+
+        public VehiculosInterfaz()
+        {
+            initComponents();
+            ButtonGroup MenuConductor = new ButtonGroup();
+            MenuConductor.add(RBT_Agregar);
+            MenuConductor.add(RBT_Modificar);
+            MenuConductor.add(RBT_Eliminar);
+            MenuConductor.add(RBT_Buscar);
+            MenuConductor.add(RBT_Mostrar);
+            RBT_Agregar.setSelected(true);
         }
-    }
 
-    private void MostarEstructura(ActionEvent e) {
-        VariablesGlobales.NombreReporte="ReporteArbolBVehiculos.png";
-        VariablesGlobales.ArbolBAutomoviles.GenerarReporteArbolB();
-        if(VariablesGlobales.GenereReporte){
-            JOptionPane.showMessageDialog(null, "Reporte Generado Con Exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
-            new Reportes().setVisible(true);
-        }else{
-            JOptionPane.showMessageDialog(null, "El Reporte No Se Pudo Generar Con Exito \nVerifique Que Graphviz Se Encuentre Configurado De Manera Correcta", "Error!", JOptionPane.ERROR_MESSAGE);
+        //-----------------------------------------------Métodos--------------------------------------------------------
+
+        //Validar Opcion RadioButton
+
+        public void ValidarRadioButton()
+        {
+            if(RBT_Agregar.isSelected())
+            {
+                java.awt.EventQueue.invokeLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        new AgregarVehiculo().setVisible(true);
+                    }
+                });
+            }
+            else if(RBT_Modificar.isSelected())
+            {
+                java.awt.EventQueue.invokeLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        new ModificarVehiculo().setVisible(true);
+                    }
+                });
+            }
+            else if(RBT_Eliminar.isSelected())
+            {
+                java.awt.EventQueue.invokeLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        new EliminarVehiculo().setVisible(true);
+                    }
+                });
+            }
+            else if(RBT_Buscar.isSelected())
+            {
+                java.awt.EventQueue.invokeLater(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        new BuscarVehiculo().setVisible(true);
+                    }
+                });
+            }
+            else if(RBT_Mostrar.isSelected())
+            {
+                VariablesGlobales.NombreReporte = "ReporteArbolBVehiculos.png";
+                VariablesGlobales.ArbolBAutomoviles.GenerarReporteArbolB();
+
+                if(VariablesGlobales.GenereReporte)
+                {
+                    JOptionPane.showMessageDialog(null, "Reporte Generado Con Exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+                        @Override
+                        public void run()
+                        {
+                            new Reportes().setVisible(true);
+                        }
+                    });
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "El Reporte No Se Pudo Generar Con Exito \nVerifique Que Graphviz Se Encuentre Configurado De Manera Correcta", "Error!", JOptionPane.ERROR_MESSAGE);
+                }
+            }
         }
-    }
 
-    private void Eliminar(ActionEvent e) {
-        VariablesGlobales.ArbolBAutomoviles.EliminarVehiculo(textField1.getText());
-    }
+        //-------------------------------------------------Events-------------------------------------------------------
 
-    private void initComponents() {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
-        textField1 = new JTextField();
+        private void RBT_AgregarActionPerformed(ActionEvent e)
+        {
+            ValidarRadioButton();
+        }
+
+        private void RBT_ModificarActionPerformed(ActionEvent e)
+        {
+            ValidarRadioButton();
+        }
+
+        private void RBT_EliminarActionPerformed(ActionEvent e)
+        {
+            ValidarRadioButton();
+        }
+
+        private void RBT_BuscarActionPerformed(ActionEvent e)
+        {
+            ValidarRadioButton();
+        }
+
+        private void RBT_MostrarActionPerformed(ActionEvent e)
+        {
+            ValidarRadioButton();
+        }
+
+        private void initComponents()
+        {
+            // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+        // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
         label1 = new JLabel();
-        textField2 = new JTextField();
         label2 = new JLabel();
-        textField3 = new JTextField();
+        RBT_Agregar = new JRadioButton();
+        RBT_Modificar = new JRadioButton();
+        RBT_Eliminar = new JRadioButton();
+        RBT_Buscar = new JRadioButton();
+        RBT_Mostrar = new JRadioButton();
         label3 = new JLabel();
-        textField4 = new JTextField();
-        label4 = new JLabel();
-        textField5 = new JTextField();
-        label5 = new JLabel();
-        textField6 = new JTextField();
-        label6 = new JLabel();
-        textField7 = new JTextField();
-        label7 = new JLabel();
-        button1 = new JButton();
-        button2 = new JButton();
-        button3 = new JButton();
-        button4 = new JButton();
 
         //======== this ========
+        setTitle("Vehiculos");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
-        contentPane.add(textField1);
-        textField1.setBounds(100, 30, 245, textField1.getPreferredSize().height);
 
         //---- label1 ----
-        label1.setText("Placa");
+        label1.setText("Men\u00fa Vehiculos");
+        label1.setFont(new Font("Arial", Font.BOLD, 22));
+        label1.setForeground(new Color(153, 153, 255));
         contentPane.add(label1);
-        label1.setBounds(new Rectangle(new Point(45, 35), label1.getPreferredSize()));
-        contentPane.add(textField2);
-        textField2.setBounds(100, 65, 245, 30);
+        label1.setBounds(265, 75, 185, 26);
 
         //---- label2 ----
-        label2.setText("Marca");
+        label2.setText("Seleccione Una Opci\u00f3n:");
+        label2.setForeground(new Color(0, 102, 255));
+        label2.setFont(new Font("Arial", Font.BOLD, 20));
         contentPane.add(label2);
-        label2.setBounds(45, 70, 45, 16);
-        contentPane.add(textField3);
-        textField3.setBounds(100, 105, 245, 30);
+        label2.setBounds(235, 125, 226, 24);
 
-        //---- label3 ----
-        label3.setText("Modelo");
+        //---- RBT_Agregar ----
+        RBT_Agregar.setText("Agregar Vehiculo");
+        RBT_Agregar.setForeground(new Color(102, 102, 255));
+        RBT_Agregar.setFont(new Font("Arial", Font.BOLD, 16));
+        RBT_Agregar.addActionListener(e -> RBT_AgregarActionPerformed(e));
+        contentPane.add(RBT_Agregar);
+        RBT_Agregar.setBounds(255, 175, 179, 28);
+
+        //---- RBT_Modificar ----
+        RBT_Modificar.setText("Modificar Vehiculo");
+        RBT_Modificar.setFont(new Font("Arial", Font.BOLD, 16));
+        RBT_Modificar.setForeground(new Color(102, 102, 255));
+        RBT_Modificar.addActionListener(e -> RBT_ModificarActionPerformed(e));
+        contentPane.add(RBT_Modificar);
+        RBT_Modificar.setBounds(255, 220, 188, 28);
+
+        //---- RBT_Eliminar ----
+        RBT_Eliminar.setText("Eliminar Vehiculo");
+        RBT_Eliminar.setFont(new Font("Arial", Font.BOLD, 16));
+        RBT_Eliminar.setForeground(new Color(102, 102, 255));
+        RBT_Eliminar.addActionListener(e -> RBT_EliminarActionPerformed(e));
+        contentPane.add(RBT_Eliminar);
+        RBT_Eliminar.setBounds(255, 260, 180, 28);
+
+        //---- RBT_Buscar ----
+        RBT_Buscar.setText("Buscar Vehiculo");
+        RBT_Buscar.setForeground(new Color(102, 102, 255));
+        RBT_Buscar.setFont(new Font("Arial", Font.BOLD, 16));
+        RBT_Buscar.addActionListener(e -> RBT_BuscarActionPerformed(e));
+        contentPane.add(RBT_Buscar);
+        RBT_Buscar.setBounds(255, 300, 173, 28);
+
+        //---- RBT_Mostrar ----
+        RBT_Mostrar.setText("Mostrar Estructura");
+        RBT_Mostrar.setForeground(new Color(102, 102, 255));
+        RBT_Mostrar.setFont(new Font("Arial", Font.BOLD, 16));
+        RBT_Mostrar.addActionListener(e -> RBT_MostrarActionPerformed(e));
+        contentPane.add(RBT_Mostrar);
+        RBT_Mostrar.setBounds(255, 340, 174, 28);
         contentPane.add(label3);
-        label3.setBounds(45, 110, 50, 15);
-        contentPane.add(textField4);
-        textField4.setBounds(100, 145, 245, 30);
-
-        //---- label4 ----
-        label4.setText("A\u00f1o");
-        contentPane.add(label4);
-        label4.setBounds(45, 150, 28, 16);
-        contentPane.add(textField5);
-        textField5.setBounds(100, 185, 245, 30);
-
-        //---- label5 ----
-        label5.setText("Color");
-        contentPane.add(label5);
-        label5.setBounds(45, 190, 45, 16);
-        contentPane.add(textField6);
-        textField6.setBounds(100, 225, 245, 30);
-
-        //---- label6 ----
-        label6.setText("Precio");
-        contentPane.add(label6);
-        label6.setBounds(45, 230, 50, 16);
-        contentPane.add(textField7);
-        textField7.setBounds(100, 260, 245, 30);
-
-        //---- label7 ----
-        label7.setText("Transmicion");
-        contentPane.add(label7);
-        label7.setBounds(40, 265, 50, 16);
-
-        //---- button1 ----
-        button1.setText("Agregar");
-        button1.addActionListener(e -> AgregarVehiculo(e));
-        contentPane.add(button1);
-        button1.setBounds(140, 315, 175, button1.getPreferredSize().height);
-
-        //---- button2 ----
-        button2.setText("Buscar Vehiculo");
-        button2.addActionListener(e -> BuscarVehiculo(e));
-        contentPane.add(button2);
-        button2.setBounds(new Rectangle(new Point(145, 350), button2.getPreferredSize()));
-
-        //---- button3 ----
-        button3.setText("Estructura");
-        button3.addActionListener(e -> MostarEstructura(e));
-        contentPane.add(button3);
-        button3.setBounds(new Rectangle(new Point(150, 390), button3.getPreferredSize()));
-
-        //---- button4 ----
-        button4.setText("Eliminar");
-        button4.addActionListener(e -> Eliminar(e));
-        contentPane.add(button4);
-        button4.setBounds(new Rectangle(new Point(150, 425), button4.getPreferredSize()));
+        label3.setBounds(655, 470, 35, 30);
 
         {
             // compute preferred size
@@ -166,27 +226,17 @@ public class VehiculosInterfaz extends JFrame {
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-    }
+        }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
-    private JTextField textField1;
+        // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
     private JLabel label1;
-    private JTextField textField2;
     private JLabel label2;
-    private JTextField textField3;
+    private JRadioButton RBT_Agregar;
+    private JRadioButton RBT_Modificar;
+    private JRadioButton RBT_Eliminar;
+    private JRadioButton RBT_Buscar;
+    private JRadioButton RBT_Mostrar;
     private JLabel label3;
-    private JTextField textField4;
-    private JLabel label4;
-    private JTextField textField5;
-    private JLabel label5;
-    private JTextField textField6;
-    private JLabel label6;
-    private JTextField textField7;
-    private JLabel label7;
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
-    private JButton button4;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
-}
+    }

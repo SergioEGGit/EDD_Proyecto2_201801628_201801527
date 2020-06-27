@@ -158,6 +158,7 @@
             //======== this ========
             setModalExclusionType(Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
             setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            setTitle("Eliminar Conductor");
             Container contentPane = getContentPane();
             contentPane.setLayout(null);
 
