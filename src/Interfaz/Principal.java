@@ -6,10 +6,14 @@
     import java.awt.event.*;
     import java.awt.*;
     import javax.swing.*;
+
+    import Estructuras.ArbolBAutos;
     import Interfaz.Clientes.ClientesInterfaz;
     import Interfaz.Conductores.*;
     import Interfaz.Rutas.Rutas;
     import Interfaz.Vehiculos.VehiculosInterfaz;
+    import Metodos.CargaMasiva;
+    import Modelos.ModeloVehiculo;
     import Variables.VariablesGlobales;
 
 //-----------------------------------------------------Author-----------------------------------------------------------
@@ -159,7 +163,8 @@
             });
         }
 
-        private void CargaMasivaVehiculos(ActionEvent e) {
+
+        private void CargaMasivaVehiculosActionPerformed(ActionEvent e) {
             VariablesGlobales.ArbolBAutomoviles.CargaMasiva();
         }
 
@@ -171,7 +176,7 @@
             menu2 = new JMenu();
             menu3 = new JMenu();
             BT_CargaMClientes = new JMenuItem();
-            menuItem4 = new JMenuItem();
+            CargaMasivaVehiculos = new JMenuItem();
             BT_CargaMConductores = new JMenuItem();
             menu4 = new JMenu();
             menu5 = new JMenu();
@@ -216,13 +221,13 @@
                         BT_CargaMClientes.addActionListener(e -> BT_CargaMClientesActionPerformed(e));
                         menu3.add(BT_CargaMClientes);
 
-                        //---- menuItem4 ----
-                        menuItem4.setText("Vehiculos");
-                        menuItem4.setFont(new Font("Arial", Font.BOLD, 12));
-                        menuItem4.setForeground(new Color(255, 51, 51));
-                        menuItem4.setIcon(new ImageIcon(getClass().getResource("/Assets/Vehiculos.png")));
-                        menuItem4.addActionListener(e -> CargaMasivaVehiculos(e));
-                        menu3.add(menuItem4);
+                        //---- CargaMasivaVehiculos ----
+                        CargaMasivaVehiculos.setText("Vehiculos");
+                        CargaMasivaVehiculos.setFont(new Font("Arial", Font.BOLD, 12));
+                        CargaMasivaVehiculos.setForeground(new Color(255, 51, 51));
+                        CargaMasivaVehiculos.setIcon(new ImageIcon(getClass().getResource("/Assets/Vehiculos.png")));
+                        CargaMasivaVehiculos.addActionListener(e -> CargaMasivaVehiculosActionPerformed(e));
+                        menu3.add(CargaMasivaVehiculos);
 
                         //---- BT_CargaMConductores ----
                         BT_CargaMConductores.setText("Conductores");
@@ -345,7 +350,7 @@
         private JMenu menu2;
         private JMenu menu3;
         private JMenuItem BT_CargaMClientes;
-        private JMenuItem menuItem4;
+        private JMenuItem CargaMasivaVehiculos;
         private JMenuItem BT_CargaMConductores;
         private JMenu menu4;
         private JMenu menu5;

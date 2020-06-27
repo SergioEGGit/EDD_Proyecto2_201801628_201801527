@@ -279,8 +279,150 @@ public class ArbolBAutos {
         }
     }
 
+    void MayorDeLosMenores(ArbolBAutosNodo Hoja, ModeloVehiculo Vehiculo){
+        if(!Hoja.getHijos().empty()){
+            MayorDeLosMenores(Hoja.getHijos().get(Hoja.getVehiculos().size()-1),Vehiculo);
+            //Verificar Cuantos hijos
+        }else{
+            ModeloVehiculo May_Men=Hoja.getVehiculos().get(Hoja.getVehiculos().size()-1);
+            Vehiculo.setPlaca(May_Men.getPlaca());
+            Vehiculo.setMarca(May_Men.getMarca());
+            Vehiculo.setAnio(May_Men.getAnio());
+            Vehiculo.setColor(May_Men.getColor());
+            Vehiculo.setModelo(May_Men.getModelo());
+            Vehiculo.setPrecio(May_Men.getPrecio());
+            Vehiculo.setTipoTransmicion(May_Men.isTipoTransmicion());
+            Hoja.getVehiculos().removeElementAt(Hoja.getVehiculos().size()-1);
+        }
+    }
+
+    void UnirPaginas(ArbolBAutosNodo Padre,int HijoModificado){
+        ArbolBAutosNodo Aux=Padre;
+        int Minimos=VariablesGlobales.Orden_ArbolB/2;
+        try{
+            ArbolBAutosNodo HIzquierdo=Aux.getHijos().get(HijoModificado);
+            ArbolBAutosNodo HDerecho=Aux.getHijos().get(HijoModificado+1);
+            if(HIzquierdo.getVehiculos().size()<Minimos && HDerecho.getVehiculos().size()==Minimos){
+                HIzquierdo.getVehiculos().push(Padre.getVehiculos().pop());
+                Padre.getHijos().pop();
+                for (ModeloVehiculo Vehiculo:HDerecho.getVehiculos()) {
+                    HIzquierdo.getVehiculos().push(Vehiculo);
+                }
+                for (ArbolBAutosNodo Hijo:HDerecho.getHijos()){
+                    HIzquierdo.getHijos().push(Hijo);
+                }
+            }
+        }catch (Exception E){
+            ArbolBAutosNodo HIzquierdo=Aux.getHijos().get(HijoModificado-1);
+            ArbolBAutosNodo HDerecho=Aux.getHijos().get(HijoModificado);
+        }
+    }
+
+    boolean CasosEliminacion(ArbolBAutosNodo Hoja,String PlacaE){
+        ArbolBAutosNodo Aux=Hoja;
+        String Placa="",PlacaSig="";
+        int CantidadVehiculo=Aux.getVehiculos().size();
+        for(int i=0;i<CantidadVehiculo;i++){
+            Placa=Aux.getVehiculos().get(i).getPlaca();
+            if(!Aux.getHijos().empty()){
+                if(PlacaE.compareTo(Placa)==0){
+                    //Eliminar
+                    MayorDeLosMenores(Aux.getHijos().get(i),Aux.getVehiculos().get(i));
+                    UnirPaginas(Aux,i);
+                    return true;
+                }
+                else if(i==0 && PlacaE.compareTo(Placa)<0){
+                    boolean Eliminado=CasosEliminacion(Aux.getHijos().get(i),PlacaE);
+                    //Verificar que las claves sean mayores a las minimas
+                    UnirPaginas(Aux,i);
+                    return Eliminado;
+                }
+                else if(i+1<CantidadVehiculo){
+                    PlacaSig=Aux.getVehiculos().get(i+1).getPlaca();
+                    if(PlacaE.compareTo(Placa)>0){
+                        if(PlacaE.compareTo(PlacaSig)<0){
+                            boolean Eliminado=CasosEliminacion(Aux.getHijos().get(i+1),PlacaE);
+                            //Verificar que las claves sean mayores a las minimas
+                            UnirPaginas(Aux,i+1);
+                            return Eliminado;
+                        }
+                    }
+                }else if(i==CantidadVehiculo-1){
+                    if(PlacaE.compareTo(Placa)<0){
+                        boolean Eliminado=CasosEliminacion(Aux.getHijos().get(i),PlacaE);
+                        UnirPaginas(Aux,i);
+                        //Verificar que las claves sean mayores a las minimas
+                        return Eliminado;
+                    }
+                    else if(PlacaE.compareTo(Placa)>0){
+                        boolean Eliminado=CasosEliminacion(Aux.getHijos().get(i+1),PlacaE);
+                        UnirPaginas(Aux,i+1);
+                        //Verificar que las claves sean mayores a las minimas
+                        return Eliminado;
+                    }
+                }
+                //Metodo Recursivo
+            }else{
+                if(PlacaE.compareTo(Placa)==0){
+                    Aux.getVehiculos().removeElementAt(i);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public boolean EliminarVehiculo(String PlacaE){
-        
+        ArbolBAutosNodo Aux=getInicioArbolBVehiculos();
+        String Placa="",PlacaSig="";
+        int CantidadVehiculo=Aux.getVehiculos().size();
+        for(int i=0;i<CantidadVehiculo;i++){
+            Placa=Aux.getVehiculos().get(i).getPlaca();
+            if(!Aux.getHijos().empty()){
+                if(PlacaE.compareTo(Placa)==0){
+                    //Eliminar
+                    MayorDeLosMenores(Aux.getHijos().get(i),Aux.getVehiculos().get(i));
+                    UnirPaginas(Aux,i);
+                    return true;
+                }
+                else if(i==0 && PlacaE.compareTo(Placa)<0){
+                    boolean Eliminado=CasosEliminacion(Aux.getHijos().get(i),PlacaE);
+                    UnirPaginas(Aux,i);
+                    //Verificar que las claves sean mayores a las minimas
+                    return Eliminado;
+                }
+                else if(i+1<CantidadVehiculo){
+                    PlacaSig=Aux.getVehiculos().get(i+1).getPlaca();
+                    if(PlacaE.compareTo(Placa)>0){
+                        if(PlacaE.compareTo(PlacaSig)<0){
+                            boolean Eliminado=CasosEliminacion(Aux.getHijos().get(i+1),PlacaE);
+                            UnirPaginas(Aux,i+1);
+                            //Verificar que las claves sean mayores a las minimas
+                            return Eliminado;
+                        }
+                    }
+                }else if(i==CantidadVehiculo-1){
+                    if(PlacaE.compareTo(Placa)<0){
+                        boolean Eliminado=CasosEliminacion(Aux.getHijos().get(i),PlacaE);
+                        UnirPaginas(Aux,i);
+                        //Verificar que las claves sean mayores a las minimas
+                        return Eliminado;
+                    }
+                    else if(PlacaE.compareTo(Placa)>0){
+                        boolean Eliminado=CasosEliminacion(Aux.getHijos().get(i+1),PlacaE);
+                        UnirPaginas(Aux,i+1);
+                        //Verificar que las claves sean mayores a las minimas
+                        return Eliminado;
+                    }
+                }
+                //Metodo Recursivo
+            }else{
+                if(PlacaE.compareTo(Placa)==0){
+                    Aux.getVehiculos().removeElementAt(i);
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -375,6 +517,7 @@ public class ArbolBAutos {
     }
 
     public void CargaMasiva(){
+        ArbolBAutos V= VariablesGlobales.ArbolBAutomoviles;
         CargaMasiva CMVehiculo=new CargaMasiva();
         CMVehiculo.CargaMasiva(';',':',"txt","VEHICULOS",7);
         int contadorAgregados=0;
@@ -394,7 +537,7 @@ public class ArbolBAutos {
                         Vehiculos[4].trim().toUpperCase(),//Color
                         Double.parseDouble(Vehiculos[5].trim().toUpperCase()),//Precio
                         TipoTransmision);//Transmicion
-                boolean Agregado=AgregarVehiculo(NuevoVehiculo);
+                boolean Agregado=V.AgregarVehiculo(NuevoVehiculo);
                 if(Agregado==true){contadorAgregados++;}
                 else{
                     JOptionPane.showMessageDialog(null,

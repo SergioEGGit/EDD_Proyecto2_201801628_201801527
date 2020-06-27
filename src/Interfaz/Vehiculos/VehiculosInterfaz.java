@@ -46,6 +46,10 @@ public class VehiculosInterfaz extends JFrame {
         }
     }
 
+    private void Eliminar(ActionEvent e) {
+        VariablesGlobales.ArbolBAutomoviles.EliminarVehiculo(textField1.getText());
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
@@ -66,6 +70,7 @@ public class VehiculosInterfaz extends JFrame {
         button1 = new JButton();
         button2 = new JButton();
         button3 = new JButton();
+        button4 = new JButton();
 
         //======== this ========
         Container contentPane = getContentPane();
@@ -138,6 +143,12 @@ public class VehiculosInterfaz extends JFrame {
         contentPane.add(button3);
         button3.setBounds(new Rectangle(new Point(150, 390), button3.getPreferredSize()));
 
+        //---- button4 ----
+        button4.setText("Eliminar");
+        button4.addActionListener(e -> Eliminar(e));
+        contentPane.add(button4);
+        button4.setBounds(new Rectangle(new Point(150, 425), button4.getPreferredSize()));
+
         {
             // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -176,5 +187,6 @@ public class VehiculosInterfaz extends JFrame {
     private JButton button1;
     private JButton button2;
     private JButton button3;
+    private JButton button4;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
