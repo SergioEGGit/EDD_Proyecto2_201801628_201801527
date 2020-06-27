@@ -159,10 +159,14 @@
             });
         }
 
+        private void CargaMasivaVehiculos(ActionEvent e) {
+            VariablesGlobales.ArbolBAutomoviles.CargaMasiva();
+        }
+
         private void initComponents()
         {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-            // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
+            // Generated using JFormDesigner Evaluation license - unknown
             menuBar1 = new JMenuBar();
             menu2 = new JMenu();
             menu3 = new JMenu();
@@ -217,6 +221,7 @@
                         menuItem4.setFont(new Font("Arial", Font.BOLD, 12));
                         menuItem4.setForeground(new Color(255, 51, 51));
                         menuItem4.setIcon(new ImageIcon(getClass().getResource("/Assets/Vehiculos.png")));
+                        menuItem4.addActionListener(e -> CargaMasivaVehiculos(e));
                         menu3.add(menuItem4);
 
                         //---- BT_CargaMConductores ----
@@ -335,7 +340,7 @@
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-        // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
+        // Generated using JFormDesigner Evaluation license - unknown
         private JMenuBar menuBar1;
         private JMenu menu2;
         private JMenu menu3;
