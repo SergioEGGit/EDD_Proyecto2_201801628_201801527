@@ -6,6 +6,8 @@
     import java.awt.event.*;
     import java.awt.*;
     import javax.swing.*;
+
+    import Estructuras.ListaDobleCircularTopsNodo;
     import Interfaz.Clientes.ClientesInterfaz;
     import Interfaz.Conductores.*;
     import Interfaz.Rutas.Rutas;
@@ -161,6 +163,31 @@
             ValidarRadioButton();
         }
 
+        private void CargaMasivaVehiculosActionPerformed(ActionEvent e)
+        {
+            VariablesGlobales.ArbolBAutomoviles.CargaMasiva();
+        }
+
+        private void CargaMasivaVehiculos(ActionEvent e)
+        {
+            // TODO add your code here
+        }
+
+        private void BT_TopViajesLargosActionPerformed(ActionEvent e)
+        {
+            VariablesGlobales.BlockchainViajes.TopViajesLargosBlockchainViajes();
+
+                   
+            if(VariablesGlobales.ListaDobleCircularTops != null)
+            {
+                VariablesGlobales.ListaDobleCircularTops.OrdenamientoBurbujaListaDobleCircularT();
+                
+                String Cadena = VariablesGlobales.ListaDobleCircularTops.GenerarTopViajesLargos();
+                
+                JOptionPane.showMessageDialog(null, "Reporte Viajes Mas Largos: \n" + Cadena, "Exito!", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+
         //---------------------------------------------Main-------------------------------------------------------------
 
         public static void main(String[] args)
@@ -175,15 +202,10 @@
             });
         }
 
-
-        private void CargaMasivaVehiculosActionPerformed(ActionEvent e) {
-            VariablesGlobales.ArbolBAutomoviles.CargaMasiva();
-        }
-
         private void initComponents()
         {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-            // Generated using JFormDesigner Evaluation license - unknown
+            // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
             menuBar1 = new JMenuBar();
             menu2 = new JMenu();
             menu3 = new JMenu();
@@ -191,6 +213,7 @@
             CargaMasivaVehiculos = new JMenuItem();
             BT_CargaMConductores = new JMenuItem();
             menu4 = new JMenu();
+            BT_TopViajesLargos = new JMenuItem();
             menu5 = new JMenu();
             BT_AcercaDE = new JMenuItem();
             label2 = new JLabel();
@@ -238,7 +261,10 @@
                         CargaMasivaVehiculos.setFont(new Font("Arial", Font.BOLD, 12));
                         CargaMasivaVehiculos.setForeground(new Color(255, 51, 51));
                         CargaMasivaVehiculos.setIcon(new ImageIcon(getClass().getResource("/Assets/Vehiculos.png")));
-                        CargaMasivaVehiculos.addActionListener(e -> CargaMasivaVehiculosActionPerformed(e));
+                        CargaMasivaVehiculos.addActionListener(e -> {
+			CargaMasivaVehiculos(e);
+			CargaMasivaVehiculosActionPerformed(e);
+		});
                         menu3.add(CargaMasivaVehiculos);
 
                         //---- BT_CargaMConductores ----
@@ -259,6 +285,13 @@
                     menu4.setFont(new Font("Arial", Font.BOLD, 14));
                     menu4.setForeground(new Color(51, 51, 255));
                     menu4.setIcon(new ImageIcon(getClass().getResource("/Assets/Herramientas.jpg")));
+
+                    //---- BT_TopViajesLargos ----
+                    BT_TopViajesLargos.setText("Top Viajes: Viajes Mas Largos");
+                    BT_TopViajesLargos.setFont(new Font("Arial", Font.BOLD, 12));
+                    BT_TopViajesLargos.setForeground(new Color(153, 51, 255));
+                    BT_TopViajesLargos.addActionListener(e -> BT_TopViajesLargosActionPerformed(e));
+                    menu4.add(BT_TopViajesLargos);
                 }
                 menuBar1.add(menu4);
 
@@ -357,7 +390,7 @@
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
         private JMenuBar menuBar1;
         private JMenu menu2;
         private JMenu menu3;
@@ -365,6 +398,7 @@
         private JMenuItem CargaMasivaVehiculos;
         private JMenuItem BT_CargaMConductores;
         private JMenu menu4;
+        private JMenuItem BT_TopViajesLargos;
         private JMenu menu5;
         private JMenuItem BT_AcercaDE;
         private JLabel label2;

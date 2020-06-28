@@ -26,6 +26,24 @@
             ListaSimpleRutasInicio = listaSimpleRutasInicio;
         }
 
+        //Tamaño Lista
+
+        //Size
+
+        public int SizeListaSimpleRutas()
+        {
+            //Declaraciones
+
+            int Auxiliar = 1;
+
+            while(getListaSimpleRutasInicio() != null)
+            {
+                Auxiliar++;
+            }
+
+            return Auxiliar;
+        }
+
         //Inserción
 
         //Insertar Nueva Ruta

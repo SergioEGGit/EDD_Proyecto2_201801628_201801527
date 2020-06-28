@@ -4,7 +4,10 @@
     package Estructuras;
 
     import Modelos.ModeloViajes;
-    
+    import Variables.VariablesGlobales;
+
+    import javax.swing.*;
+
 //---------------------------------------------------Principal----------------------------------------------------------    
 
     public class BlockchainViajes 
@@ -60,6 +63,38 @@
                 getBlockChainViajesInicio().setAnte(NuevoViajeNodo);
             }
             
+        }
+
+        //Reportes
+
+        //Top Viajes Mas Largos
+
+        public void TopViajesLargosBlockchainViajes()
+        {
+            //Declaraciones
+
+            //Auxiliar Lista Doble
+
+            BlockchainViajesNodo Auxiliar = getBlockChainViajesInicio();
+
+            VariablesGlobales.ListaDobleCircularTops.setListaDobleInicio(null);
+
+            String Auxiliar2 = "";
+
+            if(getBlockChainViajesInicio() == null)
+            {
+                JOptionPane.showMessageDialog(null, "La Estrcutura Se Encuentra Vacia", "Error!", JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                do
+                {
+                    Auxiliar2 = "Codigo: " + Auxiliar.getNuevoViaje().getIdentificadorViaje() + " Origen: " + Auxiliar.getNuevoViaje().getLugarOrigenViaje() + " Destino: " + Auxiliar.getNuevoViaje().getLugaDestinoViaje();
+                    VariablesGlobales.ListaDobleCircularTops.InsertarTopFinalListaDobleCircularC(Auxiliar2, Auxiliar.getNuevoViaje().getListaRutaViaje().SizeListaSimpleRutas() - 1);
+                    Auxiliar = Auxiliar.getSgte();
+                }
+                while(Auxiliar != getBlockChainViajesInicio());
+            }
         }
         
     }

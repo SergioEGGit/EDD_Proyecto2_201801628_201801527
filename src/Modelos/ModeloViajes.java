@@ -21,13 +21,14 @@
         ListaSimpleClientesNodo ClienteViaje;
         ListaDobleCircularConductoresNodo ConductorViaje;
         ArbolBAutosNodo VehiculoViaje;
+        int PosicionArray;
         ListaSimpleRutas ListaRutaViaje;
 
         //------------------------------------------------Constructor---------------------------------------------------
 
         //Constructor Nuevo Viaje
 
-        public ModeloViajes(String identificadorViaje, String lugarOrigenViaje, String lugaDestinoViaje, String fechaViaje, String horaViaje, ListaSimpleClientesNodo clienteViaje, ListaDobleCircularConductoresNodo conductorViaje, ArbolBAutosNodo vehiculoViaje, ListaSimpleRutas listaRutaViaje)
+        public ModeloViajes(String identificadorViaje, String lugarOrigenViaje, String lugaDestinoViaje, String fechaViaje, String horaViaje, ListaSimpleClientesNodo clienteViaje, ListaDobleCircularConductoresNodo conductorViaje, ArbolBAutosNodo vehiculoViaje, int posicionArray, ListaSimpleRutas listaRutaViaje)
         {
             IdentificadorViaje = identificadorViaje;
             LugarOrigenViaje = lugarOrigenViaje;
@@ -37,6 +38,7 @@
             ClienteViaje = clienteViaje;
             ConductorViaje = conductorViaje;
             VehiculoViaje = vehiculoViaje;
+            PosicionArray = posicionArray;
             ListaRutaViaje = listaRutaViaje;
         }
 
@@ -48,6 +50,16 @@
         }
 
         //Gets And Sets
+
+        public int getPosicionArray()
+        {
+            return PosicionArray;
+        }
+
+        public void setPosicionArray(int posicionArray)
+        {
+            PosicionArray = posicionArray;
+        }
 
         public String getIdentificadorViaje()
         {
