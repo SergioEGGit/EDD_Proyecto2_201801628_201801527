@@ -48,7 +48,7 @@ new FormModel {
 				"width": 120
 				"height": 19
 				"x": 215
-				"y": 160
+				"y": 165
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label6"
@@ -59,7 +59,7 @@ new FormModel {
 				"width": 120
 				"height": 19
 				"x": 215
-				"y": 200
+				"y": 210
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label11"
@@ -70,7 +70,7 @@ new FormModel {
 				"width": 120
 				"height": 19
 				"x": 215
-				"y": 245
+				"y": 255
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label7"
@@ -81,7 +81,7 @@ new FormModel {
 				"width": 95
 				"height": 19
 				"x": 215
-				"y": 290
+				"y": 305
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label8"
@@ -92,7 +92,7 @@ new FormModel {
 				"width": 125
 				"height": 19
 				"x": 215
-				"y": 335
+				"y": 355
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label9"
@@ -103,7 +103,7 @@ new FormModel {
 				"width": 125
 				"height": 19
 				"x": 215
-				"y": 375
+				"y": 410
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "BT_Registrar"
@@ -115,7 +115,7 @@ new FormModel {
 				"width": 145
 				"height": 30
 				"x": 260
-				"y": 430
+				"y": 465
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
@@ -123,20 +123,81 @@ new FormModel {
 				"width": 50
 				"height": 40
 				"x": 600
-				"y": 455
+				"y": 485
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_DpiCliente"
 				"editable": false
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "TextField_DpiClienteMouseClicked", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 350
-				"y": 290
+				"x": 345
+				"y": 300
+				"width": 145
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_Origen"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 345
+				"y": 115
+				"width": 145
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_Destino"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 345
+				"y": 160
+				"width": 145
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField1"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				"text": "DD/MM/YYYY"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 345
+				"y": 210
+				"width": 145
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField2"
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"text": "HH:MM"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 345
+				"y": 255
+				"width": 145
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_DpiConductor"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				"editable": false
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "TextField_DpiConductorMouseClicked", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 345
+				"y": 350
+				"width": 145
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextField_Vehiculos"
+				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				"editable": false
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "TextField_VehiculosMouseClicked", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 345
+				"y": 405
 				"width": 145
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 5, 5 )
-			"size": new java.awt.Dimension( 670, 545 )
+			"location": new java.awt.Point( 5, 10 )
+			"size": new java.awt.Dimension( 670, 580 )
 		} )
 	}
 }

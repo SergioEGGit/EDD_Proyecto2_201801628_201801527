@@ -358,6 +358,29 @@
             return null;
         }
 
+        //Buscar Nodo Condcutro
+
+        public ListaDobleCircularConductoresNodo BuscarNododCondcutoresListaDobleCircularC(String DPIConductor)
+        {
+            //Declaraciones
+
+            //Auxiliar Lista Doble
+
+            ListaDobleCircularConductoresNodo Auxiliar = getListaDobleInicio();
+
+            do
+            {
+                if(DPIConductor.equals(Auxiliar.getNuevoConductor().getDPIConductor()))
+                {
+                    return Auxiliar;
+                }
+                Auxiliar = Auxiliar.getSgte();
+            }
+            while(Auxiliar != getListaDobleInicio());
+
+            return null;
+        }
+
         //Encontrar Posicion Conductor
 
         private int EncontrarPosicionConductorListaDobleCircularC(String DPI)

@@ -3,10 +3,7 @@
 
     package Variables;
 
-    import Estructuras.ArbolBAutos;
-    import Estructuras.ListaDobleCircularConductores;
-    import Estructuras.ListaAdyacencia;
-    import Estructuras.TablaHashClientes;
+    import Estructuras.*;
     import Metodos.MetodoGlobales;
 
     import java.math.BigInteger;
@@ -29,5 +26,7 @@
         public static ListaAdyacencia ListaAdyacenciaRutas = new ListaAdyacencia();
         public static TablaHashClientes TablaHashClientes = new TablaHashClientes(SizeTabla);
         public static MetodoGlobales MetodoGlobales = new MetodoGlobales();
-        public static ArbolBAutos ArbolBAutomoviles=new ArbolBAutos();
+        public static ArbolBAutos ArbolBAutomoviles = new ArbolBAutos();
+        public static BlockchainViajes BlockchainViajes = new BlockchainViajes();
+        public static ListaDobleCircularTops ListaDobleCircularTops = new ListaDobleCircularTops();
     }
