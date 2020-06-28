@@ -2,10 +2,10 @@ package Estructuras;
 
 import Metodos.GenerarReportes;
 import Variables.VariablesGlobales;
-import org.apache.commons.codec.digest.DigestUtils;
 
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class ListaAdyacencia
@@ -22,8 +22,6 @@ public class ListaAdyacencia
 
     //constructor Vacio
     public ListaAdyacencia() {
-        System.out.println("ENCRIPTADO: "+DigestUtils.md5Hex("HOLA"));
-        System.out.println(Double.MAX_VALUE);
     }
 
     //Verifica si esta vacia la lista
@@ -67,7 +65,7 @@ public class ListaAdyacencia
     public boolean InsertarNodo(String Origen, String Destino, double TimepoRuta)
     {
         boolean RutaAlterna=BuscarRutaAlterna(Origen,Destino);
-        if(RutaAlterna==true || Origen.equals(Destino)){
+        if(Origen.equals(Destino)){//RutaAlterna==true
             JOptionPane.showMessageDialog(null,"Existe una ruta alterna identica","Ruta Alterna",JOptionPane.ERROR_MESSAGE);
             return false;
         }else{
@@ -278,13 +276,21 @@ public class ListaAdyacencia
         }
     }
 
-
+    void ValoresDefault(){
+        ListaAdyacenciaNodo Aux=getInicioListaAdyacencia();
+        while (Aux!=null){
+            Aux.setTiempoAcumulado(0.0);
+            Aux.setViendeDeNodo(null);
+            Aux=Aux.getAbajo();
+        }
+    }
 
     public void AlgoritmoDijkstra(){
         CrearOrigenesSinDestinos();
         Stack<String> Origenes=BuscarNodoInicial();
         ListaAdyacenciaNodo Aux=getInicioListaAdyacencia();
         String Orig="";
+        ValoresDefault();
         Origenes=BuscarNodoInicial();
         for (int i=0;i<Origenes.size();i++){
             Orig=Origenes.get(i);
@@ -306,7 +312,7 @@ public class ListaAdyacencia
             CalcularTiempoAcumuladoMinimo(Aux);
             Aux=Aux.getAbajo();
         }
-        CalcularRuta("COLOMBIA","ESTADOS UNIDOS");
+
     }
 
     Stack<String> BuscarNodoInicial(){
@@ -344,31 +350,136 @@ public class ListaAdyacencia
         return false;
     }
 
+    String[] CalcRutaFavorable(String Origen,String Destino){
+        if(Origen.equals(Destino)){
+            JOptionPane.showMessageDialog(null,"EL ORIGEN Y EL DESTINO SON IGUALES","Error en ruta",JOptionPane.ERROR_MESSAGE);
+        }else{
+            String[] Ruta= CalcularRuta(Origen,Destino);
+            if(Ruta!=null){
+                String[] RutaConDistancias=new String[Ruta.length];
+                double RutaAcumulada=0;
+                int Indice=0;
+                for (int i=0;i<Ruta.length;i++){
+                    if(i==0){
+                        RutaConDistancias[i]=Ruta[i]+","+RutaAcumulada;
+                    }else{
+                        ListaAdyacenciaNodo Aux=ExisteOrigen(Ruta[i-1]);
+                        Aux=Aux.getDerecha();
+                        while (Aux!=null){
+                            if(Aux.getDestino().equals(Ruta[i])){
+                                RutaAcumulada+=Aux.getTiempoRuta();
+                                RutaConDistancias[i]=Ruta[i]+","+RutaAcumulada;
+                            }
+                            Aux=Aux.getDerecha();
+                        }
+                    }
+                }
+                for (int i=0;i<RutaConDistancias.length;i++){
+                    System.out.println(RutaConDistancias[i]);
+                }
+                return RutaConDistancias;
+            }else{
+                return null;
+            }
+        }
+        return null;
+    }
 
     // Falta Arreglos en el metodo
-    public String[] CalcularRuta(String Origen,String Destino){
-        System.out.println("RUTA DE COLOMBIA A ESTADOS UNIDOS");
-        String DES=Destino,ORIG=Origen;
-        String[] Lugares=new String[100];
-        ListaAdyacenciaNodo Aux;
-        int Contador=0;
+    String[] CalcularRuta(String Origen,String Destino){
+        String DES=Destino;
+        String ORIG=Origen;
+        Stack<String> Lugares=new Stack<String>();
+        ListaAdyacenciaNodo Aux=null;
         do {
             Aux=ExisteOrigen(DES);
             if(Aux!=null){
-                //if(ExisteDestinoEnRuta(Lugares,DES)==false){
-                    Lugares[Contador]=new String(DES);
-                    Contador++;
+                if(!Lugares.contains(DES)){
+                    Lugares.push(DES);
                     DES=Aux.getViendeDeNodo();
-                //}else{
-                    //return null;
-                //}
+                    if(DES==null && !Aux.getOrigen().equals(Origen)){
+                        String LUG="";
+                        for (int i=Lugares.size()-1;i>=0;i--){
+                            LUG=","+Lugares.get(i);
+                        }
+                        if (JOptionPane.showConfirmDialog(null, "La ruta Encontrada de "+Origen+" a "+Destino+" ES:\n"+
+                                        Aux.getOrigen()+LUG,
+                                "Ruta Encontrada",
+                                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                            //Lugares.push(Aux.getOrigen());
+                            String[] LUGA=new String[Lugares.size()];
+                            int i=0;
+                            while (!Lugares.empty()) {
+                                String Luga=Lugares.pop();
+                                LUGA[i]=Luga;
+                                i++;
+                            }
+                            return LUGA;
+                        } else {
+                            return null;
+                        }
+                    }
+                }else{
+                    String LUG="";
+                    for (int i=Lugares.size()-1;i>=0;i--){
+                        LUG=","+Lugares.get(i);
+                    }
+                    if (JOptionPane.showConfirmDialog(null, "La ruta Encontrada de "+Origen+" a "+Destino+" ES:\n"+
+                                    Aux.getOrigen()+LUG,
+                                "Ruta Encontrada",
+                            JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                        //Lugares.push(Aux.getOrigen());
+                        String[] LUGA=new String[Lugares.size()];
+                        int i=0;
+                        while (!Lugares.empty()) {
+                            String Luga=Lugares.pop();
+                            LUGA[i]=Luga;
+                            i++;
+                        }
+                        return LUGA;
+                    } else {
+                        return null;
+                    }
+                }
             }
         }while (!DES.equals(ORIG));
-        Lugares[Contador]=new String(Origen);
-        for (String LUG:Lugares) {
-            System.out.println(LUG);
+        Lugares.push(Origen);
+        String[] LUG=new String[Lugares.size()];
+        int i=0;
+        while (!Lugares.empty()) {
+            String Luga=Lugares.pop();
+            System.out.println(Luga);
+            LUG[i]=Luga;
+            i++;
         }
-        return  Lugares;
+        return LUG;
     }
+
+    public void Eliminar(String Origen,String Destino){
+        ListaAdyacenciaNodo Aux=ExisteOrigen(Origen);
+        ListaAdyacenciaNodo Anterior=Aux;
+        Aux=Aux.getDerecha();
+        while (Aux!=null){
+            if(Destino.equals(Aux.getDestino())){
+                Anterior.setDerecha(Aux.getDerecha());
+                break;
+            }
+            Anterior=Aux;
+            Aux=Aux.getDerecha();
+        }
+        AlgoritmoDijkstra();
+    }
+
+
+    public ArrayList<String> TodosLosOrigenes(){
+        ListaAdyacenciaNodo Aux=getInicioListaAdyacencia();
+        ArrayList<String> Origenes=new ArrayList<String>();
+        while (Aux!=null){
+            Origenes.add(Aux.getOrigen());
+            Aux=Aux.getAbajo();
+        }
+        return Origenes;
+    }
+
 
 }

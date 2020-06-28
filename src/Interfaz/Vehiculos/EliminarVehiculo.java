@@ -5,7 +5,6 @@
 
     import Modelos.ModeloVehiculo;
     import Variables.VariablesGlobales;
-    import jdk.nashorn.internal.scripts.JO;
 
     import java.awt.*;
     import java.awt.event.*;
@@ -109,7 +108,7 @@
         private void initComponents()
         {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-            // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
+            // Generated using JFormDesigner Evaluation license - unknown
             label2 = new JLabel();
             BT_Eliminar = new JButton();
             TextField_Eliminar = new JTextField();
@@ -191,7 +190,7 @@
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-        // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
+        // Generated using JFormDesigner Evaluation license - unknown
         private JLabel label2;
         private JButton BT_Eliminar;
         private JTextField TextField_Eliminar;

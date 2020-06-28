@@ -281,10 +281,11 @@ public class ArbolBAutos {
 
     void MayorDeLosMenores(ArbolBAutosNodo Hoja, ModeloVehiculo Vehiculo){
         if(!Hoja.getHijos().empty()){
-            MayorDeLosMenores(Hoja.getHijos().get(Hoja.getVehiculos().size()-1),Vehiculo);
+            MayorDeLosMenores(Hoja.getHijos().get(Hoja.getVehiculos().size()),Vehiculo);
+            UnirPaginas(Hoja,Hoja.getVehiculos().size());
             //Verificar Cuantos hijos
         }else{
-            ModeloVehiculo May_Men=Hoja.getVehiculos().get(Hoja.getVehiculos().size()-1);
+            ModeloVehiculo May_Men=Hoja.getVehiculos().pop();
             Vehiculo.setPlaca(May_Men.getPlaca());
             Vehiculo.setMarca(May_Men.getMarca());
             Vehiculo.setAnio(May_Men.getAnio());
@@ -292,7 +293,6 @@ public class ArbolBAutos {
             Vehiculo.setModelo(May_Men.getModelo());
             Vehiculo.setPrecio(May_Men.getPrecio());
             Vehiculo.setTipoTransmicion(May_Men.isTipoTransmicion());
-            Hoja.getVehiculos().removeElementAt(Hoja.getVehiculos().size()-1);
         }
     }
 
@@ -303,7 +303,31 @@ public class ArbolBAutos {
             ArbolBAutosNodo HIzquierdo=Aux.getHijos().get(HijoModificado);
             ArbolBAutosNodo HDerecho=Aux.getHijos().get(HijoModificado+1);
             if(HIzquierdo.getVehiculos().size()<Minimos && HDerecho.getVehiculos().size()==Minimos){
-                HIzquierdo.getVehiculos().push(Padre.getVehiculos().pop());
+                ModeloVehiculo VehiculoPadre=Padre.getVehiculos().get(HijoModificado);
+                HIzquierdo.getVehiculos().push(VehiculoPadre);
+                Padre.getVehiculos().removeElementAt(HijoModificado);
+                Padre.getHijos().removeElementAt(HijoModificado+1);
+                for (ModeloVehiculo Vehiculo:HDerecho.getVehiculos()) {
+                    HIzquierdo.getVehiculos().push(Vehiculo);
+                }
+                for (ArbolBAutosNodo Hijo:HDerecho.getHijos()){
+                    HIzquierdo.getHijos().push(Hijo);
+                }
+            }
+            else if(HIzquierdo.getVehiculos().size()<Minimos && HDerecho.getVehiculos().size()>Minimos){
+                ModeloVehiculo VehiculoPadre=Padre.getVehiculos().get(HijoModificado);
+                HIzquierdo.getVehiculos().push(VehiculoPadre);
+                ModeloVehiculo VehiculoHDerecho=HDerecho.getVehiculos().get(0);
+                HDerecho.getVehiculos().removeElementAt(0);
+                Padre.getVehiculos().insertElementAt(VehiculoHDerecho,HijoModificado);
+                Padre.getVehiculos().removeElementAt(HijoModificado+1);
+            }
+        }catch (Exception E){
+            ArbolBAutosNodo HIzquierdo=Aux.getHijos().get(HijoModificado-1);
+            ArbolBAutosNodo HDerecho=Aux.getHijos().get(HijoModificado);
+            if(HDerecho.getVehiculos().size()<Minimos && HIzquierdo.getVehiculos().size()==Minimos){
+                ModeloVehiculo VehiculoPadre=Padre.getVehiculos().pop();
+                HIzquierdo.getVehiculos().push(VehiculoPadre);
                 Padre.getHijos().pop();
                 for (ModeloVehiculo Vehiculo:HDerecho.getVehiculos()) {
                     HIzquierdo.getVehiculos().push(Vehiculo);
@@ -312,9 +336,12 @@ public class ArbolBAutos {
                     HIzquierdo.getHijos().push(Hijo);
                 }
             }
-        }catch (Exception E){
-            ArbolBAutosNodo HIzquierdo=Aux.getHijos().get(HijoModificado-1);
-            ArbolBAutosNodo HDerecho=Aux.getHijos().get(HijoModificado);
+            else if(HDerecho.getVehiculos().size()<Minimos && HIzquierdo.getVehiculos().size()>Minimos){
+                ModeloVehiculo VehiculoPadre=Padre.getVehiculos().pop();
+                ModeloVehiculo VehiculoHIzquierda=HIzquierdo.getVehiculos().pop();
+                Padre.getVehiculos().push(VehiculoHIzquierda);
+                HDerecho.getVehiculos().insertElementAt(VehiculoPadre,0);
+            }
         }
     }
 
@@ -383,11 +410,17 @@ public class ArbolBAutos {
                     //Eliminar
                     MayorDeLosMenores(Aux.getHijos().get(i),Aux.getVehiculos().get(i));
                     UnirPaginas(Aux,i);
+                    if(getInicioArbolBVehiculos().getHijos().size()==1){
+                        setInicioArbolBVehiculos(getInicioArbolBVehiculos().getHijos().pop());
+                    }
                     return true;
                 }
                 else if(i==0 && PlacaE.compareTo(Placa)<0){
                     boolean Eliminado=CasosEliminacion(Aux.getHijos().get(i),PlacaE);
                     UnirPaginas(Aux,i);
+                    if(getInicioArbolBVehiculos().getHijos().size()==1){
+                        setInicioArbolBVehiculos(getInicioArbolBVehiculos().getHijos().pop());
+                    }
                     //Verificar que las claves sean mayores a las minimas
                     return Eliminado;
                 }
@@ -397,6 +430,9 @@ public class ArbolBAutos {
                         if(PlacaE.compareTo(PlacaSig)<0){
                             boolean Eliminado=CasosEliminacion(Aux.getHijos().get(i+1),PlacaE);
                             UnirPaginas(Aux,i+1);
+                            if(getInicioArbolBVehiculos().getHijos().size()==1){
+                                setInicioArbolBVehiculos(getInicioArbolBVehiculos().getHijos().pop());
+                            }
                             //Verificar que las claves sean mayores a las minimas
                             return Eliminado;
                         }
@@ -405,12 +441,18 @@ public class ArbolBAutos {
                     if(PlacaE.compareTo(Placa)<0){
                         boolean Eliminado=CasosEliminacion(Aux.getHijos().get(i),PlacaE);
                         UnirPaginas(Aux,i);
+                        if(getInicioArbolBVehiculos().getHijos().size()==1){
+                            setInicioArbolBVehiculos(getInicioArbolBVehiculos().getHijos().pop());
+                        }
                         //Verificar que las claves sean mayores a las minimas
                         return Eliminado;
                     }
                     else if(PlacaE.compareTo(Placa)>0){
                         boolean Eliminado=CasosEliminacion(Aux.getHijos().get(i+1),PlacaE);
                         UnirPaginas(Aux,i+1);
+                        if(getInicioArbolBVehiculos().getHijos().size()==1){
+                            setInicioArbolBVehiculos(getInicioArbolBVehiculos().getHijos().pop());
+                        }
                         //Verificar que las claves sean mayores a las minimas
                         return Eliminado;
                     }
@@ -567,6 +609,46 @@ public class ArbolBAutos {
             }
         }
         JOptionPane.showMessageDialog(null,"Se agregaron "+contadorAgregados+" Vehiculos con exito","Carga Masiva Exitosa",JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public ArbolBAutosNodo RetornarHojaDelVehiculo(String PlacaB){
+        return RetornarHoja(getInicioArbolBVehiculos(),PlacaB);
+    }
+
+    ArbolBAutosNodo RetornarHoja(ArbolBAutosNodo Hoja,String PlacaB){
+        ArbolBAutosNodo Aux=Hoja;
+        String Placa="",PlacaSig="";
+        int CantidadVehiculos=Aux.getVehiculos().size();
+        for (int i=0;i<CantidadVehiculos;i++){
+            Placa=Aux.getVehiculos().get(i).getPlaca();
+            if(!Aux.getHijos().empty()){
+                if(PlacaB.compareTo(Placa)==0){
+                    VariablesGlobales.IndiceDeVehiculoEnHoja=i;
+                    return Aux;
+                }else if(i==0 && PlacaB.compareTo(Placa)<0){
+                    return RetornarHoja(Aux.getHijos().get(i),PlacaB);
+                }else if(i+1<CantidadVehiculos){
+                    PlacaSig=Aux.getVehiculos().get(i+1).getPlaca();
+                    if(PlacaB.compareTo(Placa)>0){
+                        if(PlacaB.compareTo(PlacaSig)<0){
+                            return RetornarHoja(Aux.getHijos().get(i+1),PlacaB);
+                        }
+                    }
+                }else if(i==CantidadVehiculos-1){
+                    if(PlacaB.compareTo(Placa)>0){
+                        return RetornarHoja(Aux.getHijos().get(i+1),PlacaB);
+                    }else if(PlacaB.compareTo(Placa)<0){
+                        return RetornarHoja(Aux.getHijos().get(i),PlacaB);
+                    }
+                }
+            }else{
+                if(PlacaB.compareTo(Placa)==0){
+                    VariablesGlobales.IndiceDeVehiculoEnHoja=i;
+                    return Aux;
+                }
+            }
+        }
+        return null;
     }
 
 

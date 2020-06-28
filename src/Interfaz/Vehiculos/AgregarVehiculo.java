@@ -92,13 +92,14 @@
                     JOptionPane.showMessageDialog(null, "El Vehiculo Indicado Ya Existe En El Sistema!", "Error!", JOptionPane.ERROR_MESSAGE);
                 }
 
-                TextField_Placa.setText("");
+               /* TextField_Placa.setText("");
                 TextField_Marca.setText("");
                 TextField_Modelo.setText("");
                 TextField_Anio.setText("");
                 TextField_Color.setText("");
                 TextField_Precio.setText("");
                 CB_TipoTrans.setSelectedIndex(0);
+                */
             }
         }
 

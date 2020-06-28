@@ -1,144 +1,87 @@
+/*
+ * Created by JFormDesigner on Wed Jun 24 18:56:06 CST 2020
+ */
 
-//--------------------------------------------Paquetes E Imports--------------------------------------------------------
+package Interfaz.Vehiculos;
 
-    package Interfaz.Vehiculos;
+import Interfaz.Reportes;
+import Modelos.ModeloVehiculo;
+import Variables.VariablesGlobales;
 
-    import Interfaz.Clientes.BuscarCliente;
-    import Interfaz.Reportes;
-    import Variables.VariablesGlobales;
-    import java.awt.*;
-    import java.awt.event.*;
-    import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-//---------------------------------------------------Author-------------------------------------------------------------
+/**
+ * @author unknown
+ */
+public class VehiculosInterfaz extends JFrame {
+    public VehiculosInterfaz() {
+        initComponents();
+    }
 
-    /**
-     * @author Sergio Echigoyen
-     */
+    /*private void AgregarVehiculo(ActionEvent e) {
+        ModeloVehiculo Nuevo=new ModeloVehiculo(textField1.getText(),textField2.getText(),textField3.getText(),
+                Integer.parseInt(textField4.getText()),textField5.getText(),Double.parseDouble(textField6.getText()),true);
+        VariablesGlobales.ArbolBAutomoviles.AgregarVehiculo(Nuevo);
+        VariablesGlobales.ArbolBAutomoviles.ImprimirArbol();
+    }*/
 
-//----------------------------------------------------Principal---------------------------------------------------------
-
-    public class VehiculosInterfaz extends JFrame
-    {
-        //--------------------------------------------Constructor-------------------------------------------------------
-
-        public VehiculosInterfaz()
-        {
-            initComponents();
-            ButtonGroup MenuConductor = new ButtonGroup();
-            MenuConductor.add(RBT_Agregar);
-            MenuConductor.add(RBT_Modificar);
-            MenuConductor.add(RBT_Eliminar);
-            MenuConductor.add(RBT_Buscar);
-            MenuConductor.add(RBT_Mostrar);
-            RBT_Agregar.setSelected(true);
+    /*private void BuscarVehiculo(ActionEvent e) {
+        ModeloVehiculo Vehiculo= VariablesGlobales.ArbolBAutomoviles.BuscarVehiculoNodo(textField1.getText());
+        if(Vehiculo!=null){
+            JOptionPane.showMessageDialog(null,Vehiculo.toString());
+            Vehiculo.setMarca("CAMBIADO DESDE FORM");
         }
+    }*/
 
-        //-----------------------------------------------Métodos--------------------------------------------------------
-
-        //Validar Opcion RadioButton
-
-        public void ValidarRadioButton()
-        {
-            if(RBT_Agregar.isSelected())
-            {
-                java.awt.EventQueue.invokeLater(new Runnable()
-                {
-                    @Override
-                    public void run()
-                    {
-                        new AgregarVehiculo().setVisible(true);
-                    }
-                });
-            }
-            else if(RBT_Modificar.isSelected())
-            {
-                java.awt.EventQueue.invokeLater(new Runnable()
-                {
-                    @Override
-                    public void run()
-                    {
-                        new ModificarVehiculo().setVisible(true);
-                    }
-                });
-            }
-            else if(RBT_Eliminar.isSelected())
-            {
-                java.awt.EventQueue.invokeLater(new Runnable()
-                {
-                    @Override
-                    public void run()
-                    {
-                        new EliminarVehiculo().setVisible(true);
-                    }
-                });
-            }
-            else if(RBT_Buscar.isSelected())
-            {
-                java.awt.EventQueue.invokeLater(new Runnable()
-                {
-                    @Override
-                    public void run()
-                    {
-                        new BuscarVehiculo().setVisible(true);
-                    }
-                });
-            }
-            else if(RBT_Mostrar.isSelected())
-            {
-                VariablesGlobales.NombreReporte = "ReporteArbolBVehiculos.png";
-                VariablesGlobales.ArbolBAutomoviles.GenerarReporteArbolB();
-
-                if(VariablesGlobales.GenereReporte)
-                {
-                    JOptionPane.showMessageDialog(null, "Reporte Generado Con Exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
-
-                    java.awt.EventQueue.invokeLater(new Runnable() {
-                        @Override
-                        public void run()
-                        {
-                            new Reportes().setVisible(true);
-                        }
-                    });
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(null, "El Reporte No Se Pudo Generar Con Exito \nVerifique Que Graphviz Se Encuentre Configurado De Manera Correcta", "Error!", JOptionPane.ERROR_MESSAGE);
-                }
-            }
+    private void MostarEstructura(ActionEvent e) {
+        VariablesGlobales.NombreReporte="ReporteArbolBVehiculos.png";
+        VariablesGlobales.ArbolBAutomoviles.GenerarReporteArbolB();
+        if(VariablesGlobales.GenereReporte){
+            JOptionPane.showMessageDialog(null, "Reporte Generado Con Exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+            new Reportes().setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "El Reporte No Se Pudo Generar Con Exito \nVerifique Que Graphviz Se Encuentre Configurado De Manera Correcta", "Error!", JOptionPane.ERROR_MESSAGE);
         }
+    }
 
-        //-------------------------------------------------Events-------------------------------------------------------
+    /*private void Eliminar(ActionEvent e) {
+        VariablesGlobales.ArbolBAutomoviles.EliminarVehiculo(textField1.getText());
+    }*/
 
-        private void RBT_AgregarActionPerformed(ActionEvent e)
-        {
-            ValidarRadioButton();
+    private void RBT_AgregarActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        new AgregarVehiculo().setVisible(true);
+    }
+
+    private void RBT_ModificarActionPerformed(ActionEvent e) {
+        // TODO add your code here
+    }
+
+    private void RBT_EliminarActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        new EliminarVehiculo().setVisible(true);
+    }
+
+    private void RBT_BuscarActionPerformed(ActionEvent e) {
+        // TODO add your code here
+    }
+
+    private void RBT_MostrarActionPerformed(ActionEvent e) {
+        VariablesGlobales.NombreReporte="ReporteArbolBVehiculos.png";
+        VariablesGlobales.ArbolBAutomoviles.GenerarReporteArbolB();
+        if(VariablesGlobales.GenereReporte){
+            JOptionPane.showMessageDialog(null, "Reporte Generado Con Exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+            new Reportes().setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "El Reporte No Se Pudo Generar Con Exito \nVerifique Que Graphviz Se Encuentre Configurado De Manera Correcta", "Error!", JOptionPane.ERROR_MESSAGE);
         }
+    }
 
-        private void RBT_ModificarActionPerformed(ActionEvent e)
-        {
-            ValidarRadioButton();
-        }
-
-        private void RBT_EliminarActionPerformed(ActionEvent e)
-        {
-            ValidarRadioButton();
-        }
-
-        private void RBT_BuscarActionPerformed(ActionEvent e)
-        {
-            ValidarRadioButton();
-        }
-
-        private void RBT_MostrarActionPerformed(ActionEvent e)
-        {
-            ValidarRadioButton();
-        }
-
-        private void initComponents()
-        {
-            // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
+    private void initComponents() {
+        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+        // Generated using JFormDesigner Evaluation license - unknown
         label1 = new JLabel();
         label2 = new JLabel();
         RBT_Agregar = new JRadioButton();
@@ -226,10 +169,10 @@
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        }
+    }
 
-        // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - unknown
     private JLabel label1;
     private JLabel label2;
     private JRadioButton RBT_Agregar;
@@ -239,4 +182,4 @@
     private JRadioButton RBT_Mostrar;
     private JLabel label3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
-    }
+}

@@ -8,6 +8,7 @@
     import Metodos.CargaMasiva;
     import Variables.VariablesGlobales;
     import java.awt.*;
+    import java.security.Key;
     import javax.swing.*;
 
 //-----------------------------------------------------Author-----------------------------------------------------------    
@@ -94,10 +95,34 @@
 
         private void RBT_GrafoActionPerformed(ActionEvent e) { ValidarRadioButton(); }
 
+        private void EliminarRuta(KeyEvent e) {
+            Eliminar(e);
+        }
+
+        void Eliminar(KeyEvent e){
+            if((int) e.getKeyChar()== (int)(KeyEvent.VK_DELETE)){
+                try {
+                String OP=JOptionPane.showInputDialog(null,"INGRESE ORIGEN SEGRUIDO DE RUTA (Origen,Ruta)","ELIMINAR RUTA",JOptionPane.QUESTION_MESSAGE);
+                String[] OP2=OP.split(",");
+                VariablesGlobales.ListaAdyacenciaRutas.Eliminar(OP2[0].trim().toUpperCase(),OP2[1].trim().toUpperCase());
+                }catch (Exception E){
+                    JOptionPane.showMessageDialog(null,"No se elimino","Error al Eliminar",JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
+
+        private void RBT_CargaMasivaKeyPressed(KeyEvent e) {
+            Eliminar(e);
+        }
+
+        private void RBT_GrafoKeyPressed(KeyEvent e) {
+            Eliminar(e);
+        }
+
         private void initComponents()
         {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-            // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
+            // Generated using JFormDesigner Evaluation license - unknown
             RBT_CargaMasiva = new JRadioButton();
             RBT_Grafo = new JRadioButton();
             label2 = new JLabel();
@@ -107,6 +132,12 @@
             //======== this ========
             setTitle("Rutas");
             setResizable(false);
+            addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    EliminarRuta(e);
+                }
+            });
             Container contentPane = getContentPane();
             contentPane.setLayout(null);
 
@@ -115,6 +146,12 @@
             RBT_CargaMasiva.setFont(new Font("Arial", Font.BOLD, 16));
             RBT_CargaMasiva.setForeground(new Color(102, 102, 255));
             RBT_CargaMasiva.addActionListener(e -> RBT_CargaMasivaActionPerformed(e));
+            RBT_CargaMasiva.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    RBT_CargaMasivaKeyPressed(e);
+                }
+            });
             contentPane.add(RBT_CargaMasiva);
             RBT_CargaMasiva.setBounds(new Rectangle(new Point(235, 150), RBT_CargaMasiva.getPreferredSize()));
 
@@ -123,6 +160,12 @@
             RBT_Grafo.setFont(new Font("Arial", Font.BOLD, 16));
             RBT_Grafo.setForeground(new Color(102, 102, 255));
             RBT_Grafo.addActionListener(e -> RBT_GrafoActionPerformed(e));
+            RBT_Grafo.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    RBT_GrafoKeyPressed(e);
+                }
+            });
             contentPane.add(RBT_Grafo);
             RBT_Grafo.setBounds(new Rectangle(new Point(235, 190), RBT_Grafo.getPreferredSize()));
 
@@ -149,11 +192,11 @@
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
-    private JRadioButton RBT_CargaMasiva;
-    private JRadioButton RBT_Grafo;
-    private JLabel label2;
-    private JLabel label1;
-    private JLabel label3;
+        // Generated using JFormDesigner Evaluation license - unknown
+        private JRadioButton RBT_CargaMasiva;
+        private JRadioButton RBT_Grafo;
+        private JLabel label2;
+        private JLabel label1;
+        private JLabel label3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     }

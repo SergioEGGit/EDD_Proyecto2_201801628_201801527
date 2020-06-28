@@ -67,5 +67,15 @@ Para generar los reportes tenes que hacer los siguietnes pasos:
    *fin del comunicado XD                            *
    ***************************************************
 
+---------------------------------------------------------------------------------------------------------------------
+RetornarHojaDelVehiculo(String PlacaB)
 
+este metodo retorna una pagina del arbol B y guarda en Variables Globales en la variable "IndiceDeVehiculoEnHoja"
+verificar si retorna null o una hoja si retorna null entonces no se encontro el vehiculo
+-----------------------------------------------------------------------------------------------------------------------
+TodosLosOrigenes() es el que retorna un Arraylist de string con todos los lugares disponibles
+
+CalcRutaFavorable("CANADA","ESTADOS UNIDOS"); recibe un origen y un destino consecutivamente
+de modo que este retorna un arreglo de string en el formato "Lugar,Tiempo" hacer un Split por ","
+y verificar que el arreglo retornado no sea null
 

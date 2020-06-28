@@ -11,12 +11,14 @@ new FormModel {
 			"title": "Rutas"
 			"resizable": false
 			"$locationPolicy": 1
+			addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "EliminarRuta", true ) )
 			add( new FormComponent( "javax.swing.JRadioButton" ) {
 				name: "RBT_CargaMasiva"
 				"text": "Cargar Rutas"
 				"font": &Font0 new java.awt.Font( "Arial", 1, 16 )
 				"foreground": new java.awt.Color( 102, 102, 255, 255 )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_CargaMasivaActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "RBT_CargaMasivaKeyPressed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 235
 				"y": 150
@@ -27,6 +29,7 @@ new FormModel {
 				"font": #Font0
 				"foreground": new java.awt.Color( 102, 102, 255, 255 )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_GrafoActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "RBT_GrafoKeyPressed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 235
 				"y": 190

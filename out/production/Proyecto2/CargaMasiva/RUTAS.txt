@@ -17,3 +17,4 @@ Canada/Ecuador/100%
 Peru/Canada/50%
 Rusia/Guatemala/10%
 Canada/Canada/100%
+Guatemala/Colombia/10%

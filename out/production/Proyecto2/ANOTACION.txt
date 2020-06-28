@@ -67,5 +67,9 @@ Para generar los reportes tenes que hacer los siguietnes pasos:
    *fin del comunicado XD                            *
    ***************************************************
 
+---------------------------------------------------------------------------------------------------------------------
+RetornarHojaDelVehiculo(String PlacaB)
 
+este metodo retorna una pagina del arbol B y guarda en Variables Globales en la variable "IndiceDeVehiculoEnHoja"
+verificar si retorna null o una hoja si retorna null entonces no se encontro el vehiculo
 
