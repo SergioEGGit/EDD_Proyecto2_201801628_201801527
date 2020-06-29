@@ -7,9 +7,11 @@
     import java.awt.*;
     import javax.swing.*;
 
+    import Estructuras.HuffmanNodo;
     import Estructuras.ListaDobleCircularTopsNodo;
     import Interfaz.Clientes.ClientesInterfaz;
     import Interfaz.Conductores.*;
+    import Interfaz.Huffman.Comprecion_Descomprecion;
     import Interfaz.Rutas.Rutas;
     import Interfaz.Vehiculos.VehiculosInterfaz;
     import Interfaz.Viajes.ViajesInterfaz;
@@ -202,10 +204,14 @@
             });
         }
 
+        private void button1ActionPerformed(ActionEvent e) {
+            new Comprecion_Descomprecion().setVisible(true);
+        }
+
         private void initComponents()
         {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-            // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
+            // Generated using JFormDesigner Evaluation license - unknown
             menuBar1 = new JMenuBar();
             menu2 = new JMenu();
             menu3 = new JMenu();
@@ -224,6 +230,7 @@
             RBT_Rutas = new JRadioButton();
             RBT_Viajes = new JRadioButton();
             label3 = new JLabel();
+            button1 = new JButton();
 
             //======== this ========
             setTitle("Proyecto 2");
@@ -370,6 +377,12 @@
             contentPane.add(label3);
             label3.setBounds(670, 370, 45, 40);
 
+            //---- button1 ----
+            button1.setText("Comprecion");
+            button1.addActionListener(e -> button1ActionPerformed(e));
+            contentPane.add(button1);
+            button1.setBounds(new Rectangle(new Point(320, 360), button1.getPreferredSize()));
+
             {
                 // compute preferred size
                 Dimension preferredSize = new Dimension();
@@ -390,7 +403,7 @@
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-        // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
+        // Generated using JFormDesigner Evaluation license - unknown
         private JMenuBar menuBar1;
         private JMenu menu2;
         private JMenu menu3;
@@ -409,5 +422,6 @@
         private JRadioButton RBT_Rutas;
         private JRadioButton RBT_Viajes;
         private JLabel label3;
+        private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     }

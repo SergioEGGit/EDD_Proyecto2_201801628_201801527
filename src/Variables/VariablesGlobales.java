@@ -29,4 +29,5 @@
         public static ArbolBAutos ArbolBAutomoviles = new ArbolBAutos();
         public static BlockchainViajes BlockchainViajes = new BlockchainViajes();
         public static ListaDobleCircularTops ListaDobleCircularTops = new ListaDobleCircularTops();
+        public static  Huffman huffman=new Huffman();
     }
