@@ -78,4 +78,3 @@ TodosLosOrigenes() es el que retorna un Arraylist de string con todos los lugare
 CalcRutaFavorable("CANADA","ESTADOS UNIDOS"); recibe un origen y un destino consecutivamente
 de modo que este retorna un arreglo de string en el formato "Lugar,Tiempo" hacer un Split por ","
 y verificar que el arreglo retornado no sea null
-

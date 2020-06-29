@@ -62,8 +62,8 @@
             }
             else if(RBT_Mostrar.isSelected())
             {
-                VariablesGlobales.NombreReporte = "ReporteConductoresListaDobleCircular.png";
-                VariablesGlobales.ListaDobleCircularConductores.GenerarReporteListaDobleCircularC();
+                VariablesGlobales.NombreReporte = "ReporteViajesBockChain.png";
+                VariablesGlobales.BlockchainViajes.GenerarReporteBlockchainViajes();
 
                 if(VariablesGlobales.GenereReporte)
                 {

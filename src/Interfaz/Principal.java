@@ -5,15 +5,22 @@
 
     import java.awt.event.*;
     import java.awt.*;
+    import java.util.ArrayList;
     import javax.swing.*;
+    import javax.swing.table.DefaultTableModel;
 
+    import Estructuras.BlockchainViajesNodo;
     import Estructuras.ListaDobleCircularTopsNodo;
     import Interfaz.Clientes.ClientesInterfaz;
     import Interfaz.Conductores.*;
     import Interfaz.Rutas.Rutas;
     import Interfaz.Vehiculos.VehiculosInterfaz;
     import Interfaz.Viajes.ViajesInterfaz;
+    import Modelos.ModeloConductores;
+    import Modelos.ModeloVehiculo;
+    import Modelos.ModeloViajes;
     import Variables.VariablesGlobales;
+    import jdk.nashorn.internal.scripts.JO;
 
 //-----------------------------------------------------Author-----------------------------------------------------------
 
@@ -25,6 +32,10 @@
 
     public class Principal extends JFrame
     {
+        //---------------------------------------------Variables--------------------------------------------------------
+
+        DefaultTableModel Modelo;
+
         //--------------------------------------------Constructor-------------------------------------------------------
 
         public Principal()
@@ -96,6 +107,33 @@
             }
         }
 
+        public void ObtenerBloques(JTable NuevaTabla, ArrayList<ModeloViajes> ListaViajes)
+        {
+            Modelo = new DefaultTableModel();
+            Modelo.addColumn("Codigo");
+            Modelo.addColumn("Origne");
+            Modelo.addColumn("Destino");
+
+            for(ModeloViajes Viaje: ListaViajes)
+            {
+                if (Viaje != null)
+                {
+                    Object[] Fila = new Object[]
+                            {
+                                    Viaje.getIdentificadorViaje(),
+                                    Viaje.getLugarOrigenViaje(),
+                                    Viaje.getLugaDestinoViaje()
+                            };
+                    Modelo.addRow(Fila);
+                }
+            }
+            NuevaTabla.setModel(Modelo);
+            NuevaTabla.getColumnModel().getColumn(0).setPreferredWidth(400);
+            NuevaTabla.getColumnModel().getColumn(1).setPreferredWidth(400);
+            NuevaTabla.getColumnModel().getColumn(2).setPreferredWidth(400);
+            NuevaTabla.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+        }
+
         //-----------------------------------------------Events---------------------------------------------------------
 
         private void BT_AcercaDEActionPerformed(ActionEvent e)
@@ -107,7 +145,6 @@
             String Cadena = "";
 
             Cadena += "                           Proyecto 2 \n";
-            Cadena += "                    Laboratorio De Estructuras \n";
             Cadena += "                         Llega Rapidito \n";
             Cadena += "      Integrantes: \n";
             Cadena += "      1.Sergio Alexander Echigoyen Gomez 201801628 \n";
@@ -176,7 +213,6 @@
         private void BT_TopViajesLargosActionPerformed(ActionEvent e)
         {
             VariablesGlobales.BlockchainViajes.TopViajesLargosBlockchainViajes();
-
                    
             if(VariablesGlobales.ListaDobleCircularTops != null)
             {
@@ -185,6 +221,52 @@
                 String Cadena = VariablesGlobales.ListaDobleCircularTops.GenerarTopViajesLargos();
                 
                 JOptionPane.showMessageDialog(null, "Reporte Viajes Mas Largos: \n" + Cadena, "Exito!", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+
+        private void BT_RutaViajeActionPerformed(ActionEvent e)
+        {
+            //Declaraciones
+
+            Modelo = new DefaultTableModel();
+            ArrayList<ModeloViajes> ListaViajes = VariablesGlobales.BlockchainViajes.TodosLosBloquesBlockchainViajes();
+            JTable Tabla = new JTable();
+            Tabla.setFont(new Font("Arial", Font.BOLD, 16));
+            Tabla.setForeground(new Color(255, 51, 102));
+            Tabla.setBounds(10, 5, 50, 50);
+            ObtenerBloques(Tabla, ListaViajes);
+
+            int Mensaje = JOptionPane.showConfirmDialog(null, new JScrollPane(Tabla), "Seleccione Un Viaje", JOptionPane.OK_CANCEL_OPTION);
+
+            if(Mensaje == JOptionPane.OK_OPTION)
+            {
+                int Fila = Tabla.getSelectedRow();
+                String Valor = (String) Tabla.getValueAt(Fila, 0);
+
+                if(!Valor.equals(""))
+                {
+                    BlockchainViajesNodo NodoViajes = VariablesGlobales.BlockchainViajes.BuscarViajeBlockchainViaje(Valor);
+
+                    VariablesGlobales.NombreReporte = "ReporteViajesListaSimple.png";
+                    NodoViajes.getNuevoViaje().getListaRutaViaje().GenerarReporteListaSimpleRutas();
+
+                    if(VariablesGlobales.GenereReporte)
+                    {
+                        JOptionPane.showMessageDialog(null, "Reporte Generado Con Exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+
+                        java.awt.EventQueue.invokeLater(new Runnable() {
+                            @Override
+                            public void run()
+                            {
+                                new Reportes().setVisible(true);
+                            }
+                        });
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "El Reporte No Se Pudo Generar Con Exito \nVerifique Que Graphviz Se Encuentre Configurado De Manera Correcta", "Error!", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
             }
         }
 
@@ -214,6 +296,7 @@
             BT_CargaMConductores = new JMenuItem();
             menu4 = new JMenu();
             BT_TopViajesLargos = new JMenuItem();
+            BT_RutaViaje = new JMenuItem();
             menu5 = new JMenu();
             BT_AcercaDE = new JMenuItem();
             label2 = new JLabel();
@@ -292,6 +375,13 @@
                     BT_TopViajesLargos.setForeground(new Color(153, 51, 255));
                     BT_TopViajesLargos.addActionListener(e -> BT_TopViajesLargosActionPerformed(e));
                     menu4.add(BT_TopViajesLargos);
+
+                    //---- BT_RutaViaje ----
+                    BT_RutaViaje.setText("Ruta De Un Viaje");
+                    BT_RutaViaje.setForeground(new Color(153, 51, 255));
+                    BT_RutaViaje.setFont(new Font("Arial", Font.BOLD, 12));
+                    BT_RutaViaje.addActionListener(e -> BT_RutaViajeActionPerformed(e));
+                    menu4.add(BT_RutaViaje);
                 }
                 menuBar1.add(menu4);
 
@@ -399,6 +489,7 @@
         private JMenuItem BT_CargaMConductores;
         private JMenu menu4;
         private JMenuItem BT_TopViajesLargos;
+        private JMenuItem BT_RutaViaje;
         private JMenu menu5;
         private JMenuItem BT_AcercaDE;
         private JLabel label2;

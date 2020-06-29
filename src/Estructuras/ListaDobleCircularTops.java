@@ -3,13 +3,12 @@
 
     package Estructuras;
 
-    import Modelos.ModeloConductores;
-    import Variables.VariablesGlobales;
-    import javax.swing.*;
-
 //---------------------------------------------------Principal----------------------------------------------------------
 
-    public class ListaDobleCircularTops
+import javax.swing.*;
+import java.util.jar.JarOutputStream;
+
+public class ListaDobleCircularTops
     {
         //Atributos
         private ListaDobleCircularTopsNodo ListaDobleInicio;
@@ -103,14 +102,14 @@
 
                     while(Segundo != getListaDobleInicio())
                     {
-                        if(Primero.getCantidad() > Segundo.getCantidad())
+                        if(Primero.getCantidad() < Segundo.getCantidad())
                         {
                             Nombre = Segundo.getNombre();
                             Cantidad = Segundo.getCantidad();
 
                             //Segundos
                             Segundo.setNombre(Primero.getNombre());
-                            Segundo.setCantidad(Segundo.getCantidad());
+                            Segundo.setCantidad(Primero.getCantidad());
 
                             //Primeros
                             Primero.setNombre(Nombre);
@@ -160,15 +159,20 @@
 
             String Cadena = "";
 
-            do
+            if(getListaDobleInicio() != null)
             {
-                if(ContadorAuxiliar <= 10)
+                do
                 {
-                    Cadena += "Viaje " + ContadorAuxiliar + ": " + Auxiliar.getNombre() + "Cantidad: " + Auxiliar.getCantidad() + "\n";
+                    if(ContadorAuxiliar <= 10)
+                    {
+                        Cadena += "Viaje " + ContadorAuxiliar + ": " + Auxiliar.getNombre() + " Cantidad De Destinos: " + Auxiliar.getCantidad() + "\n";
+                    }
+                    ContadorAuxiliar++;
+
+                    Auxiliar = Auxiliar.getSgte();
                 }
-                ContadorAuxiliar++;
+                while(Auxiliar != getListaDobleInicio());
             }
-            while(Auxiliar != getListaDobleInicio());
 
             return Cadena;
         }

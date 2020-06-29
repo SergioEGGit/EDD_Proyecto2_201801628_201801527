@@ -36,7 +36,7 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 120
 				"height": 19
-				"x": 215
+				"x": 165
 				"y": 120
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -47,7 +47,7 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 120
 				"height": 19
-				"x": 215
+				"x": 165
 				"y": 165
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -58,7 +58,7 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 120
 				"height": 19
-				"x": 215
+				"x": 165
 				"y": 210
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -69,7 +69,7 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 120
 				"height": 19
-				"x": 215
+				"x": 165
 				"y": 255
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -80,7 +80,7 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 95
 				"height": 19
-				"x": 215
+				"x": 165
 				"y": 305
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -91,7 +91,7 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 125
 				"height": 19
-				"x": 215
+				"x": 165
 				"y": 355
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -102,7 +102,7 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 125
 				"height": 19
-				"x": 215
+				"x": 165
 				"y": 410
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -122,8 +122,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 50
 				"height": 40
-				"x": 600
-				"y": 485
+				"x": 620
+				"y": 490
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_DpiCliente"
@@ -132,46 +132,51 @@ new FormModel {
 				"foreground": new java.awt.Color( 0, 0, 204, 255 )
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "TextField_DpiClienteMouseClicked", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 345
+				"x": 295
 				"y": 300
-				"width": 145
+				"width": 180
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_Origen"
 				"font": new java.awt.Font( "Arial", 1, 16 )
+				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				"editable": false
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "TextField_OrigenMouseClicked", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 345
+				"x": 295
 				"y": 115
-				"width": 145
+				"width": 180
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_Destino"
 				"font": new java.awt.Font( "Arial", 1, 16 )
 				"foreground": new java.awt.Color( 0, 0, 204, 255 )
+				"editable": false
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "TextField_DestinoMouseClicked", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 345
+				"x": 295
 				"y": 160
-				"width": 145
+				"width": 180
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField1"
+				name: "TextField_Fecha"
 				"font": new java.awt.Font( "Arial", 1, 16 )
 				"foreground": new java.awt.Color( 0, 0, 204, 255 )
 				"text": "DD/MM/YYYY"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 345
+				"x": 295
 				"y": 210
-				"width": 145
+				"width": 180
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField2"
+				name: "TextField_Hora"
 				"foreground": new java.awt.Color( 0, 0, 204, 255 )
 				"font": new java.awt.Font( "Arial", 1, 16 )
 				"text": "HH:MM"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 345
+				"x": 295
 				"y": 255
-				"width": 145
+				"width": 180
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_DpiConductor"
@@ -180,9 +185,9 @@ new FormModel {
 				"editable": false
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "TextField_DpiConductorMouseClicked", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 345
+				"x": 295
 				"y": 350
-				"width": 145
+				"width": 180
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextField_Vehiculos"
@@ -191,9 +196,9 @@ new FormModel {
 				"editable": false
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "TextField_VehiculosMouseClicked", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 345
+				"x": 295
 				"y": 405
-				"width": 145
+				"width": 180
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 5, 10 )
