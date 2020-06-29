@@ -157,7 +157,56 @@ new FormModel {
 						"text": "Top Viajes: Viajes Mas Largos"
 						"font": new java.awt.Font( "Arial", 1, 12 )
 						"foreground": new java.awt.Color( 153, 51, 255, 255 )
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/Assets/Top10.jpg" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BT_TopViajesLargosActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "BT_TopClientes"
+						"text": "Top Clientes: Clientes Con Mayor Cantidad De Viajes"
+						"foreground": new java.awt.Color( 153, 51, 255, 255 )
+						"font": new java.awt.Font( "Arial", 1, 12 )
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/Assets/Top10.jpg" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BT_TopClientesActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "BT_TopConductores"
+						"text": "Top Conductores: Conductores Con Mayor Cantidad De Ingresos"
+						"foreground": new java.awt.Color( 153, 51, 255, 255 )
+						"font": new java.awt.Font( "Arial", 1, 12 )
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/Assets/Top10.jpg" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BT_TopConductoresActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "BT_TopVehiculos"
+						"text": "Top Vehiculos: Vehiculos Con Mayor Cantidad De Viajes"
+						"font": new java.awt.Font( "Arial", 1, 12 )
+						"foreground": new java.awt.Color( 153, 51, 255, 255 )
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/Assets/Top10.jpg" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BT_TopVehiculosActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "BT_RutaViaje"
+						"text": "Ruta De Un Viaje"
+						"foreground": new java.awt.Color( 153, 51, 255, 255 )
+						"font": new java.awt.Font( "Arial", 1, 12 )
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/Assets/ListaRuta.jpg" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BT_RutaViajeActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "BT_Comprimir"
+						"text": "Comprimir Top"
+						"font": new java.awt.Font( "Arial", 1, 12 )
+						"foreground": new java.awt.Color( 153, 51, 255, 255 )
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/Assets/Comprimir.png" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BT_ComprimirActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "BT_Descomprimir"
+						"text": "Descomprimir Top"
+						"foreground": new java.awt.Color( 153, 51, 255, 255 )
+						"font": new java.awt.Font( "Arial", 1, 12 )
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/Assets/Comprimir.png" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BT_DescomprimirActionPerformed", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {

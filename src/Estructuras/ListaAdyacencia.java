@@ -279,7 +279,7 @@ public class ListaAdyacencia
     void ValoresDefault(){
         ListaAdyacenciaNodo Aux=getInicioListaAdyacencia();
         while (Aux!=null){
-            Aux.setTiempoAcumulado(0.0);
+            Aux.setTiempoAcumulado(Double.MAX_VALUE);
             Aux.setViendeDeNodo(null);
             Aux=Aux.getAbajo();
         }
@@ -287,10 +287,10 @@ public class ListaAdyacencia
 
     public void AlgoritmoDijkstra(){
         CrearOrigenesSinDestinos();
+        ValoresDefault();
         Stack<String> Origenes=BuscarNodoInicial();
         ListaAdyacenciaNodo Aux=getInicioListaAdyacencia();
         String Orig="";
-        ValoresDefault();
         Origenes=BuscarNodoInicial();
         for (int i=0;i<Origenes.size();i++){
             Orig=Origenes.get(i);
@@ -350,7 +350,7 @@ public class ListaAdyacencia
         return false;
     }
 
-    String[] CalcRutaFavorable(String Origen,String Destino){
+    public String[] CalcRutaFavorable(String Origen,String Destino){
         if(Origen.equals(Destino)){
             JOptionPane.showMessageDialog(null,"EL ORIGEN Y EL DESTINO SON IGUALES","Error en ruta",JOptionPane.ERROR_MESSAGE);
         }else{

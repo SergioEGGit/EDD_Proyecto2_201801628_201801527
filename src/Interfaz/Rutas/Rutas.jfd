@@ -20,7 +20,7 @@ new FormModel {
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_CargaMasivaActionPerformed", true ) )
 				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "RBT_CargaMasivaKeyPressed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 235
+				"x": 215
 				"y": 150
 			} )
 			add( new FormComponent( "javax.swing.JRadioButton" ) {
@@ -31,7 +31,7 @@ new FormModel {
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "RBT_GrafoActionPerformed", true ) )
 				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "RBT_GrafoKeyPressed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 235
+				"x": 215
 				"y": 190
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -42,7 +42,7 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 226
 				"height": 24
-				"x": 195
+				"x": 175
 				"y": 90
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -53,7 +53,7 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 125
 				"height": 26
-				"x": 250
+				"x": 230
 				"y": 45
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {

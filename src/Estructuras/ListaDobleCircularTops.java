@@ -3,13 +3,15 @@
 
     package Estructuras;
 
-    import Modelos.ModeloConductores;
-    import Variables.VariablesGlobales;
-    import javax.swing.*;
-
 //---------------------------------------------------Principal----------------------------------------------------------
 
-    public class ListaDobleCircularTops
+import Modelos.ModeloVehiculo;
+import Variables.VariablesGlobales;
+
+import javax.swing.*;
+import java.util.jar.JarOutputStream;
+
+public class ListaDobleCircularTops
     {
         //Atributos
         private ListaDobleCircularTopsNodo ListaDobleInicio;
@@ -103,14 +105,14 @@
 
                     while(Segundo != getListaDobleInicio())
                     {
-                        if(Primero.getCantidad() > Segundo.getCantidad())
+                        if(Primero.getCantidad() < Segundo.getCantidad())
                         {
                             Nombre = Segundo.getNombre();
                             Cantidad = Segundo.getCantidad();
 
                             //Segundos
                             Segundo.setNombre(Primero.getNombre());
-                            Segundo.setCantidad(Segundo.getCantidad());
+                            Segundo.setCantidad(Primero.getCantidad());
 
                             //Primeros
                             Primero.setNombre(Nombre);
@@ -160,15 +162,110 @@
 
             String Cadena = "";
 
-            do
+            if(getListaDobleInicio() != null)
             {
-                if(ContadorAuxiliar <= 10)
+                do
                 {
-                    Cadena += "Viaje " + ContadorAuxiliar + ": " + Auxiliar.getNombre() + "Cantidad: " + Auxiliar.getCantidad() + "\n";
+                    if(ContadorAuxiliar <= 10)
+                    {
+                        Cadena += "Viaje " + ContadorAuxiliar + ": " + Auxiliar.getNombre() + " Cantidad De Destinos: " + Auxiliar.getCantidad() + "\n";
+                    }
+                    ContadorAuxiliar++;
+
+                    Auxiliar = Auxiliar.getSgte();
                 }
-                ContadorAuxiliar++;
+                while(Auxiliar != getListaDobleInicio());
             }
-            while(Auxiliar != getListaDobleInicio());
+
+            return Cadena;
+        }
+        
+        public String GenerarTopClientesConMasViajes()
+        {
+            //Declaraciones
+
+            ListaDobleCircularTopsNodo Auxiliar = getListaDobleInicio();
+
+            int ContadorAuxiliar = 1;
+
+            String Cadena = "";
+
+            if(getListaDobleInicio() != null)
+            {
+                do
+                {
+                    if(ContadorAuxiliar <= 10)
+                    {
+                        ListaSimpleClientesNodo NodoCliente = VariablesGlobales.TablaHashClientes.BuscarClienteTablaHashClientes(Auxiliar.getNombre());
+
+                        Cadena += "Cliente " + ContadorAuxiliar + ": DPI: " + Auxiliar.getNombre() + " Nombres: " + NodoCliente.getNuevoCliente().getNombresCliente() + " Apellidos: " + NodoCliente.getNuevoCliente().getApellidosCliente() + " Cantidad De Viajes: " + Auxiliar.getCantidad() + "\n";
+                    }
+                    ContadorAuxiliar++;
+
+                    Auxiliar = Auxiliar.getSgte();
+                }
+                while(Auxiliar != getListaDobleInicio());
+            }
+
+            return Cadena;
+        }
+
+        public String GenerarTopConductoresConMasViajes()
+        {
+            //Declaraciones
+
+            ListaDobleCircularTopsNodo Auxiliar = getListaDobleInicio();
+
+            int ContadorAuxiliar = 1;
+
+            String Cadena = "";
+
+            if(getListaDobleInicio() != null)
+            {
+                do
+                {
+                    if(ContadorAuxiliar <= 10)
+                    {
+                        ListaDobleCircularConductoresNodo NodoConductor = VariablesGlobales.ListaDobleCircularConductores.BuscarNododCondcutoresListaDobleCircularC(Auxiliar.getNombre());
+
+                        Cadena += "Cliente " + ContadorAuxiliar + ": DPI: " + Auxiliar.getNombre() + " Nombres: " + NodoConductor.getNuevoConductor().getNombresConductor() + " Apellidos: " + NodoConductor.getNuevoConductor().getApellidosConductor() + " Cantidad De Viajes: " + Auxiliar.getCantidad() + "\n";
+                    }
+                    ContadorAuxiliar++;
+
+                    Auxiliar = Auxiliar.getSgte();
+                }
+                while(Auxiliar != getListaDobleInicio());
+            }
+
+            return Cadena;
+        }
+
+        public String GenerarTopVehiculosConMasViajes()
+        {
+            //Declaraciones
+
+            ListaDobleCircularTopsNodo Auxiliar = getListaDobleInicio();
+
+            int ContadorAuxiliar = 1;
+
+            String Cadena = "";
+
+            if(getListaDobleInicio() != null)
+            {
+                do
+                {
+                    if(ContadorAuxiliar <= 10)
+                    {
+                        ModeloVehiculo NodoVehiculo = VariablesGlobales.ArbolBAutomoviles.BuscarVehiculoNodo(Auxiliar.getNombre());
+
+                        Cadena += "Vehiculo " + ContadorAuxiliar + ": Placa: " + Auxiliar.getNombre() + " Marca: " + NodoVehiculo.getMarca() + " Modelo: " + NodoVehiculo.getModelo() + " Cantidad De Viajes: " + Auxiliar.getCantidad() + "\n";
+                    }
+                    ContadorAuxiliar++;
+
+                    Auxiliar = Auxiliar.getSgte();
+                }
+                while(Auxiliar != getListaDobleInicio());
+            }
 
             return Cadena;
         }

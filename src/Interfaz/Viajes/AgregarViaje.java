@@ -4,12 +4,8 @@
     package Interfaz.Viajes;
 
     import Estructuras.*;
-    import Modelos.ModeloClientes;
-    import Modelos.ModeloConductores;
-    import Modelos.ModeloVehiculo;
-    import Modelos.ModeloViajes;
+    import Modelos.*;
     import Variables.VariablesGlobales;
-    import org.apache.commons.codec.cli.Digest;
     import org.apache.commons.codec.digest.DigestUtils;
 
     import java.awt.*;
@@ -122,6 +118,27 @@
             NuevaTabla.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         }
 
+        public void ObtenerLugares(JTable NuevaTabla, ArrayList<String> ListaOrigenes)
+        {
+            Modelo = new DefaultTableModel();
+            Modelo.addColumn("Lugar");
+
+            for(String Lugar: ListaOrigenes)
+            {
+                if (Lugar != null)
+                {
+                    Object[] Fila = new Object[]
+                            {
+                                    Lugar
+                            };
+                    Modelo.addRow(Fila);
+                }
+            }
+            NuevaTabla.setModel(Modelo);
+            NuevaTabla.getColumnModel().getColumn(0).setPreferredWidth(400);
+            NuevaTabla.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+        }
+
         public boolean ValidarCamposVacios()
         {
             //Declaraciones
@@ -161,18 +178,53 @@
                 String Hora = TextField_Hora.getText();
                 ListaDobleCircularConductoresNodo NodoConductor = VariablesGlobales.ListaDobleCircularConductores.BuscarNododCondcutoresListaDobleCircularC(TextField_DpiConductor.getText());
                 ListaSimpleClientesNodo NodoClietnes = VariablesGlobales.TablaHashClientes.BuscarClienteTablaHashClientes(TextField_DpiCliente.getText());
-                //Arbol B Nodo
-                ArbolBAutosNodo NodoArbol = new ArbolBAutosNodo();
-                int PosicionArray = 0;
-                ListaSimpleRutas NuevaLista = new ListaSimpleRutas();
+                ArbolBAutosNodo NodoArbol = VariablesGlobales.ArbolBAutomoviles.RetornarHojaDelVehiculo(TextField_Vehiculos.getText());
+                int PosicionArray = VariablesGlobales.IndiceDeVehiculoEnHoja;
 
-                String Identificador = Fecha + Hora;
+                String[] Ruta = VariablesGlobales.ListaAdyacenciaRutas.CalcRutaFavorable(Origen, Destino);
+
+                String Identificador = NodoArbol.getVehiculos().get(PosicionArray).getPlaca() + Fecha + Hora;
                 String Llave = DigestUtils.md5Hex(Identificador);
 
-                ModeloViajes NuevoViaje = new ModeloViajes(Identificador, Origen, Destino, Fecha, Hora, NodoClietnes, NodoConductor, NodoArbol, 0, NuevaLista);
+                boolean Bandera1 = VariablesGlobales.BlockchainViajes.VerificarViajeBlockchainViaje(Llave);
 
-                VariablesGlobales.BlockchainViajes.InsertarViajeBlockchainViajes(NuevoViaje);
+                if(!Bandera1)
+                {
+                    if(Ruta != null)
+                    {
+                        ListaSimpleRutas NuevaLista = new ListaSimpleRutas();
 
+                        ModeloRutas NuevaRuta = new ModeloRutas();
+
+                        for(String Lugar: Ruta)
+                        {
+                            NuevaRuta = new ModeloRutas();
+
+                            String[] RutaActual = Lugar.split(",");
+
+                            NuevaRuta.setLugar(RutaActual[0]);
+                            NuevaRuta.setTiempo(Double.parseDouble(RutaActual[1]));
+
+                            NuevaLista.InsertarLugarListaSimpleRutas(NuevaRuta);
+                        }
+
+                        ModeloViajes NuevoViaje = new ModeloViajes(Llave, Origen, Destino, Fecha, Hora, NodoClietnes, NodoConductor, NodoArbol, PosicionArray, NuevaLista);
+
+                        VariablesGlobales.BlockchainViajes.InsertarViajeBlockchainViajes(NuevoViaje);
+
+                        TextField_Origen.setText("");
+                        TextField_Destino.setText("");
+                        TextField_Fecha.setText("DD/MM/YYYY");
+                        TextField_Hora.setText("HH:MM");
+                        TextField_DpiCliente.setText("");
+                        TextField_DpiConductor.setText("");
+                        TextField_Vehiculos.setText("");
+                    }
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "El Viaje Indicado Ya Existe En El Sistema", "Error!", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
 
@@ -254,6 +306,58 @@
             }
         }
 
+        private void TextField_OrigenMouseClicked(MouseEvent e)
+        {
+            //Declaraciones
+
+            Modelo = new DefaultTableModel();
+            ArrayList<String> ListaOrigenes = VariablesGlobales.ListaAdyacenciaRutas.TodosLosOrigenes();
+            JTable Tabla = new JTable();
+            Tabla.setFont(new Font("Arial", Font.BOLD, 16));
+            Tabla.setForeground(new Color(255, 51, 102));
+            Tabla.setBounds(10, 5, 50, 50);
+            ObtenerLugares(Tabla, ListaOrigenes);
+
+            int Mensaje = JOptionPane.showConfirmDialog(null, new JScrollPane(Tabla), "Seleccione Un Lugar", JOptionPane.OK_CANCEL_OPTION);
+
+            if(Mensaje == JOptionPane.OK_OPTION)
+            {
+                int Fila = Tabla.getSelectedRow();
+                String Valor = (String) Tabla.getValueAt(Fila, 0);
+
+                if(!Valor.equals(""))
+                {
+                    TextField_Origen.setText(Valor);
+                }
+            }
+        }
+
+        private void TextField_DestinoMouseClicked(MouseEvent e)
+        {
+            //Declaraciones
+
+            Modelo = new DefaultTableModel();
+            ArrayList<String> ListaOrigenes = VariablesGlobales.ListaAdyacenciaRutas.TodosLosOrigenes();
+            JTable Tabla = new JTable();
+            Tabla.setFont(new Font("Arial", Font.BOLD, 16));
+            Tabla.setForeground(new Color(255, 51, 102));
+            Tabla.setBounds(10, 5, 50, 50);
+            ObtenerLugares(Tabla, ListaOrigenes);
+
+            int Mensaje = JOptionPane.showConfirmDialog(null, new JScrollPane(Tabla), "Seleccione Un Lugar", JOptionPane.OK_CANCEL_OPTION);
+
+            if(Mensaje == JOptionPane.OK_OPTION)
+            {
+                int Fila = Tabla.getSelectedRow();
+                String Valor = (String) Tabla.getValueAt(Fila, 0);
+
+                if(!Valor.equals(""))
+                {
+                    TextField_Destino.setText(Valor);
+                }
+            }
+        }
+
         private void initComponents()
         {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -301,49 +405,49 @@
             label4.setFont(new Font("Arial", Font.BOLD, 16));
             label4.setForeground(new Color(102, 102, 255));
             contentPane.add(label4);
-            label4.setBounds(215, 120, 120, 19);
+            label4.setBounds(165, 120, 120, 19);
 
             //---- label5 ----
             label5.setText("Lugar Destino:");
             label5.setFont(new Font("Arial", Font.BOLD, 16));
             label5.setForeground(new Color(102, 102, 255));
             contentPane.add(label5);
-            label5.setBounds(215, 165, 120, 19);
+            label5.setBounds(165, 165, 120, 19);
 
             //---- label6 ----
             label6.setText("Fecha Inicio:");
             label6.setFont(new Font("Arial", Font.BOLD, 16));
             label6.setForeground(new Color(102, 102, 255));
             contentPane.add(label6);
-            label6.setBounds(215, 210, 120, 19);
+            label6.setBounds(165, 210, 120, 19);
 
             //---- label11 ----
             label11.setText("Hora Inicio:");
             label11.setFont(new Font("Arial", Font.BOLD, 16));
             label11.setForeground(new Color(102, 102, 255));
             contentPane.add(label11);
-            label11.setBounds(215, 255, 120, 19);
+            label11.setBounds(165, 255, 120, 19);
 
             //---- label7 ----
             label7.setText("DPI Cliente:");
             label7.setFont(new Font("Arial", Font.BOLD, 16));
             label7.setForeground(new Color(102, 102, 255));
             contentPane.add(label7);
-            label7.setBounds(215, 305, 95, 19);
+            label7.setBounds(165, 305, 95, 19);
 
             //---- label8 ----
             label8.setText("DPI Conductor:");
             label8.setFont(new Font("Arial", Font.BOLD, 16));
             label8.setForeground(new Color(102, 102, 255));
             contentPane.add(label8);
-            label8.setBounds(215, 355, 125, 19);
+            label8.setBounds(165, 355, 125, 19);
 
             //---- label9 ----
             label9.setText("Placa Vehiculo:");
             label9.setFont(new Font("Arial", Font.BOLD, 16));
             label9.setForeground(new Color(102, 102, 255));
             contentPane.add(label9);
-            label9.setBounds(215, 410, 125, 19);
+            label9.setBounds(165, 410, 125, 19);
 
             //---- BT_Registrar ----
             BT_Registrar.setText("Registrar");
@@ -353,7 +457,7 @@
             contentPane.add(BT_Registrar);
             BT_Registrar.setBounds(260, 465, 145, 30);
             contentPane.add(label1);
-            label1.setBounds(600, 485, 50, 40);
+            label1.setBounds(620, 490, 50, 40);
 
             //---- TextField_DpiCliente ----
             TextField_DpiCliente.setEditable(false);
@@ -366,33 +470,47 @@
                 }
             });
             contentPane.add(TextField_DpiCliente);
-            TextField_DpiCliente.setBounds(345, 300, 145, TextField_DpiCliente.getPreferredSize().height);
+            TextField_DpiCliente.setBounds(295, 300, 180, TextField_DpiCliente.getPreferredSize().height);
 
             //---- TextField_Origen ----
             TextField_Origen.setFont(new Font("Arial", Font.BOLD, 16));
             TextField_Origen.setForeground(new Color(0, 0, 204));
+            TextField_Origen.setEditable(false);
+            TextField_Origen.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    TextField_OrigenMouseClicked(e);
+                }
+            });
             contentPane.add(TextField_Origen);
-            TextField_Origen.setBounds(345, 115, 145, TextField_Origen.getPreferredSize().height);
+            TextField_Origen.setBounds(295, 115, 180, TextField_Origen.getPreferredSize().height);
 
             //---- TextField_Destino ----
             TextField_Destino.setFont(new Font("Arial", Font.BOLD, 16));
             TextField_Destino.setForeground(new Color(0, 0, 204));
+            TextField_Destino.setEditable(false);
+            TextField_Destino.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    TextField_DestinoMouseClicked(e);
+                }
+            });
             contentPane.add(TextField_Destino);
-            TextField_Destino.setBounds(345, 160, 145, TextField_Destino.getPreferredSize().height);
+            TextField_Destino.setBounds(295, 160, 180, TextField_Destino.getPreferredSize().height);
 
             //---- TextField_Fecha ----
             TextField_Fecha.setFont(new Font("Arial", Font.BOLD, 16));
             TextField_Fecha.setForeground(new Color(0, 0, 204));
             TextField_Fecha.setText("DD/MM/YYYY");
             contentPane.add(TextField_Fecha);
-            TextField_Fecha.setBounds(345, 210, 145, TextField_Fecha.getPreferredSize().height);
+            TextField_Fecha.setBounds(295, 210, 180, TextField_Fecha.getPreferredSize().height);
 
             //---- TextField_Hora ----
             TextField_Hora.setForeground(new Color(0, 0, 204));
             TextField_Hora.setFont(new Font("Arial", Font.BOLD, 16));
             TextField_Hora.setText("HH:MM");
             contentPane.add(TextField_Hora);
-            TextField_Hora.setBounds(345, 255, 145, TextField_Hora.getPreferredSize().height);
+            TextField_Hora.setBounds(295, 255, 180, TextField_Hora.getPreferredSize().height);
 
             //---- TextField_DpiConductor ----
             TextField_DpiConductor.setFont(new Font("Arial", Font.BOLD, 16));
@@ -405,7 +523,7 @@
                 }
             });
             contentPane.add(TextField_DpiConductor);
-            TextField_DpiConductor.setBounds(345, 350, 145, TextField_DpiConductor.getPreferredSize().height);
+            TextField_DpiConductor.setBounds(295, 350, 180, TextField_DpiConductor.getPreferredSize().height);
 
             //---- TextField_Vehiculos ----
             TextField_Vehiculos.setFont(new Font("Arial", Font.BOLD, 16));
@@ -418,7 +536,7 @@
                 }
             });
             contentPane.add(TextField_Vehiculos);
-            TextField_Vehiculos.setBounds(345, 405, 145, TextField_Vehiculos.getPreferredSize().height);
+            TextField_Vehiculos.setBounds(295, 405, 180, TextField_Vehiculos.getPreferredSize().height);
 
             {
                 // compute preferred size

@@ -527,8 +527,6 @@
             {
                 JOptionPane.showMessageDialog(null, "La Lista Se Encuentra Vacia", "Error!", JOptionPane.ERROR_MESSAGE);
             }
-
-
         }
 
         //Carga Masiva

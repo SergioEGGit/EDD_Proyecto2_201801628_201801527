@@ -9,13 +9,13 @@
     {
         //Atributos
         String Lugar;
-        int Tiempo;
+        double Tiempo;
 
         //--------------------------------------------Constructores-----------------------------------------------------
 
         //Constructor Nueva Ruta
 
-        public ModeloRutas(String lugar, int tiempo)
+        public ModeloRutas(String lugar, double tiempo)
         {
             Lugar = lugar;
             Tiempo = tiempo;
@@ -42,12 +42,12 @@
             Lugar = lugar;
         }
 
-        public int getTiempo()
+        public double getTiempo()
         {
             return Tiempo;
         }
 
-        public void setTiempo(int tiempo)
+        public void setTiempo(double tiempo)
         {
             Tiempo = tiempo;
         }

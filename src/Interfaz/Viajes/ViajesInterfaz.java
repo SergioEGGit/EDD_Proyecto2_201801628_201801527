@@ -56,14 +56,14 @@
                     @Override
                     public void run()
                     {
-                        new BuscarConductor().setVisible(true);
+                        new BuscarViaje().setVisible(true);
                     }
                 });
             }
             else if(RBT_Mostrar.isSelected())
             {
-                VariablesGlobales.NombreReporte = "ReporteConductoresListaDobleCircular.png";
-                VariablesGlobales.ListaDobleCircularConductores.GenerarReporteListaDobleCircularC();
+                VariablesGlobales.NombreReporte = "ReporteViajesBockChain.png";
+                VariablesGlobales.BlockchainViajes.GenerarReporteBlockchainViajes();
 
                 if(VariablesGlobales.GenereReporte)
                 {
