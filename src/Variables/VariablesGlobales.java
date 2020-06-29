@@ -22,6 +22,7 @@
         public static int Orden_ArbolB=5;
         public static int NumeroHoja=0;
         public static int IndiceDeVehiculoEnHoja=0;
+        public static int IndiceDeCompresion=0;
         public static ListaDobleCircularConductores ListaDobleCircularConductores = new ListaDobleCircularConductores();
         public static ListaAdyacencia ListaAdyacenciaRutas = new ListaAdyacencia();
         public static TablaHashClientes TablaHashClientes = new TablaHashClientes(SizeTabla);

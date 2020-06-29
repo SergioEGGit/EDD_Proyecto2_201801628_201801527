@@ -5,20 +5,20 @@
 
     import java.awt.event.*;
     import java.awt.*;
+    import java.io.*;
     import java.util.ArrayList;
     import java.util.Objects;
     import javax.swing.*;
+    import javax.swing.filechooser.FileNameExtensionFilter;
     import javax.swing.table.DefaultTableModel;
 
-<<<<<<< HEAD
+
     import Estructuras.HuffmanNodo;
     import Estructuras.ListaDobleCircularTopsNodo;
-=======
+
     import Estructuras.BlockchainViajesNodo;
->>>>>>> 0ac3cb877cbbd5a7aaa60e996b177feb11a36077
     import Interfaz.Clientes.ClientesInterfaz;
     import Interfaz.Conductores.*;
-    import Interfaz.Huffman.Comprecion_Descomprecion;
     import Interfaz.Rutas.Rutas;
     import Interfaz.Vehiculos.VehiculosInterfaz;
     import Interfaz.Viajes.ViajesInterfaz;
@@ -347,6 +347,9 @@
 
                                 String Cadena = VariablesGlobales.ListaDobleCircularTops.GenerarTopViajesLargos();
 
+                                VariablesGlobales.huffman.Compresion(Cadena,Texto+VariablesGlobales.IndiceDeCompresion);
+                                VariablesGlobales.IndiceDeCompresion++;
+
                                 //Aqui Comprimis Cadena Tiene Todo El Top
                             }
                             break;
@@ -357,6 +360,9 @@
                                 VariablesGlobales.ListaDobleCircularTops.OrdenamientoBurbujaListaDobleCircularT();
 
                                 String Cadena = VariablesGlobales.ListaDobleCircularTops.GenerarTopClientesConMasViajes();
+
+                                VariablesGlobales.huffman.Compresion(Cadena,Texto+VariablesGlobales.IndiceDeCompresion);
+                                VariablesGlobales.IndiceDeCompresion++;
 
                                 //Aqui Comprimis Cadena Tiene Todo El Top
                             }
@@ -369,6 +375,9 @@
 
                                 String Cadena = VariablesGlobales.ListaDobleCircularTops.GenerarTopConductoresConMasViajes();
 
+                                VariablesGlobales.huffman.Compresion(Cadena,Texto+VariablesGlobales.IndiceDeCompresion);
+                                VariablesGlobales.IndiceDeCompresion++;
+
                                 //Aqui Comprimis Cadena Tiene Todo El Top
                             }
                             break;
@@ -380,6 +389,9 @@
 
                                 String Cadena = VariablesGlobales.ListaDobleCircularTops.GenerarTopVehiculosConMasViajes();
 
+                                VariablesGlobales.huffman.Compresion(Cadena,Texto+VariablesGlobales.IndiceDeCompresion);
+                                VariablesGlobales.IndiceDeCompresion++;
+
                                 //Aqui Comprimis Cadena Tiene Todo El Top
                             }
                             break;
@@ -390,7 +402,35 @@
 
         private void BT_DescomprimirActionPerformed(ActionEvent e)
         {
-            //Aqui Descomprimis jajaja xD
+            JFileChooser chooser = new JFileChooser();
+            FileNameExtensionFilter filtro=new FileNameExtensionFilter("EDD TOPS","edd");
+            chooser.setFileFilter(filtro);
+            int returnVal = chooser.showOpenDialog(null);
+            if(returnVal == JFileChooser.APPROVE_OPTION) {
+                FileReader fr = null;
+                try {
+                    fr = new FileReader(chooser.getSelectedFile().getAbsolutePath());
+                    BufferedReader br = new BufferedReader(fr);
+                    String linea;
+                    String Top="",Binario="";
+                    int contador=0;
+                    while((linea=br.readLine())!=null) {
+                        if(contador==0){
+                            Top=linea;
+                        }else if(contador==1){
+                            Binario=linea;
+                        }
+                        contador++;
+                    }
+                    String a=VariablesGlobales.huffman.Descomprimir(Top,Binario);
+                    JOptionPane.showMessageDialog(null,a,Top,JOptionPane.INFORMATION_MESSAGE);
+                } catch (FileNotFoundException fileNotFoundException) {
+                    JOptionPane.showMessageDialog(null,"EL ARCHIVO NO SE LOGRO ABRIR CORRECTAMENTE","ERROR",JOptionPane.ERROR_MESSAGE);
+                } catch (IOException ioException) {
+                    JOptionPane.showMessageDialog(null,"NO SE REALIZO LA LECTURA DEL ARCHIVO CORRECTAMENTE","ERROR",JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
         }
 
         //---------------------------------------------Main-------------------------------------------------------------
@@ -407,9 +447,6 @@
             });
         }
 
-        private void button1ActionPerformed(ActionEvent e) {
-            new Comprecion_Descomprecion().setVisible(true);
-        }
 
         private void initComponents()
         {
@@ -439,7 +476,6 @@
             RBT_Rutas = new JRadioButton();
             RBT_Viajes = new JRadioButton();
             label3 = new JLabel();
-            button1 = new JButton();
 
             //======== this ========
             setTitle("Proyecto 2");
@@ -635,12 +671,6 @@
             contentPane.add(label3);
             label3.setBounds(670, 370, 45, 40);
 
-            //---- button1 ----
-            button1.setText("Comprecion");
-            button1.addActionListener(e -> button1ActionPerformed(e));
-            contentPane.add(button1);
-            button1.setBounds(new Rectangle(new Point(320, 360), button1.getPreferredSize()));
-
             {
                 // compute preferred size
                 Dimension preferredSize = new Dimension();
@@ -686,6 +716,5 @@
         private JRadioButton RBT_Rutas;
         private JRadioButton RBT_Viajes;
         private JLabel label3;
-        private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     }

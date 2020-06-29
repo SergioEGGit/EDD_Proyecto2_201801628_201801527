@@ -54,7 +54,7 @@ public class Huffman {
         AgregarEnListaDeArboles(getHuffAuxiliar());
     }
 
-    public void Descomprimir(String Top,String TextBinario){
+    public String Descomprimir(String Top,String TextBinario){
         TextoDescompreso="";
         HuffmanNodo Aux=getListaArboles();
         HuffmanNodo Arbol=null;
@@ -74,7 +74,7 @@ public class Huffman {
                 DescomprimirTexto(Arbol);
             }
         }
-        System.out.println(TextoDescompreso);
+        return TextoDescompreso;
     }
 
     void DescomprimirTexto(HuffmanNodo Nodo){
