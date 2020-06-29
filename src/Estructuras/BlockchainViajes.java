@@ -151,6 +151,144 @@
                 while(Auxiliar != getBlockChainViajesInicio());
             }
         }
+        
+        //Top Clientes Con Mas Viajes
+
+        public void TopClientesConMasViajes()
+        {
+            //Declaraciones
+
+            //Auxiliar Lista Doble
+
+            BlockchainViajesNodo Auxiliar = getBlockChainViajesInicio();
+
+            VariablesGlobales.ListaDobleCircularTops.setListaDobleInicio(null);
+
+            String Auxiliar2 = "";
+
+            if(getBlockChainViajesInicio() == null)
+            {
+                JOptionPane.showMessageDialog(null, "La Estrcutura Se Encuentra Vacia", "Error!", JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                do
+                {
+                    if (VariablesGlobales.ListaDobleCircularTops.getListaDobleInicio() != null)
+                    {
+                        ListaDobleCircularTopsNodo NodoBuscado = VariablesGlobales.ListaDobleCircularTops.BuscarTopListaDobleCircularT(Auxiliar.getNuevoViaje().getClienteViaje().getNuevoCliente().getDPICliente());
+
+                        if(NodoBuscado != null)
+                        {
+                            int Aux = NodoBuscado.getCantidad() + 1;
+                            NodoBuscado.setCantidad(Aux);
+                        }
+                        else
+                        {
+                            VariablesGlobales.ListaDobleCircularTops.InsertarTopFinalListaDobleCircularC(Auxiliar.getNuevoViaje().getClienteViaje().getNuevoCliente().getDPICliente(), 1);
+                        }
+                    }
+                    else
+                    {
+                        VariablesGlobales.ListaDobleCircularTops.InsertarTopFinalListaDobleCircularC(Auxiliar.getNuevoViaje().getClienteViaje().getNuevoCliente().getDPICliente(), 1);
+                    }
+                    Auxiliar = Auxiliar.getSgte();
+                }
+                while(Auxiliar != getBlockChainViajesInicio());
+            }
+        }
+
+        //Top Conductores Con Mas Viajes
+
+        public void TopConductoresConMasViajes()
+        {
+            //Declaraciones
+
+            //Auxiliar Lista Doble
+
+            BlockchainViajesNodo Auxiliar = getBlockChainViajesInicio();
+
+            VariablesGlobales.ListaDobleCircularTops.setListaDobleInicio(null);
+
+            String Auxiliar2 = "";
+
+            if(getBlockChainViajesInicio() == null)
+            {
+                JOptionPane.showMessageDialog(null, "La Estrcutura Se Encuentra Vacia", "Error!", JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                do
+                {
+                    if (VariablesGlobales.ListaDobleCircularTops.getListaDobleInicio() != null)
+                    {
+                        ListaDobleCircularTopsNodo NodoBuscado = VariablesGlobales.ListaDobleCircularTops.BuscarTopListaDobleCircularT(Auxiliar.getNuevoViaje().getConductorViaje().getNuevoConductor().getDPIConductor());
+
+                        if(NodoBuscado != null)
+                        {
+                            int Aux = NodoBuscado.getCantidad() + 1;
+                            NodoBuscado.setCantidad(Aux);
+                        }
+                        else
+                        {
+                            VariablesGlobales.ListaDobleCircularTops.InsertarTopFinalListaDobleCircularC(Auxiliar.getNuevoViaje().getConductorViaje().getNuevoConductor().getDPIConductor(), 1);
+                        }
+                    }
+                    else
+                    {
+                        VariablesGlobales.ListaDobleCircularTops.InsertarTopFinalListaDobleCircularC(Auxiliar.getNuevoViaje().getConductorViaje().getNuevoConductor().getDPIConductor(), 1);
+                    }
+                    Auxiliar = Auxiliar.getSgte();
+                }
+                while(Auxiliar != getBlockChainViajesInicio());
+            }
+        }
+
+        //Top Vehiculos Con Mas Viajes
+
+        public void TopVehiculosConMasViaje()
+        {
+            //Declaraciones
+
+            //Auxiliar Lista Doble
+
+            BlockchainViajesNodo Auxiliar = getBlockChainViajesInicio();
+
+            VariablesGlobales.ListaDobleCircularTops.setListaDobleInicio(null);
+
+            String Auxiliar2 = "";
+
+            if(getBlockChainViajesInicio() == null)
+            {
+                JOptionPane.showMessageDialog(null, "La Estrcutura Se Encuentra Vacia", "Error!", JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                do
+                {
+                    if (VariablesGlobales.ListaDobleCircularTops.getListaDobleInicio() != null)
+                    {
+                        ListaDobleCircularTopsNodo NodoBuscado = VariablesGlobales.ListaDobleCircularTops.BuscarTopListaDobleCircularT(Auxiliar.getNuevoViaje().getVehiculoViaje().getVehiculos().get(Auxiliar.getNuevoViaje().getPosicionArray()).getPlaca());
+
+                        if(NodoBuscado != null)
+                        {
+                            int Aux = NodoBuscado.getCantidad() + 1;
+                            NodoBuscado.setCantidad(Aux);
+                        }
+                        else
+                        {
+                            VariablesGlobales.ListaDobleCircularTops.InsertarTopFinalListaDobleCircularC(Auxiliar.getNuevoViaje().getVehiculoViaje().getVehiculos().get(Auxiliar.getNuevoViaje().getPosicionArray()).getPlaca(), 1);
+                        }
+                    }
+                    else
+                    {
+                        VariablesGlobales.ListaDobleCircularTops.InsertarTopFinalListaDobleCircularC(Auxiliar.getNuevoViaje().getVehiculoViaje().getVehiculos().get(Auxiliar.getNuevoViaje().getPosicionArray()).getPlaca(), 1);
+                    }
+                    Auxiliar = Auxiliar.getSgte();
+                }
+                while(Auxiliar != getBlockChainViajesInicio());
+            }
+        }
 
         //Reporte BlockChain
 
@@ -273,13 +411,16 @@
 
             ArrayList<ModeloViajes> ArrayAuxiliar = new ArrayList<ModeloViajes>();
 
-            do
+            if(getBlockChainViajesInicio() != null)
             {
-                ArrayAuxiliar.add(AuxiliarNodo.getNuevoViaje());
+                do
+                {
+                    ArrayAuxiliar.add(AuxiliarNodo.getNuevoViaje());
 
-                AuxiliarNodo = AuxiliarNodo.getSgte();
+                    AuxiliarNodo = AuxiliarNodo.getSgte();
+                }
+                while(AuxiliarNodo != getBlockChainViajesInicio());
             }
-            while(AuxiliarNodo != getBlockChainViajesInicio());
 
             return ArrayAuxiliar;
         }

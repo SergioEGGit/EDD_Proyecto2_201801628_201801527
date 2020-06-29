@@ -56,7 +56,7 @@
                     @Override
                     public void run()
                     {
-                        new BuscarConductor().setVisible(true);
+                        new BuscarViaje().setVisible(true);
                     }
                 });
             }

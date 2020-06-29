@@ -122,7 +122,7 @@
         private void initComponents()
         {
             // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-            // Generated using JFormDesigner Evaluation license - unknown
+            // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
             RBT_CargaMasiva = new JRadioButton();
             RBT_Grafo = new JRadioButton();
             label2 = new JLabel();
@@ -153,7 +153,7 @@
                 }
             });
             contentPane.add(RBT_CargaMasiva);
-            RBT_CargaMasiva.setBounds(new Rectangle(new Point(235, 150), RBT_CargaMasiva.getPreferredSize()));
+            RBT_CargaMasiva.setBounds(new Rectangle(new Point(215, 150), RBT_CargaMasiva.getPreferredSize()));
 
             //---- RBT_Grafo ----
             RBT_Grafo.setText("Grafo de Rutas");
@@ -167,21 +167,21 @@
                 }
             });
             contentPane.add(RBT_Grafo);
-            RBT_Grafo.setBounds(new Rectangle(new Point(235, 190), RBT_Grafo.getPreferredSize()));
+            RBT_Grafo.setBounds(new Rectangle(new Point(215, 190), RBT_Grafo.getPreferredSize()));
 
             //---- label2 ----
             label2.setText("Seleccione Una Opci\u00f3n:");
             label2.setForeground(new Color(0, 102, 255));
             label2.setFont(new Font("Arial", Font.BOLD, 20));
             contentPane.add(label2);
-            label2.setBounds(195, 90, 226, 24);
+            label2.setBounds(175, 90, 226, 24);
 
             //---- label1 ----
             label1.setText("Men\u00fa Rutas");
             label1.setFont(new Font("Arial", Font.BOLD, 22));
             label1.setForeground(new Color(153, 153, 255));
             contentPane.add(label1);
-            label1.setBounds(250, 45, 125, 26);
+            label1.setBounds(230, 45, 125, 26);
             contentPane.add(label3);
             label3.setBounds(530, 320, 25, 30);
 
@@ -192,7 +192,7 @@
         }
 
         // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Sergio Echigoyen
         private JRadioButton RBT_CargaMasiva;
         private JRadioButton RBT_Grafo;
         private JLabel label2;

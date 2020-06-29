@@ -1,19 +1,15 @@
-Guatemala/Francia/150%
-Francia/Italia/61%
-Peten/Inglaterra/81%
-Canada/Mexico/10%
-Rusia/Peten/20%
-Peten/Rusia/20%
-Mexico/Rusia/300%
-Guatemala/Peru/10%
-Peru/Ecuador/500%
-Venezuela/Ecuador/50%
-Estados Unidos/Rusia/100%
-Colombia/Guatemala/1200%
-Colombia/Rusia/5000%
-Italia/Canada/5000%
-Inglaterra/Estados Unidos/120%
-Canada/Ecuador/100%
-Peru/Canada/50%
-Rusia/Guatemala/10%
-Canada/Canada/100%
+Oviedo/Bilbao/304%
+Bilbao/Zaragoza/324%
+Bilbao/Madrid/395%
+Bilbao/Valladolid/280%
+Zaragoza/Barcelona/296%
+Barcelona/Gerona/100%
+Zaragoza/Madrid/325%
+Barcelona/Nueva Zelanda/349%
+Madrid/Albacete/251%
+Madrid/Badajoz/403%
+Valladolid/Madrid/193%
+Valladolid/Coruña/455%
+Coruña/Vigo/171%
+Vigo/Valladolid/356%
+Albacete/Nueva Zelanda/191%

@@ -78,3 +78,19 @@ TodosLosOrigenes() es el que retorna un Arraylist de string con todos los lugare
 CalcRutaFavorable("CANADA","ESTADOS UNIDOS"); recibe un origen y un destino consecutivamente
 de modo que este retorna un arreglo de string en el formato "Lugar,Tiempo" hacer un Split por ","
 y verificar que el arreglo retornado no sea null
+
+------------------------------------------------------------------------------------------------------------------------
+
+    En la interfaz principal hay dos botones uno que dice comprimir y descomprimir
+    ya deje los metedoos de action perform buscalo ahi y te explique donde tendrias que comprimir xD
+    100nazo
+	en las pruebas ahi usas nueva zelanda plox para ver si todo correcto con los espacios en mi reporte 
+	si no F jaja xD ahi estan los archivos en carga masiva xD 
+    ya hice un manual esta en la carpeta manuales me surti el tecnico me iba a surtir tambien el
+    del usuario pero la verdad que hueva jaja asi que te lo encargo bro xD :V
+
+    Cuando lo termines echale una debuguiada completa a todo porfavor y me decis cuando ya lo termines
+    asi pulleo le echo una debuguiada yo tambien y 100nazo mandamos esa onda de una vez XD
+
+
+
