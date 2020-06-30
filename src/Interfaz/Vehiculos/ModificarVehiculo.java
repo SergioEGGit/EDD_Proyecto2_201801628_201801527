@@ -168,8 +168,6 @@
             {
                 JOptionPane.showMessageDialog(null, "El Vehiculo No Existe En El Sistema", "Error!", JOptionPane.ERROR_MESSAGE);
             }
-
-            TextField_Buscar.setText("");
         }
 
         private void TB_VehiculosMouseClicked(MouseEvent e)
@@ -190,6 +188,7 @@
             VehiculoModificar = VariablesGlobales.ArbolBAutomoviles.BuscarVehiculoNodo(Valor);
 
             TextField_Placa.setText(VehiculoModificar.getPlaca());
+            TextField_Buscar.setText(VehiculoModificar.getPlaca());
             TextField_Marca.setText(VehiculoModificar.getMarca());
             TextField_Modelo.setText(VehiculoModificar.getModelo());
             TextField_Anio.setText("" + VehiculoModificar.getAnio());
@@ -216,7 +215,7 @@
 
             //Variables Tipo Boolean
 
-            boolean ExisteConductor = VariablesGlobales.ArbolBAutomoviles.BuscarVehiculoBoolean(TextField_Placa.getText());
+            boolean ExisteConductor = VariablesGlobales.ArbolBAutomoviles.BuscarVehiculoBoolean(TextField_Buscar.getText());
 
             if(ExisteConductor)
             {
@@ -225,31 +224,58 @@
                 int Button = JOptionPane.YES_NO_OPTION;
                 int Result = JOptionPane.showConfirmDialog(this, "Seguro Que Desea Modificar El Conductor", "Pregunta!", Button);
 
-                //Variables Tipo Lista Doble
-
-                ModeloVehiculo VehiculoModificar = VariablesGlobales.ArbolBAutomoviles.BuscarVehiculoNodo(TextField_Placa.getText());
-
                 if(Result == 0)
                 {
-                    VehiculoModificar.setPlaca(TextField_Placa.getText());
-                    VehiculoModificar.setMarca(TextField_Marca.getText());
-                    VehiculoModificar.setModelo(TextField_Modelo.getText());
-                    VehiculoModificar.setAnio(Integer.parseInt(TextField_Anio.getText()));
-                    VehiculoModificar.setColor(TextField_Color.getText());
-                    VehiculoModificar.setPrecio(Double.parseDouble(TextField_Precio.getText()));
-
-                    String Trans = (String) CB_TipoTrans.getSelectedItem();
-
-                    if(Trans.equals("Automática") || Trans.equals("Automatica"))
+                    if(TextField_Buscar.getText().equals(TextField_Placa.getText()))
                     {
-                        VehiculoModificar.setTipoTransmicion(false);
-                    }
-                    else if(Trans.equals("Mecánica") || Trans.equals("Mecanica"))
-                    {
-                        VehiculoModificar.setTipoTransmicion(true);
-                    }
+                        ModeloVehiculo VehiculoModificar = VariablesGlobales.ArbolBAutomoviles.BuscarVehiculoNodo(TextField_Placa.getText());
 
-                    JOptionPane.showMessageDialog(null, "Vehiculo Modificado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                        VehiculoModificar.setPlaca(TextField_Placa.getText());
+                        VehiculoModificar.setMarca(TextField_Marca.getText());
+                        VehiculoModificar.setModelo(TextField_Modelo.getText());
+                        VehiculoModificar.setAnio(Integer.parseInt(TextField_Anio.getText()));
+                        VehiculoModificar.setColor(TextField_Color.getText());
+                        VehiculoModificar.setPrecio(Double.parseDouble(TextField_Precio.getText()));
+
+                        String Trans = (String) CB_TipoTrans.getSelectedItem();
+
+                        if(Trans.equals("Automática") || Trans.equals("Automatica"))
+                        {
+                            VehiculoModificar.setTipoTransmicion(false);
+                        }
+                        else if(Trans.equals("Mecánica") || Trans.equals("Mecanica"))
+                        {
+                            VehiculoModificar.setTipoTransmicion(true);
+                        }
+
+                        JOptionPane.showMessageDialog(null, "Vehiculo Modificado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else
+                    {
+                        ModeloVehiculo NuevoVehiculo = new ModeloVehiculo();
+                        NuevoVehiculo.setPlaca(TextField_Placa.getText());
+                        NuevoVehiculo.setMarca(TextField_Marca.getText());
+                        NuevoVehiculo.setModelo(TextField_Modelo.getText());
+                        NuevoVehiculo.setAnio(Integer.parseInt(TextField_Anio.getText()));
+                        NuevoVehiculo.setColor(TextField_Color.getText());
+                        NuevoVehiculo.setPrecio(Double.parseDouble(TextField_Precio.getText()));
+
+                        String Trans = (String) CB_TipoTrans.getSelectedItem();
+
+                        if(Trans.equals("Automática") || Trans.equals("Automatica"))
+                        {
+                            NuevoVehiculo.setTipoTransmicion(false);
+                        }
+                        else if(Trans.equals("Mecánica") || Trans.equals("Mecanica"))
+                        {
+                            NuevoVehiculo.setTipoTransmicion(true);
+                        }
+
+                        VariablesGlobales.ArbolBAutomoviles.EliminarVehiculo(TextField_Buscar.getText());
+                        VariablesGlobales.ArbolBAutomoviles.AgregarVehiculo(NuevoVehiculo);
+
+                        JOptionPane.showMessageDialog(null, "Vehiculo Modificado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                    }
 
                     Modelo = new DefaultTableModel();
 
@@ -263,6 +289,7 @@
                 JOptionPane.showMessageDialog(null, "El Conductor Indicado No Existe En El Sistema!", "Error!", JOptionPane.ERROR_MESSAGE);
             }
 
+            TextField_Buscar.setText("");
             TextField_Placa.setText("");
             TextField_Marca.setText("");
             TextField_Modelo.setText("");
@@ -420,7 +447,6 @@
             //---- TextField_Placa ----
             TextField_Placa.setForeground(new Color(0, 0, 204));
             TextField_Placa.setFont(new Font("Arial", Font.BOLD, 16));
-            TextField_Placa.setEditable(false);
             contentPane.add(TextField_Placa);
             TextField_Placa.setBounds(530, 135, 184, 29);
 

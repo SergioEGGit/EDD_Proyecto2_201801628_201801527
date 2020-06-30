@@ -161,7 +161,10 @@
                         }
                         else
                         {
-                            JOptionPane.showMessageDialog(null, "Cliente Agregado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                            if(!VariablesGlobales.EstoyEnModificar)
+                            {
+                                JOptionPane.showMessageDialog(null, "Cliente Agregado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                            }
                         }
                     }
                 }

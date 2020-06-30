@@ -71,11 +71,24 @@
 
         private void TextField_DPIKeyTyped(KeyEvent e)
         {
-            char Caracter = e.getKeyChar();
+            //Declaraciones
 
-            if((Caracter < '0' || Caracter > '9'))
+            //Variable Tipo String
+
+            String DPI = TextField_DPI.getText();
+
+            if (DPI.length() > 12)
             {
                 e.consume();
+            }
+            else
+            {
+                char Caracter = e.getKeyChar();
+
+                if ((Caracter < '0' || Caracter > '9'))
+                {
+                    e.consume();
+                }
             }
         }
 
@@ -155,9 +168,11 @@
 
             ArrayList<ModeloClientes> ArrayClientes = new ArrayList<ModeloClientes>();
 
+            VariablesGlobales.EstoyEnModificar = true;
+
             //Variables Tipo Boolean
 
-            boolean ExisteConductor = VariablesGlobales.TablaHashClientes.VerificarClienteTablaHashClientes(TextField_DPI.getText());
+            boolean ExisteConductor = VariablesGlobales.TablaHashClientes.VerificarClienteTablaHashClientes(TextField_Buscar.getText());
 
             if(ExisteConductor)
             {
@@ -180,7 +195,17 @@
                     ClienteModificar.setTelefonoCliente(Integer.parseInt(TextField_Telefono.getText()));
                     ClienteModificar.setDireccionCliente(TextField_Direccion.getText());
 
-                    VariablesGlobales.TablaHashClientes.ModificarClienteTablaHashClientes(TextField_DPI.getText(), ClienteModificar);
+                    if(TextField_Buscar.getText().equals(TextField_DPI.getText()))
+                    {
+                        VariablesGlobales.TablaHashClientes.ModificarClienteTablaHashClientes(TextField_DPI.getText(), ClienteModificar);
+                    }
+                    else
+                    {
+                        VariablesGlobales.TablaHashClientes.EliminarClienteTablaHashClientes(TextField_Buscar.getText());
+                        VariablesGlobales.TablaHashClientes.InsertarClienteTablaHashClientes(ClienteModificar);
+
+                        JOptionPane.showMessageDialog(null, "Cliente Modificado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                    }
 
                     Modelo = new DefaultTableModel();
 
@@ -194,6 +219,7 @@
                 JOptionPane.showMessageDialog(null, "El Conductor Indicado No Existe En El Sistema!", "Error!", JOptionPane.ERROR_MESSAGE);
             }
 
+            TextField_Buscar.setText("");
             TextField_DPI.setText("");
             TextField_Nombres.setText("");
             TextField_Apellidos.setText("");
@@ -201,6 +227,8 @@
             CB_Genero.setSelectedIndex(0);
             TextField_Telefono.setText("");
             TextField_Direccion.setText("");
+
+            VariablesGlobales.EstoyEnModificar = false;
         }
 
         private void BT_BuscarActionPerformed(ActionEvent e)
@@ -244,8 +272,6 @@
                     JOptionPane.showMessageDialog(null, "El Cliente No Existe En El Sistema", "Error!", JOptionPane.ERROR_MESSAGE);
                 }
             }
-
-            TextField_Buscar.setText("");
         }
 
         private void TB_ClientesMouseClicked(MouseEvent e)
@@ -269,6 +295,7 @@
             ClienteModificar = ClienteModificarNodo.getNuevoCliente();
 
             TextField_DPI.setText(ClienteModificar.getDPICliente());
+            TextField_Buscar.setText(ClienteModificar.getDPICliente());
             TextField_Nombres.setText(ClienteModificar.getNombresCliente());
             TextField_Apellidos.setText(ClienteModificar.getApellidosCliente());
             TextField_Fecha.setText(ClienteModificar.getFechaNacimentoCliente());
@@ -433,7 +460,6 @@
             //---- TextField_DPI ----
             TextField_DPI.setFont(new Font("Arial", Font.BOLD, 16));
             TextField_DPI.setForeground(new Color(0, 0, 204));
-            TextField_DPI.setEditable(false);
             TextField_DPI.addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyTyped(KeyEvent e) {

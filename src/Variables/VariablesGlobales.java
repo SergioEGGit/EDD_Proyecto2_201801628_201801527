@@ -17,6 +17,7 @@
         public static boolean GenereReporte = false;
         public static boolean EstoyEnCargaMasiva = false;
         public static boolean EstoyEnRehashin = false;
+        public static boolean EstoyEnModificar = false;
         public static int ContadorCargaMasiva = 0;
         public static int SizeTabla = 37;
         public static int Orden_ArbolB=5;
@@ -30,5 +31,5 @@
         public static ArbolBAutos ArbolBAutomoviles = new ArbolBAutos();
         public static BlockchainViajes BlockchainViajes = new BlockchainViajes();
         public static ListaDobleCircularTops ListaDobleCircularTops = new ListaDobleCircularTops();
-        public static  Huffman huffman=new Huffman();
+        public static  Huffman huffman = new Huffman();
     }

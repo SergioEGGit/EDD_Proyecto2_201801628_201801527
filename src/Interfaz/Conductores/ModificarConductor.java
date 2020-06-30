@@ -71,11 +71,24 @@
 
         private void TextField_DPIKeyTyped(KeyEvent e)
         {
-            char Caracter = e.getKeyChar();
+            //Declaraciones
 
-            if((Caracter < '0' || Caracter > '9'))
+            //Variable Tipo String
+
+            String DPI = TextField_DPI.getText();
+
+            if (DPI.length() > 12)
             {
                 e.consume();
+            }
+            else
+            {
+                char Caracter = e.getKeyChar();
+
+                if ((Caracter < '0' || Caracter > '9'))
+                {
+                    e.consume();
+                }
             }
         }
 
@@ -159,7 +172,7 @@
 
             //Variables Tipo Boolean
 
-            boolean ExisteConductor = VariablesGlobales.ListaDobleCircularConductores.VerificarConductorListaDobleCircularC(TextField_DPI.getText());
+            boolean ExisteConductor = VariablesGlobales.ListaDobleCircularConductores.VerificarConductorListaDobleCircularC(TextField_Buscar.getText());
 
             if(ExisteConductor)
             {
@@ -183,7 +196,9 @@
                     ConductorModificar.setTelefonoConductor(Integer.parseInt(TextField_Telefono.getText()));
                     ConductorModificar.setDireccionConductor(TextField_Direccion.getText());
 
-                    VariablesGlobales.ListaDobleCircularConductores.ModificarConductorListaDobleCircularC(ConductorModificar);
+                    VariablesGlobales.ListaDobleCircularConductores.ModificarConductorListaDobleCircularC(TextField_Buscar.getText(), ConductorModificar);
+
+                    VariablesGlobales.ListaDobleCircularConductores.OrdenamientoBurbujaListaDobleCircularC();
 
                     Modelo = new DefaultTableModel();
 
@@ -197,6 +212,7 @@
                 JOptionPane.showMessageDialog(null, "El Conductor Indicado No Existe En El Sistema!", "Error!", JOptionPane.ERROR_MESSAGE);
             }
 
+            TextField_Buscar.setText("");
             TextField_DPI.setText("");
             TextField_Nombres.setText("");
             TextField_Apellidos.setText("");
@@ -251,8 +267,6 @@
             {
                 JOptionPane.showMessageDialog(null, "El Conductor No Existe En El Sistema", "Error!", JOptionPane.ERROR_MESSAGE);
             }
-
-            TextField_Buscar.setText("");
         }
 
         //Tabla Click
@@ -275,6 +289,7 @@
             ConductorModificar = VariablesGlobales.ListaDobleCircularConductores.BuscarUsuarioListaDobleCircularC(Valor);
 
             TextField_DPI.setText(ConductorModificar.getDPIConductor());
+            TextField_Buscar.setText(ConductorModificar.getDPIConductor());
             TextField_Nombres.setText(ConductorModificar.getNombresConductor());
             TextField_Apellidos.setText(ConductorModificar.getApellidosConductor());
             TextField_Fecha.setText(ConductorModificar.getFechaNacimientoConductor());
@@ -478,7 +493,6 @@
             //---- TextField_DPI ----
             TextField_DPI.setFont(new Font("Arial", Font.BOLD, 16));
             TextField_DPI.setForeground(new Color(0, 0, 204));
-            TextField_DPI.setEditable(false);
             TextField_DPI.addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyTyped(KeyEvent e) {

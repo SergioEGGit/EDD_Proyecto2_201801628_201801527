@@ -5,7 +5,6 @@
 package Interfaz.Vehiculos;
 
 import Interfaz.Reportes;
-import Modelos.ModeloVehiculo;
 import Variables.VariablesGlobales;
 
 import java.awt.*;
@@ -16,8 +15,16 @@ import javax.swing.*;
  * @author unknown
  */
 public class VehiculosInterfaz extends JFrame {
-    public VehiculosInterfaz() {
+    public VehiculosInterfaz()
+    {
         initComponents();
+        ButtonGroup MenuConductor = new ButtonGroup();
+        MenuConductor.add(RBT_Agregar);
+        MenuConductor.add(RBT_Modificar);
+        MenuConductor.add(RBT_Eliminar);
+        MenuConductor.add(RBT_Buscar);
+        MenuConductor.add(RBT_Mostrar);
+        RBT_Agregar.setSelected(true);
     }
 
     /*private void AgregarVehiculo(ActionEvent e) {
@@ -57,6 +64,7 @@ public class VehiculosInterfaz extends JFrame {
 
     private void RBT_ModificarActionPerformed(ActionEvent e) {
         // TODO add your code here
+        new ModificarVehiculo().setVisible(true);
     }
 
     private void RBT_EliminarActionPerformed(ActionEvent e) {
@@ -66,6 +74,7 @@ public class VehiculosInterfaz extends JFrame {
 
     private void RBT_BuscarActionPerformed(ActionEvent e) {
         // TODO add your code here
+        new BuscarVehiculo().setVisible(true);
     }
 
     private void RBT_MostrarActionPerformed(ActionEvent e) {
