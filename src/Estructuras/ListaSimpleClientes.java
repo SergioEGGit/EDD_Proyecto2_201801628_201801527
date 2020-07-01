@@ -4,6 +4,7 @@
     package Estructuras;
 
     import Modelos.ModeloClientes;
+    import Variables.VariablesGlobales;
 
     import javax.swing.*;
     import java.util.ArrayList;
@@ -67,14 +68,20 @@
                 if(DPI.equals(AuxiliarPrimero.getNuevoCliente().getDPICliente()) && AuxiliarPrimero == getListaSimpleUsuariosInicio())
                 {
                     setListaSimpleUsuariosInicio(AuxiliarPrimero.getSgte());
-                    JOptionPane.showMessageDialog(null, "Cliente Eliminado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                    if(!VariablesGlobales.EstoyEnModificar)
+                    {
+                        JOptionPane.showMessageDialog(null, "Cliente Eliminado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                    }
                     break;
                 }
                 else if(DPI.equals(AuxiliarPrimero.getNuevoCliente().getDPICliente()) && AuxiliarPrimero != getListaSimpleUsuariosInicio())
                 {
                     AuxiliarSegundo.setSgte(AuxiliarPrimero.getSgte());
                     AuxiliarPrimero = null;
-                    JOptionPane.showMessageDialog(null, "Cliente Eliminado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                    if(!VariablesGlobales.EstoyEnModificar)
+                    {
+                        JOptionPane.showMessageDialog(null, "Cliente Eliminado Con Exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                    }
                     break;
                 }
                 AuxiliarSegundo = AuxiliarPrimero;

@@ -132,7 +132,7 @@
 
         //Modificar Usuario
 
-        public void ModificarConductorListaDobleCircularC(ModeloConductores ConductorModificar)
+        public void ModificarConductorListaDobleCircularC(String DPI, ModeloConductores ConductorModificar)
         {
             //Declaraciones
 
@@ -144,8 +144,9 @@
             {
                 do
                 {
-                    if(ConductorModificar.getDPIConductor().equals(Auxiliar.getNuevoConductor().getDPIConductor()))
+                    if(DPI.equals(Auxiliar.getNuevoConductor().getDPIConductor()))
                     {
+                        Auxiliar.getNuevoConductor().setDPIConductor(ConductorModificar.getDPIConductor());
                         Auxiliar.getNuevoConductor().setNombresConductor(ConductorModificar.getNombresConductor());
                         Auxiliar.getNuevoConductor().setApellidosConductor(ConductorModificar.getApellidosConductor());
                         Auxiliar.getNuevoConductor().setFechaNacimientoConductor(ConductorModificar.getFechaNacimientoConductor());
@@ -232,7 +233,7 @@
 
         //Ordenamiento Burbuja Lista Doble
 
-        private void OrdenamientoBurbujaListaDobleCircularC()
+        public void OrdenamientoBurbujaListaDobleCircularC()
         {
              //Declaraciones
 
