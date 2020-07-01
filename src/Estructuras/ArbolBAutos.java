@@ -413,6 +413,7 @@ public class ArbolBAutos {
                     if(getInicioArbolBVehiculos().getHijos().size()==1){
                         setInicioArbolBVehiculos(getInicioArbolBVehiculos().getHijos().pop());
                     }
+                    if(getInicioArbolBVehiculos().getVehiculos().empty()){setInicioArbolBVehiculos(null);}
                     return true;
                 }
                 else if(i==0 && PlacaE.compareTo(Placa)<0){
@@ -422,6 +423,7 @@ public class ArbolBAutos {
                         setInicioArbolBVehiculos(getInicioArbolBVehiculos().getHijos().pop());
                     }
                     //Verificar que las claves sean mayores a las minimas
+                    if(getInicioArbolBVehiculos().getVehiculos().empty()){setInicioArbolBVehiculos(null);}
                     return Eliminado;
                 }
                 else if(i+1<CantidadVehiculo){
@@ -433,6 +435,7 @@ public class ArbolBAutos {
                             if(getInicioArbolBVehiculos().getHijos().size()==1){
                                 setInicioArbolBVehiculos(getInicioArbolBVehiculos().getHijos().pop());
                             }
+                            if(getInicioArbolBVehiculos().getVehiculos().empty()){setInicioArbolBVehiculos(null);}
                             //Verificar que las claves sean mayores a las minimas
                             return Eliminado;
                         }
@@ -444,6 +447,7 @@ public class ArbolBAutos {
                         if(getInicioArbolBVehiculos().getHijos().size()==1){
                             setInicioArbolBVehiculos(getInicioArbolBVehiculos().getHijos().pop());
                         }
+                        if(getInicioArbolBVehiculos().getVehiculos().empty()){setInicioArbolBVehiculos(null);}
                         //Verificar que las claves sean mayores a las minimas
                         return Eliminado;
                     }
@@ -453,6 +457,7 @@ public class ArbolBAutos {
                         if(getInicioArbolBVehiculos().getHijos().size()==1){
                             setInicioArbolBVehiculos(getInicioArbolBVehiculos().getHijos().pop());
                         }
+                        if(getInicioArbolBVehiculos().getVehiculos().empty()){setInicioArbolBVehiculos(null);}
                         //Verificar que las claves sean mayores a las minimas
                         return Eliminado;
                     }
@@ -461,6 +466,7 @@ public class ArbolBAutos {
             }else{
                 if(PlacaE.compareTo(Placa)==0){
                     Aux.getVehiculos().removeElementAt(i);
+                    if(getInicioArbolBVehiculos().getVehiculos().empty()){setInicioArbolBVehiculos(null);}
                     return true;
                 }
             }
