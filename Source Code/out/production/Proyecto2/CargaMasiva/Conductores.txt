@@ -1,0 +1,8 @@
+3005952367401%Pedro%Ordonez%A%Masculino%15/5/2019%24658966%14 Ave. 15-96 Zona 1;
+7805544360001%Luis%Ordonez%B%Masculino%15/4/2013%24650066%14 Ave. 15-96 Zona 2;
+5004153267401%Mario%Altan%B%Masculino%01/10/2009%24448966%14 Ave. 15-96 Zona 3;
+3033988367401%Fernanda%Lopez%C%Femenino%12/5/2017%24778906%14 Ave. 15-96 Zona 4;
+9805952367756%Virginia%Depaz%C%Femenino%04/03/2019%17766966%14 Ave. 15-96 Zona 5;
+1005957733221%Rolando%Lopez%C%Masculino%15/5/2019%247789936%14 Ave. 15-96 Zona 6;
+4005952367401%Maria%Alfaro%A%Femenino%7/9/2007%24888966%14 Ave. 15-96 Zona 7;
+6005952367401%Segio%Chacon%B%Masculino%15/5/2019%24658966%14 Ave. 15-96 Zona 8;

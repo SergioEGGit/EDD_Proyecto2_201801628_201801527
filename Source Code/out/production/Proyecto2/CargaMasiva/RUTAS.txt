@@ -1,0 +1,15 @@
+Oviedo/Bilbao/304%
+Bilbao/Zaragoza/324%
+Bilbao/Madrid/395%
+Bilbao/Valladolid/280%
+Zaragoza/Barcelona/296%
+Barcelona/Gerona/100%
+Zaragoza/Madrid/325%
+Barcelona/Nueva Zelanda/349%
+Madrid/Albacete/251%
+Madrid/Badajoz/403%
+Valladolid/Madrid/193%
+Valladolid/Coruña/455%
+Coruña/Vigo/171%
+Vigo/Valladolid/356%
+Albacete/Nueva Zelanda/191%
